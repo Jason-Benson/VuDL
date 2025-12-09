@@ -21,7 +21,7 @@ describe("FedoraObject", () => {
         filename = "test1";
         stream = "test2";
         mimeType = "test3";
-        jest.spyOn(fs, "readFileSync").mockReturnValue(buffer);
+        (fs.readFileSync as jest.Mock).mockReturnValue(buffer);
         Config.setInstance(new Config({}));
         fedoraObject = FedoraObject.build(pid);
     });

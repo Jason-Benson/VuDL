@@ -11,17 +11,17 @@ jest.mock("fs");
 describe("FedoraObject", () => {
     let fedoraObject: FedoraObject;
     let pid: string;
-    let buffer: Buffer;
+    let buffer: string;
     let filename: string;
     let stream: string;
     let mimeType: string;
     beforeEach(() => {
-        buffer = Buffer.alloc(1024);
+        buffer = "my-fake-file-contents";
         pid = "testPid";
         filename = "test1";
         stream = "test2";
         mimeType = "test3";
-        (fs.readFileSync as jest.Mock).mockReturnValue(buffer);
+        jest.spyOn(fs, "readFileSync").mockReturnValue(buffer);
         Config.setInstance(new Config({}));
         fedoraObject = FedoraObject.build(pid);
     });

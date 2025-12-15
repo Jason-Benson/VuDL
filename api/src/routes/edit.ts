@@ -114,7 +114,7 @@ edit.post("/object/new", requireToken, bodyParser.json(), async function (req, r
         let parent: FedoraDataCollection;
         try {
             parent = await collector.getObjectData(parentPid);
-        } catch (e) {
+        } catch {
             res.status(404).send("Error loading parent PID: " + parentPid);
             return;
         }

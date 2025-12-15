@@ -51,8 +51,8 @@ class Authentication {
         );
     }
 
-    public getSamlStrategy(): passport.Strategy {
-    return (new saml.Strategy(
+    public getSamlStrategy(): saml.Strategy {
+        return new saml.Strategy(
             {
                 callbackUrl: `${this.config.backendUrl}/api/auth/login`,
                 entryPoint: this.config.samlEntryPoint,
@@ -71,7 +71,7 @@ class Authentication {
             }.bind(this),
             // TODO: implement a logout function here:
             () => null,
-    )) as unknown as passport.Strategy;
+        );
     }
 
     public hashPassword(password: string): string {

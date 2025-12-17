@@ -197,7 +197,7 @@ function uploadFile(req, res, next) {
             return;
         }
         try {
-            let fileEntry = files[0];
+            const fileEntry = files[0];
             const filepath = fileEntry.filepath;
             const mimetype = fileEntry.mimetype;
             const datastream = DatastreamManager.getInstance();

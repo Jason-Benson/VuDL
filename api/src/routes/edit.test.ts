@@ -389,7 +389,7 @@ describe("edit", () => {
                 return {
                     on: () => {},
                     parse: (req, callback) => {
-                        callback(false, {}, [{ filepath, mimetype }]);
+                        callback(false, {}, { file: [{ filepath, mimetype }] });
                     },
                 };
             });
@@ -409,7 +409,7 @@ describe("edit", () => {
                 return {
                     on: () => {},
                     parse: (req, callback) => {
-                        callback(false, {}, [{ filepath, mimetype }]);
+                        callback(false, {}, { file: [{ filepath, mimetype }] });
                     },
                 };
             });

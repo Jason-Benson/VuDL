@@ -198,7 +198,7 @@ function uploadFile(req, res, next) {
         }
         try {
             const datastream = DatastreamManager.getInstance();
-            const { filepath, mimetype } = files?.file;
+            const { filepath, mimetype } = files?.file?.[0];
             await datastream.uploadFile(pid, stream, filepath, mimetype);
             res.status(200).send("Upload success");
         } catch (error) {

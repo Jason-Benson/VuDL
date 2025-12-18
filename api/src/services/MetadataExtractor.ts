@@ -182,8 +182,8 @@ class MetadataExtractor {
         };
         const rdfXPath = xpath.useNamespaces(namespaces);
 
-    const agentNodes = Array.from(rdfXPath("//METS:agent", parsedXml) as any) as Element[];
-    return agentNodes.reduce((acc, relation: Element) => {
+        const agentNodes = Array.from(rdfXPath("//METS:agent", parsedXml) as any) as Element[];
+        return agentNodes.reduce((acc, relation: Element) => {
             const agent = {
                 role: "",
                 type: "",

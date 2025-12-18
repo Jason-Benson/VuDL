@@ -50,12 +50,13 @@ class MetadataExtractor {
     ): Record<string, Array<string>> {
         const rdfXPath = xpath.useNamespaces(namespaces);
         const relations: Record<string, Array<string>> = {};
-        rdfXPath(xpathQuery, xml).forEach((relation: Node) => {
-            let values = rdfXPath("text()", relation) as Array<Node>;
+        const relationNodes = Array.from(rdfXPath(xpathQuery, xml) as any) as Node[];
+        relationNodes.forEach((relation: Node) => {
+            let values = Array.from(rdfXPath("text()", relation) as any) as Array<Node>;
             // If there's a namespace on the node name, strip it:
             const nodeName = relation.nodeName.split(":").pop();
             if (values.length === 0) {
-                values = rdfXPath("./@rdf:resource", relation) as Array<Node>;
+                values = Array.from(rdfXPath("./@rdf:resource", relation) as any) as Array<Node>;
             }
             if (values.length > 0) {
                 if (typeof relations[nodeName] === "undefined") {
@@ -143,7 +144,8 @@ class MetadataExtractor {
         };
         const rdfXPath = xpath.useNamespaces(namespaces);
         let license = null;
-        rdfXPath("//@xlink:href", parsedXml).forEach((relation: Node) => {
+        const xlinkNodes = Array.from(rdfXPath("//@xlink:href", parsedXml) as any) as Node[];
+        xlinkNodes.forEach((relation: Node) => {
             license = relation.nodeValue;
         });
         return license;
@@ -180,7 +182,8 @@ class MetadataExtractor {
         };
         const rdfXPath = xpath.useNamespaces(namespaces);
 
-        return rdfXPath("//METS:agent", parsedXml).reduce((acc, relation: Element) => {
+    const agentNodes = Array.from(rdfXPath("//METS:agent", parsedXml) as any) as Element[];
+    return agentNodes.reduce((acc, relation: Element) => {
             const agent = {
                 role: "",
                 type: "",
@@ -215,7 +218,8 @@ class MetadataExtractor {
         };
         const rdfXPath = xpath.useNamespaces(namespaces);
 
-        return rdfXPath("//METS:metsHdr", parsedXml).reduce(
+        const metsHdrNodes = Array.from(rdfXPath("//METS:metsHdr", parsedXml) as any) as Element[];
+        return metsHdrNodes.reduce(
             (acc, relation: Element) => {
                 Object.values(relation.attributes).forEach((attr) => {
                     if (attr.nodeName == "CREATEDATE") {
@@ -263,8 +267,10 @@ class MetadataExtractor {
             PMD: "http://www.loc.gov/PMD",
         };
         const xpathProcessor = xpath.useNamespaces(namespaces);
-        const tasks = xpathProcessor("//PMD:task", parsedXml).map((task: Element) => {
-            const parsedTask = xpathProcessor("*|PMD:tool/*", task).reduce((acc, current: Element) => {
+        const taskNodes = Array.from(xpathProcessor("//PMD:task", parsedXml) as any) as Element[];
+        const tasks = taskNodes.map((task: Element) => {
+            const parsedTask = Array.from(xpathProcessor("*|PMD:tool/*", task) as any) as Element[];
+            const parsedTaskReduced = parsedTask.reduce((acc, current: Element) => {
                 const target = taskNodeMap[current.localName] ?? "";
                 if (target.length > 0) {
                     acc[target] = current.textContent;
@@ -273,12 +279,13 @@ class MetadataExtractor {
             }, {});
             Object.values(task.attributes).forEach((attr) => {
                 if (attr.nodeName == "ID") {
-                    parsedTask["id"] = attr.nodeValue;
+                    parsedTaskReduced["id"] = attr.nodeValue;
                 }
             });
-            return parsedTask;
+            return parsedTaskReduced;
         });
-        return xpathProcessor("//PMD:DIGIPROVMD/*", parsedXml).reduce(
+        const digiprovNodes = Array.from(xpathProcessor("//PMD:DIGIPROVMD/*", parsedXml) as any) as Element[];
+        return digiprovNodes.reduce(
             (acc, current: Element) => {
                 const target = topNodeMap[current.localName] ?? "";
                 if (target.length > 0) {
@@ -309,7 +316,8 @@ class MetadataExtractor {
         );
         details.mimetype = [];
         const fitsXPath = xpath.useNamespaces(namespaces);
-        fitsXPath("//fits:identity/@mimetype", RDF_XML).forEach((relation: Node) => {
+        const fitsNodes = Array.from(fitsXPath("//fits:identity/@mimetype", RDF_XML) as any) as Node[];
+        fitsNodes.forEach((relation: Node) => {
             details.mimetype.push(relation.nodeValue);
         });
         return details;

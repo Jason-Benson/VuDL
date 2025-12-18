@@ -50,13 +50,13 @@ class MetadataExtractor {
     ): Record<string, Array<string>> {
         const rdfXPath = xpath.useNamespaces(namespaces);
         const relations: Record<string, Array<string>> = {};
-        const relationNodes = Array.from(rdfXPath(xpathQuery, xml) as any) as Node[];
+        const relationNodes = Array.from(rdfXPath(xpathQuery, xml) as Node[]) as Node[];
         relationNodes.forEach((relation: Node) => {
-            let values = Array.from(rdfXPath("text()", relation) as any) as Array<Node>;
+            let values = Array.from(rdfXPath("text()", relation) as Node[]) as Array<Node>;
             // If there's a namespace on the node name, strip it:
             const nodeName = relation.nodeName.split(":").pop();
             if (values.length === 0) {
-                values = Array.from(rdfXPath("./@rdf:resource", relation) as any) as Array<Node>;
+                values = Array.from(rdfXPath("./@rdf:resource", relation) as Node[]) as Array<Node>;
             }
             if (values.length > 0) {
                 if (typeof relations[nodeName] === "undefined") {
@@ -144,7 +144,7 @@ class MetadataExtractor {
         };
         const rdfXPath = xpath.useNamespaces(namespaces);
         let license = null;
-        const xlinkNodes = Array.from(rdfXPath("//@xlink:href", parsedXml) as any) as Node[];
+        const xlinkNodes = Array.from(rdfXPath("//@xlink:href", parsedXml) as Node[]) as Node[];
         xlinkNodes.forEach((relation: Node) => {
             license = relation.nodeValue;
         });
@@ -182,7 +182,11 @@ class MetadataExtractor {
         };
         const rdfXPath = xpath.useNamespaces(namespaces);
 
+<<<<<<< HEAD
         const agentNodes = Array.from(rdfXPath("//METS:agent", parsedXml) as any) as Element[];
+=======
+        const agentNodes = Array.from(rdfXPath("//METS:agent", parsedXml) as Element[]) as Element[];
+>>>>>>> 9dfd17c (explicit typing to make lint happy)
         return agentNodes.reduce((acc, relation: Element) => {
             const agent = {
                 role: "",
@@ -218,7 +222,7 @@ class MetadataExtractor {
         };
         const rdfXPath = xpath.useNamespaces(namespaces);
 
-        const metsHdrNodes = Array.from(rdfXPath("//METS:metsHdr", parsedXml) as any) as Element[];
+        const metsHdrNodes = Array.from(rdfXPath("//METS:metsHdr", parsedXml) as Element[]) as Element[];
         return metsHdrNodes.reduce(
             (acc, relation: Element) => {
                 Object.values(relation.attributes).forEach((attr) => {
@@ -267,9 +271,9 @@ class MetadataExtractor {
             PMD: "http://www.loc.gov/PMD",
         };
         const xpathProcessor = xpath.useNamespaces(namespaces);
-        const taskNodes = Array.from(xpathProcessor("//PMD:task", parsedXml) as any) as Element[];
+        const taskNodes = Array.from(xpathProcessor("//PMD:task", parsedXml) as Element[]) as Element[];
         const tasks = taskNodes.map((task: Element) => {
-            const parsedTask = Array.from(xpathProcessor("*|PMD:tool/*", task) as any) as Element[];
+            const parsedTask = Array.from(xpathProcessor("*|PMD:tool/*", task) as Element[]) as Element[];
             const parsedTaskReduced = parsedTask.reduce((acc, current: Element) => {
                 const target = taskNodeMap[current.localName] ?? "";
                 if (target.length > 0) {
@@ -284,7 +288,7 @@ class MetadataExtractor {
             });
             return parsedTaskReduced;
         });
-        const digiprovNodes = Array.from(xpathProcessor("//PMD:DIGIPROVMD/*", parsedXml) as any) as Element[];
+        const digiprovNodes = Array.from(xpathProcessor("//PMD:DIGIPROVMD/*", parsedXml) as Element[]) as Element[];
         return digiprovNodes.reduce(
             (acc, current: Element) => {
                 const target = topNodeMap[current.localName] ?? "";
@@ -316,7 +320,7 @@ class MetadataExtractor {
         );
         details.mimetype = [];
         const fitsXPath = xpath.useNamespaces(namespaces);
-        const fitsNodes = Array.from(fitsXPath("//fits:identity/@mimetype", RDF_XML) as any) as Node[];
+        const fitsNodes = Array.from(fitsXPath("//fits:identity/@mimetype", RDF_XML) as Node[]) as Node[];
         fitsNodes.forEach((relation: Node) => {
             details.mimetype.push(relation.nodeValue);
         });

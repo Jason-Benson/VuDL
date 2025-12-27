@@ -41,8 +41,9 @@ class MetadataExtractor {
      * @param namespaces Namespace definitions
      * @returns          Xpath query function
      */
-    protected getXpathToArrayFunction(namespaces: Record<string, string>): (expression: string, node: Node) => Array<Node>
-    {
+    protected getXpathToArrayFunction(
+        namespaces: Record<string, string>,
+    ): (expression: string, node: Node) => Array<Node> {
         const rdfXPath = xpath.useNamespaces(namespaces);
         return function (expression: string, node: Node): Array<Node> {
             const result = rdfXPath(expression, node);

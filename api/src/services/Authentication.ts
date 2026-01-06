@@ -69,7 +69,7 @@ class Authentication {
                     const db = Database.getInstance();
                     user = await db.getOrCreateUser(profile.nameID);
                 }
-                done(null, user ? (user as unknown as Record<string, unknown>) : undefined);
+                done(null, user ? (user as unknown as Record<string, unknown>) : null);
             },
             (profile: Profile | null, done: saml.VerifiedCallback) => {
                 // TODO: implement a logout function here:
@@ -99,7 +99,7 @@ class Authentication {
             passport.use(this.getLocalStrategy());
         } else if (authStrategy === "saml") {
             const samlStrategy = this.getSamlStrategy();
-            passport.use(samlStrategy as unknown as passport.Strategy);
+            passport.use(samlStrategy);
         } else {
             throw new Error(`Unsupported auth strategy: ${authStrategy}`);
         }

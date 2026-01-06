@@ -99,7 +99,7 @@ class Authentication {
             passport.use(this.getLocalStrategy());
         } else if (authStrategy === "saml") {
             const samlStrategy = this.getSamlStrategy();
-            passport.use(samlStrategy as unknown as passport.Strategy);
+            passport.use(samlStrategy);
         } else {
             throw new Error(`Unsupported auth strategy: ${authStrategy}`);
         }

@@ -5,6 +5,7 @@ import Config from "./Config";
 import { DatastreamParameters, Fedora } from "../services/Fedora";
 import FedoraDataCollector from "../services/FedoraDataCollector";
 import { execSync } from "child_process";
+import crypto = require("crypto");
 import { Agent } from "../services/interfaces";
 
 export interface ObjectParameters {
@@ -77,7 +78,26 @@ export class FedoraObject {
     }
 
     async addDatastreamFromFile(filename: string, stream: string, mimeType: string): Promise<void> {
-        await this.addDatastreamFromStringOrBuffer(fs.readFileSync(filename), stream, mimeType, [201]);
+        // Compute digest by streaming the file once (avoids loading the whole file into memory)
+        const md5Hash = crypto.createHash("md5");
+        await new Promise<void>((resolve, reject) => {
+            const rs = fs.createReadStream(filename);
+            rs.on("data", (chunk: Buffer) => {
+                md5Hash.update(chunk);
+            });
+            rs.on("end", () => resolve());
+            rs.on("error", (err) => reject(err));
+        });
+        const md5 = md5Hash.digest("hex");
+        const digestHeader = `md5=${md5}`;
+
+        // Create a fresh read stream for the upload
+        const readStream = fs.createReadStream(filename);
+        const params: DatastreamParameters = {
+            mimeType: mimeType,
+            logMessage: "Initial Ingest addDatastream - " + stream,
+        };
+        await this.fedora.addDatastream(this.pid, stream, params, readStream, [201], digestHeader);
     }
 
     async updateDatastreamFromFile(filename: string, stream: string, mimeType: string): Promise<void> {

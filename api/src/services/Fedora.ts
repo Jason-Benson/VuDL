@@ -325,7 +325,15 @@ export class Fedora {
         this.cache.purgeFromCacheIfEnabled(pid);
 
         // First create the stream:
-        await this.putDatastream(pid, stream, params.mimeType, expectedStatus, data, params.linkHeader ?? "", precomputedDigest);
+        await this.putDatastream(
+            pid,
+            stream,
+            params.mimeType,
+            expectedStatus,
+            data,
+            params.linkHeader ?? "",
+            precomputedDigest,
+        );
 
         // Now set appropriate metadata:
         const writer = new N3.Writer({ format: "text/turtle" });

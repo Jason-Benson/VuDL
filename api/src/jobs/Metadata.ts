@@ -22,16 +22,34 @@ class MetadataProcessor {
     }
 
     async addMasterMetadataDatastream(): Promise<void> {
+        console.log(`Adding master metadata datastream to ${this.pid}`);
         const fedoraObject: FedoraObject = FedoraObject.build(this.pid, null, this.config);
-        const dataStream: Buffer = await fedoraObject.getDatastreamAsBuffer("MASTER");
-        const contentFile = tmp.fileSync();
-        fs.writeFileSync(contentFile.name, dataStream);
-        await fedoraObject.addMasterMetadataDatastream(contentFile.name);
-        fs.truncateSync(contentFile.name, 0);
-        fs.rmSync(contentFile.name);
+        console.log("FedoraObject.build: Done");
+        // Stream the MASTER datastream directly to a temporary file to avoid
+        // buffering very large files into memory, then run FITS on that file.
+        const contentPath = await fedoraObject.getDatastreamToTempFile("MASTER");
+        await fedoraObject.addMasterMetadataDatastream(contentPath);
+        try {
+            fs.truncateSync(contentPath, 0);
+        } catch (e) {
+            // ignore
+        }
+        try {
+            fs.rmSync(contentPath);
+        } catch (e) {
+            // ignore
+        }
         // FITS XML will have been generated in /tmp as a side-effect; clean it up:
-        fs.truncateSync(contentFile.name + ".fits.xml", 0);
-        fs.rmSync(contentFile.name + ".fits.xml");
+        try {
+            fs.truncateSync(contentPath + ".fits.xml", 0);
+        } catch (e) {
+            // ignore
+        }
+        try {
+            fs.rmSync(contentPath + ".fits.xml");
+        } catch (e) {
+            // ignore
+        }
     }
 
     async run(): Promise<void> {

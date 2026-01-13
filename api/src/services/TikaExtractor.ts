@@ -34,6 +34,25 @@ class TikaExtractor {
         fs.rmSync(filename); // clean up temp file; we're done now!
         return result;
     }
+
+    extractTextFromFile(filename: string): string {
+        const javaPath = this.config.javaPath;
+        const tikaPath = this.config.tikaPath;
+        const tikaConfig = this.config.tikaConfigFile ? `--config=${this.config.tikaConfigFile} ` : "";
+        const tikaCommand = javaPath + " -jar " + tikaPath + " --text -eUTF8 " + tikaConfig + filename;
+        const result = execSync(tikaCommand, { maxBuffer: Infinity }).toString();
+        try {
+            fs.truncateSync(filename, 0);
+        } catch (e) {
+            // ignore
+        }
+        try {
+            fs.rmSync(filename);
+        } catch (e) {
+            // ignore
+        }
+        return result;
+    }
 }
 
 export default TikaExtractor;

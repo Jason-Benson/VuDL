@@ -127,7 +127,7 @@ export class FedoraObject {
         };
         console.log("Getting fits MasterMetadata");
         const fitsXml = this.fitsMasterMetadata(filename);
-        
+
         await this.addDatastream("MASTER-MD", params, fitsXml, [201, 204]);
     }
 

@@ -218,11 +218,7 @@ export class Fedora {
      * @param datastream Which stream to request
      * @param treatMissingAsEmpty If true, return empty temp file on 404
      */
-    async downloadDatastreamToTempFile(
-        pid: string,
-        datastream: string,
-        treatMissingAsEmpty = false,
-    ): Promise<string> {
+    async downloadDatastreamToTempFile(pid: string, datastream: string, treatMissingAsEmpty = false): Promise<string> {
         const path = pid + "/" + datastream;
         const urlPath = path[0] == "/" ? path.slice(1) : path;
         const url = this.config.restBaseUrl + "/" + urlPath;

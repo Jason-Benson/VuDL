@@ -339,7 +339,7 @@ export class Fedora {
         precomputedDigest = "",
     ): Promise<void> {
         this.cache.purgeFromCacheIfEnabled(pid);
-        const headers: Record<string, string> = {
+        let headers: Record<string, string> = {
             "Overwrite-Tombstone": "true",
             "Content-Disposition": 'attachment; filename="' + stream + '"',
             "Content-Type": mimeType,

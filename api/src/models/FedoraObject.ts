@@ -125,7 +125,9 @@ export class FedoraObject {
             mimeType: "text/xml",
             logMessage: "Initial Ingest addDatastream - MASTER-MD",
         };
+        console.log("Getting fits MasterMetadata");
         const fitsXml = this.fitsMasterMetadata(filename);
+        
         await this.addDatastream("MASTER-MD", params, fitsXml, [201, 204]);
     }
 
@@ -241,11 +243,16 @@ export class FedoraObject {
         return this.fedora.getDatastreamAsBuffer(this.pid, datastream);
     }
 
+    async getDatastreamToTempFile(datastream: string, treatMissingAsEmpty = false): Promise<string> {
+        return this.fedora.downloadDatastreamToTempFile(this.pid, datastream, treatMissingAsEmpty);
+    }
+
     async getDatastreamMetadata(datastream: string): Promise<string> {
         return await this.fedora.getRdf(`${this.pid}/${datastream}/fcr:metadata`);
     }
 
     fitsMasterMetadata(filename: string): string {
+        console.log("Generating FITS metadata for " + filename);
         const targetXml = filename + ".fits.xml";
         if (!fs.existsSync(targetXml)) {
             const fitsCommand = this.config.fitsCommand + " -i " + filename + " -o " + targetXml;

@@ -9,6 +9,8 @@ import xmlescape = require("xml-escape");
 import { HttpError } from "../models/HttpError";
 import winston = require("winston");
 import SolrCache from "./SolrCache";
+import fs = require("fs");
+import tmp = require("tmp");
 
 export interface DatastreamParameters {
     dsLabel?: string;
@@ -95,14 +97,18 @@ export class Fedora {
     }
 
     async getDatastreamAsBuffer(pid: string, datastream: string, treatMissingAsEmpty = false): Promise<Buffer> {
+        console.log("getDatastreamAsBuffer:Start");
         const response = await this.getDatastream(pid, datastream);
         if (response.statusCode === 200) {
+            console.log("response.statusCode === 200");
             return response.body;
         }
 
         if (response.statusCode === 404 && treatMissingAsEmpty) {
+            console.log("response.statusCode === 404");
             return Buffer.from("");
         } else {
+            console.log("Unexpected response for " + pid + "/" + datastream + ": " + response.statusCode);
             throw new Error("Unexpected response for " + pid + "/" + datastream + ": " + response.statusCode);
         }
     }
@@ -193,12 +199,82 @@ export class Fedora {
         datastream: string,
         requestOptions = { parse_response: false },
     ): Promise<NeedleResponse> {
+        console.log("getDatastream:Start");
+        console.log("pid: " + pid);
+        console.log("datastream: " + datastream);
         return await this._request(
             "get",
             pid + "/" + datastream,
             null, // Data
             requestOptions,
         );
+    }
+
+    /**
+     * Download a datastream directly to a temporary file to avoid buffering
+     * large files into memory.
+     *
+     * @param pid Record id
+     * @param datastream Which stream to request
+     * @param treatMissingAsEmpty If true, return empty temp file on 404
+     */
+    async downloadDatastreamToTempFile(
+        pid: string,
+        datastream: string,
+        treatMissingAsEmpty = false,
+    ): Promise<string> {
+        const path = pid + "/" + datastream;
+        const urlPath = path[0] == "/" ? path.slice(1) : path;
+        const url = this.config.restBaseUrl + "/" + urlPath;
+
+        const auth = {
+            username: this.config.fedoraUsername,
+            password: this.config.fedoraPassword,
+        };
+        const options = Object.assign({}, auth);
+
+        return new Promise((resolve, reject) => {
+            const tmpobj = tmp.fileSync();
+            const writeStream = fs.createWriteStream(tmpobj.name);
+
+            const req = http.get(url, options);
+
+            req.on("response", (res: any) => {
+                if (res.statusCode === 200) {
+                    req.pipe(writeStream);
+                    writeStream.on("finish", () => {
+                        resolve(tmpobj.name);
+                    });
+                    writeStream.on("error", (err) => {
+                        try {
+                            fs.unlinkSync(tmpobj.name);
+                        } catch (e) {
+                            // ignore
+                        }
+                        reject(err);
+                    });
+                } else if (res.statusCode === 404 && treatMissingAsEmpty) {
+                    // create empty file and return its path
+                    writeStream.end(() => resolve(tmpobj.name));
+                } else {
+                    try {
+                        fs.unlinkSync(tmpobj.name);
+                    } catch (e) {
+                        // ignore
+                    }
+                    reject(new Error("Unexpected response for " + pid + "/" + datastream + ": " + res.statusCode));
+                }
+            });
+
+            req.on("error", (err: any) => {
+                try {
+                    fs.unlinkSync(tmpobj.name);
+                } catch (e) {
+                    // ignore
+                }
+                reject(err);
+            });
+        });
     }
 
     /**

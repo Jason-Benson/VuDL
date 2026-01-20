@@ -41,16 +41,8 @@ class TikaExtractor {
         const tikaConfig = this.config.tikaConfigFile ? `--config=${this.config.tikaConfigFile} ` : "";
         const tikaCommand = javaPath + " -jar " + tikaPath + " --text -eUTF8 " + tikaConfig + filename;
         const result = execSync(tikaCommand, { maxBuffer: Infinity }).toString();
-        try {
-            fs.truncateSync(filename, 0);
-        } catch (e) {
-            console.error(e);
-        }
-        try {
-            fs.rmSync(filename);
-        } catch (e) {
-            console.error(e);
-        }
+        fs.truncateSync(filename, 0);
+        fs.rmSync(filename);
         return result;
     }
 }

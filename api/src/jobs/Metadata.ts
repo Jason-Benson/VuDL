@@ -28,27 +28,11 @@ class MetadataProcessor {
         // buffering very large files into memory, then run FITS on that file.
         const contentPath = await fedoraObject.getDatastreamToTempFile("MASTER");
         await fedoraObject.addMasterMetadataDatastream(contentPath);
-        try {
-            fs.truncateSync(contentPath, 0);
-        } catch (e) {
-            console.error(e);
-        }
-        try {
-            fs.rmSync(contentPath);
-        } catch (e) {
-            console.error(e);
-        }
+        fs.truncateSync(contentPath, 0);
+        fs.rmSync(contentPath);
         // FITS XML will have been generated in /tmp as a side-effect; clean it up:
-        try {
-            fs.truncateSync(contentPath + ".fits.xml", 0);
-        } catch (e) {
-            console.error(e);
-        }
-        try {
-            fs.rmSync(contentPath + ".fits.xml");
-        } catch (e) {
-            console.error(e);
-        }
+        fs.truncateSync(contentPath + ".fits.xml", 0);
+        fs.rmSync(contentPath + ".fits.xml");
     }
 
     async run(): Promise<void> {

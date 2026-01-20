@@ -1,6 +1,5 @@
 import { Job as QueueJob } from "bullmq";
 import fs = require("fs");
-import tmp = require("tmp");
 import Config from "../models/Config";
 import { FedoraObject } from "../models/FedoraObject";
 import FedoraObjectFactory from "../services/FedoraObjectFactory";
@@ -32,23 +31,23 @@ class MetadataProcessor {
         try {
             fs.truncateSync(contentPath, 0);
         } catch (e) {
-            // ignore
+            console.error(e);
         }
         try {
             fs.rmSync(contentPath);
         } catch (e) {
-            // ignore
+            console.error(e);
         }
         // FITS XML will have been generated in /tmp as a side-effect; clean it up:
         try {
             fs.truncateSync(contentPath + ".fits.xml", 0);
         } catch (e) {
-            // ignore
+            console.error(e);
         }
         try {
             fs.rmSync(contentPath + ".fits.xml");
         } catch (e) {
-            // ignore
+            console.error(e);
         }
     }
 

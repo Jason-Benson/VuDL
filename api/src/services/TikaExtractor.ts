@@ -44,12 +44,12 @@ class TikaExtractor {
         try {
             fs.truncateSync(filename, 0);
         } catch (e) {
-            // ignore
+            console.error(e);
         }
         try {
             fs.rmSync(filename);
         } catch (e) {
-            // ignore
+            console.error(e);
         }
         return result;
     }

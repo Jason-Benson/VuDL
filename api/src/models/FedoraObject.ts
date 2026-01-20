@@ -137,8 +137,7 @@ export class FedoraObject {
                 await this.deleteDatastream("MASTER-MD");
             }
         } catch (e) {
-            // 404 or other error means it doesn't exist, which is fine
-            console.log("No existing MASTER-MD to delete");
+            console.log("No existing MASTER-MD to delete:", e.message);
         }
 
         console.log("Adding MASTER-MD datastream");

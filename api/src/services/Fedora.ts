@@ -11,7 +11,6 @@ import winston = require("winston");
 import SolrCache from "./SolrCache";
 import fs = require("fs");
 import tmp = require("tmp");
-//import { pid } from "process";
 
 export interface DatastreamParameters {
     dsLabel?: string;
@@ -245,7 +244,7 @@ export class Fedora {
 
             const req = http.get(url, options);
 
-            req.on("response", (res: any) => {
+            req.on("response", (res) => {
                 if (res.statusCode === 200) {
                     req.pipe(writeStream);
                     writeStream.on("finish", () => {
@@ -255,7 +254,7 @@ export class Fedora {
                         try {
                             fs.unlinkSync(tmpobj.name);
                         } catch (e) {
-                            // ignore
+                            console.error(e);
                         }
                         reject(err);
                     });
@@ -266,17 +265,17 @@ export class Fedora {
                     try {
                         fs.unlinkSync(tmpobj.name);
                     } catch (e) {
-                        // ignore
+                        console.error(e);
                     }
                     reject(new Error("Unexpected response for " + pid + "/" + datastream + ": " + res.statusCode));
                 }
             });
 
-            req.on("error", (err: any) => {
+            req.on("error", (err) => {
                 try {
                     fs.unlinkSync(tmpobj.name);
                 } catch (e) {
-                    // ignore
+                    console.error(e);
                 }
                 reject(err);
             });
@@ -351,7 +350,7 @@ export class Fedora {
         precomputedDigest = "",
     ): Promise<void> {
         this.cache.purgeFromCacheIfEnabled(pid);
-        let headers: Record<string, string> = {
+        const headers: Record<string, string> = {
             "Overwrite-Tombstone": "true",
             "Content-Disposition": 'attachment; filename="' + stream + '"',
             "Content-Type": mimeType,

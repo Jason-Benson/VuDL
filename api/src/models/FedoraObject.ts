@@ -66,6 +66,7 @@ export class FedoraObject {
             params.logMessage ?? "Adding datastream " + id + " to " + this.pid + " with " + data.length + " bytes",
         );
         await this.fedora.addDatastream(this.pid, id, params, data, expectedStatus);
+        console.log(`Added datastream ${id} to ${this.pid}`);
     }
 
     async deleteDatastream(stream: string): Promise<void> {
@@ -125,9 +126,22 @@ export class FedoraObject {
             mimeType: "text/xml",
             logMessage: "Initial Ingest addDatastream - MASTER-MD",
         };
-        console.log("Getting fits MasterMetadata");
+        console.log("Getting fits MasterMetadata for file:", filename);
         const fitsXml = this.fitsMasterMetadata(filename);
-        
+
+        // Check if MASTER-MD exists and delete it if it does
+        try {
+            const checkResponse = await this.fedora.getDatastream(this.pid, "MASTER-MD");
+            if (checkResponse.statusCode === 200) {
+                console.log("Deleting pre-existing MASTER-MD");
+                await this.deleteDatastream("MASTER-MD");
+            }
+        } catch (e) {
+            // 404 or other error means it doesn't exist, which is fine
+            console.log("No existing MASTER-MD to delete");
+        }
+
+        console.log("Adding MASTER-MD datastream");
         await this.addDatastream("MASTER-MD", params, fitsXml, [201, 204]);
     }
 

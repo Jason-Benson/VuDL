@@ -11,6 +11,7 @@ import winston = require("winston");
 import SolrCache from "./SolrCache";
 import fs = require("fs");
 import tmp = require("tmp");
+//import { pid } from "process";
 
 export interface DatastreamParameters {
     dsLabel?: string;
@@ -72,7 +73,12 @@ export class Fedora {
             password: this.config.fedoraPassword,
         };
         const options = Object.assign({}, auth, _options);
-        return http(method, url, data, options);
+        
+        return http(method, url, data, options).catch(err => {
+            console.error(`Request failed for ${method.toUpperCase()} ${url}:`, err);
+            console.error('Full error:', JSON.stringify(err, Object.getOwnPropertyNames(err), 2));
+            throw err;
+        });
     }
 
     /**

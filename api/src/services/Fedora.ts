@@ -71,9 +71,9 @@ export class Fedora {
             username: this.config.fedoraUsername,
             password: this.config.fedoraPassword,
         };
-        const options = Object.assign({}, auth, _options);
-
-        return http(method, url, data, options).catch((err) => {
+        const options = Object.assign({}, auth);
+        
+        return http(method, url, data, options).catch(err => {
             console.error(`Request failed for ${method.toUpperCase()} ${url}:`, err);
             throw err;
         });
@@ -203,9 +203,6 @@ export class Fedora {
         datastream: string,
         requestOptions = { parse_response: false },
     ): Promise<NeedleResponse> {
-        console.log("getDatastream:Start");
-        console.log("pid: " + pid);
-        console.log("datastream: " + datastream);
         return await this._request(
             "get",
             pid + "/" + datastream,
@@ -222,11 +219,12 @@ export class Fedora {
      * @param datastream Which stream to request
      * @param treatMissingAsEmpty If true, return empty temp file on 404
      */
-    async downloadDatastreamToTempFile(pid: string, datastream: string, treatMissingAsEmpty = false): Promise<string> {
-        const path = pid + "/" + datastream;
-        const urlPath = path[0] == "/" ? path.slice(1) : path;
-        const url = this.config.restBaseUrl + "/" + urlPath;
-
+    async downloadDatastreamToTempFile(
+        pid: string,
+        datastream: string,
+        treatMissingAsEmpty = false,
+    ): Promise<string> {
+        const url = this.config.restBaseUrl + "/" + pid + "/" + datastream;
         const auth = {
             username: this.config.fedoraUsername,
             password: this.config.fedoraPassword,

@@ -80,16 +80,19 @@ export class FedoraObject {
     async addDatastreamFromFile(filename: string, stream: string, mimeType: string): Promise<void> {
         // Compute digest by streaming the file once (avoids loading the whole file into memory)
         const md5Hash = crypto.createHash("md5");
+        const sha512Hash = crypto.createHash("sha512");
         await new Promise<void>((resolve, reject) => {
             const rs = fs.createReadStream(filename);
             rs.on("data", (chunk: Buffer) => {
                 md5Hash.update(chunk);
+                sha512Hash.update(chunk);
             });
             rs.on("end", () => resolve());
             rs.on("error", (err) => reject(err));
         });
         const md5 = md5Hash.digest("hex");
-        const digestHeader = `md5=${md5}`;
+        const sha512 = sha512Hash.digest("hex");
+        const digestHeader = `md5=${md5}, sha-512=${sha512}`;
 
         // Create a fresh read stream for the upload
         const readStream = fs.createReadStream(filename);

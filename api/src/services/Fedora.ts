@@ -358,7 +358,8 @@ export class Fedora {
             // For string/Buffer payloads, compute digests here.
             if (typeof data === "string" || Buffer.isBuffer(data)) {
                 const md5 = crypto.createHash("md5").update(data).digest("hex");
-                headers.Digest = "md5=" + md5;
+                const sha = crypto.createHash("sha512").update(data).digest("hex");
+                headers.Digest = "md5=" + md5 + ", sha-512=" + sha;
             } else {
                 // No precomputed digest and data is a stream — cannot compute here.
                 throw new Error("Streaming data requires a precomputed digest header to be provided");

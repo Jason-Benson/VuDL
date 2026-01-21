@@ -66,7 +66,6 @@ export class FedoraObject {
             params.logMessage ?? "Adding datastream " + id + " to " + this.pid + " with " + data.length + " bytes",
         );
         await this.fedora.addDatastream(this.pid, id, params, data, expectedStatus);
-        console.log(`Added datastream ${id} to ${this.pid}`);
     }
 
     async deleteDatastream(stream: string): Promise<void> {
@@ -256,7 +255,7 @@ export class FedoraObject {
         return this.fedora.getDatastreamAsBuffer(this.pid, datastream);
     }
 
-    async getDatastreamToTempFile(datastream: string, treatMissingAsEmpty = false): Promise<string> {
+    async downloadDatastreamToTempFile(datastream: string, treatMissingAsEmpty = false): Promise<string> {
         return this.fedora.downloadDatastreamToTempFile(this.pid, datastream, treatMissingAsEmpty);
     }
 

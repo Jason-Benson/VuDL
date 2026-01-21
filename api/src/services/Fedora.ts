@@ -75,7 +75,6 @@ export class Fedora {
 
         return http(method, url, data, options).catch((err) => {
             console.error(`Request failed for ${method.toUpperCase()} ${url}:`, err);
-            console.error("Full error:", JSON.stringify(err, Object.getOwnPropertyNames(err), 2));
             throw err;
         });
     }

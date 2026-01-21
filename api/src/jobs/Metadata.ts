@@ -21,12 +21,10 @@ class MetadataProcessor {
     }
 
     async addMasterMetadataDatastream(): Promise<void> {
-        console.log(`Adding master metadata datastream to ${this.pid}`);
         const fedoraObject: FedoraObject = FedoraObject.build(this.pid, null, this.config);
-        console.log("FedoraObject.build: Done");
         // Stream the MASTER datastream directly to a temporary file to avoid
         // buffering very large files into memory, then run FITS on that file.
-        const contentPath = await fedoraObject.getDatastreamToTempFile("MASTER");
+        const contentPath = await fedoraObject.downloadDatastreamToTempFile("MASTER");
         await fedoraObject.addMasterMetadataDatastream(contentPath);
         fs.truncateSync(contentPath, 0);
         fs.rmSync(contentPath);

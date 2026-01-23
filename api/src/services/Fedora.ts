@@ -71,7 +71,7 @@ export class Fedora {
             username: this.config.fedoraUsername,
             password: this.config.fedoraPassword,
         };
-        const options = Object.assign({}, auth);
+        const options = Object.assign({}, auth, _options);
 
         return http(method, url, data, options).catch((err) => {
             console.error(`Request failed for ${method.toUpperCase()} ${url}:`, err);
@@ -101,18 +101,14 @@ export class Fedora {
     }
 
     async getDatastreamAsBuffer(pid: string, datastream: string, treatMissingAsEmpty = false): Promise<Buffer> {
-        console.log("getDatastreamAsBuffer:Start");
         const response = await this.getDatastream(pid, datastream);
         if (response.statusCode === 200) {
-            console.log("response.statusCode === 200");
             return response.body;
         }
 
         if (response.statusCode === 404 && treatMissingAsEmpty) {
-            console.log("response.statusCode === 404");
             return Buffer.from("");
         } else {
-            console.log("Unexpected response for " + pid + "/" + datastream + ": " + response.statusCode);
             throw new Error("Unexpected response for " + pid + "/" + datastream + ": " + response.statusCode);
         }
     }
@@ -225,13 +221,12 @@ export class Fedora {
             username: this.config.fedoraUsername,
             password: this.config.fedoraPassword,
         };
-        const options = Object.assign({}, auth);
 
         return new Promise((resolve, reject) => {
             const tmpobj = tmp.fileSync();
             const writeStream = fs.createWriteStream(tmpobj.name);
 
-            const req = http.get(url, options);
+            const req = http.get(url, auth);
 
             req.on("response", (res) => {
                 if (res.statusCode === 200) {

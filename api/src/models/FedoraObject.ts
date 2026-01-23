@@ -132,21 +132,17 @@ export class FedoraObject {
             mimeType: "text/xml",
             logMessage: "Initial Ingest addDatastream - MASTER-MD",
         };
-        console.log("Getting fits MasterMetadata for file:", filename);
         const fitsXml = this.fitsMasterMetadata(filename);
 
         // Check if MASTER-MD exists and delete it if it does
         try {
             const checkResponse = await this.fedora.getDatastream(this.pid, "MASTER-MD");
             if (checkResponse.statusCode === 200) {
-                console.log("Deleting pre-existing MASTER-MD");
                 await this.deleteDatastream("MASTER-MD");
             }
         } catch (e) {
-            console.log("No existing MASTER-MD to delete:", e.message);
+            // No existing MASTER-MD to delete
         }
-
-        console.log("Adding MASTER-MD datastream");
         await this.addDatastream("MASTER-MD", params, fitsXml, [201, 204]);
     }
 
@@ -271,7 +267,6 @@ export class FedoraObject {
     }
 
     fitsMasterMetadata(filename: string): string {
-        console.log("Generating FITS metadata for " + filename);
         const targetXml = filename + ".fits.xml";
         if (!fs.existsSync(targetXml)) {
             const fitsCommand = this.config.fitsCommand + " -i " + filename + " -o " + targetXml;

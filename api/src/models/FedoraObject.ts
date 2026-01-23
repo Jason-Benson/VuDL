@@ -77,7 +77,7 @@ export class FedoraObject {
         await this.fedora.deleteDatastreamTombstone(this.pid, stream);
     }
 
-    async addDatastreamFromFile(filename: string, stream: string, mimeType: string): Promise<void> {
+    async computeDigestHeaderForFile(filename: string): Promise<string> {
         // Compute digest by streaming the file once (avoids loading the whole file into memory)
         const md5Hash = crypto.createHash("md5");
         const sha512Hash = crypto.createHash("sha512");
@@ -93,9 +93,13 @@ export class FedoraObject {
         const md5 = md5Hash.digest("hex");
         const sha512 = sha512Hash.digest("hex");
         const digestHeader = `md5=${md5}, sha-512=${sha512}`;
+        return digestHeader;
+    }
 
+    async addDatastreamFromFile(filename: string, stream: string, mimeType: string): Promise<void> {
         // Create a fresh read stream for the upload
         const readStream = fs.createReadStream(filename);
+        const digestHeader = await this.computeDigestHeaderForFile(filename);
         const params: DatastreamParameters = {
             mimeType: mimeType,
             logMessage: "Initial Ingest addDatastream - " + stream,

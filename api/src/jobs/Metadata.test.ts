@@ -26,7 +26,6 @@ describe("Metadata", () => {
             fedoraObject = {
                 addMasterMetadataDatastream: jest.fn(),
                 downloadDatastreamToTempFile: jest.fn(),
-
             };
             job = {
                 data: {

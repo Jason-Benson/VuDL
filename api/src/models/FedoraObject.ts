@@ -92,8 +92,7 @@ export class FedoraObject {
         });
         const md5 = md5Hash.digest("hex");
         const sha512 = sha512Hash.digest("hex");
-        const digestHeader = `md5=${md5}, sha-512=${sha512}`;
-        return digestHeader;
+        return `md5=${md5}, sha-512=${sha512}`;
     }
 
     async addDatastreamFromFile(filename: string, stream: string, mimeType: string): Promise<void> {

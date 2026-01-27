@@ -1,6 +1,4 @@
 import Metadata from "./Metadata";
-import fs = require("fs");
-import tmp = require("tmp");
 import { Job } from "bullmq";
 import { FedoraObject } from "../models/FedoraObject";
 
@@ -18,11 +16,9 @@ describe("Metadata", () => {
     describe("run", () => {
         let job: Job;
         let fedoraObject;
-        let dataStream: string;
         let contentFile;
         beforeEach(() => {
             contentFile = "test1";
-            dataStream = "test2";
             fedoraObject = {
                 addMasterMetadataDatastream: jest.fn(),
                 downloadDatastreamToTempFile: jest.fn(),

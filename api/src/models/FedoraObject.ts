@@ -139,7 +139,7 @@ export class FedoraObject {
             if (checkResponse.statusCode === 200) {
                 await this.deleteDatastream("MASTER-MD");
             }
-        } catch (e) {
+        } catch {
             // No existing MASTER-MD to delete
         }
         await this.addDatastream("MASTER-MD", params, fitsXml, [201, 204]);

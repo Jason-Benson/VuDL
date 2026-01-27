@@ -73,10 +73,7 @@ export class Fedora {
         };
         const options = Object.assign({}, auth, _options);
 
-        return http(method, url, data, options).catch((err) => {
-            console.error(`Request failed for ${method.toUpperCase()} ${url}:`, err);
-            throw err;
-        });
+        return http(method, url, data, options)
     }
 
     /**
@@ -235,32 +232,20 @@ export class Fedora {
                         resolve(tmpobj.name);
                     });
                     writeStream.on("error", (err) => {
-                        try {
-                            fs.unlinkSync(tmpobj.name);
-                        } catch (e) {
-                            console.error(e);
-                        }
+                        fs.unlinkSync(tmpobj.name);
                         reject(err);
                     });
                 } else if (res.statusCode === 404 && treatMissingAsEmpty) {
                     // create empty file and return its path
                     writeStream.end(() => resolve(tmpobj.name));
                 } else {
-                    try {
-                        fs.unlinkSync(tmpobj.name);
-                    } catch (e) {
-                        console.error(e);
-                    }
+                    fs.unlinkSync(tmpobj.name);
                     reject(new Error("Unexpected response for " + pid + "/" + datastream + ": " + res.statusCode));
                 }
             });
 
             req.on("error", (err) => {
-                try {
-                    fs.unlinkSync(tmpobj.name);
-                } catch (e) {
-                    console.error(e);
-                }
+                fs.unlinkSync(tmpobj.name);
                 reject(err);
             });
         });

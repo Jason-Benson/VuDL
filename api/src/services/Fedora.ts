@@ -72,7 +72,6 @@ export class Fedora {
             password: this.config.fedoraPassword,
         };
         const options = Object.assign({}, auth, _options);
-
         return http(method, url, data, options);
     }
 

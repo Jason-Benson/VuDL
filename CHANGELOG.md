@@ -23,7 +23,7 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Fixed
 
-- Nothing.
+- Eliminated 2GB file limit by adding streaming support.
 
 ## 2.5.1 - 2025-07-05
 

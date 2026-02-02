@@ -23,7 +23,9 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Fixed
 
-- Eliminated 2GB file limit by adding streaming support.
+- Eliminated 2GB file limit by adding streaming support (#352).
+- Initial PID generation (#340).
+- Route definition for deleting images from paginator (#348).
 
 ## 2.5.1 - 2025-07-05
 

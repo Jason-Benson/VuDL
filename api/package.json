@@ -30,7 +30,6 @@
     "ejs": "^3",
     "express": "^5.2.1",
     "express-session": "^1",
-    "fluent-ffmpeg": "^2.1.2",
     "formidable": "^3.5.4",
     "glob": "^13.0.0",
     "http-status-codes": "^2",

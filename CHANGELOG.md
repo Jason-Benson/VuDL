@@ -2,7 +2,30 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## Next Release - TBD
+## 2.6.1 - 2026-02-14
+
+### Added
+
+- Nothing.
+
+### Changed
+
+- Ingest workflows now create derivatives up-front to reduce mid-ingest problems.
+- Updated dependencies.
+
+### Deprecated
+
+- Nothing.
+
+### Removed
+
+- Nothing.
+
+### Fixed
+
+- Restored .hidden CSS class accidentally removed in v2.6.
+
+## 2.6 - 2026-02-02
 
 ### Added
 
@@ -23,7 +46,9 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Fixed
 
-- Nothing.
+- Eliminated 2GB file limit by adding streaming support (#352).
+- Initial PID generation (#340).
+- Route definition for deleting images from paginator (#348).
 
 ## 2.5.1 - 2025-07-05
 

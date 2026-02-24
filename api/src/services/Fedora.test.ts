@@ -74,7 +74,7 @@ describe("Fedora", () => {
             const putSpy = jest.spyOn(fedora, "putDatastream").mockImplementation(jest.fn());
             const patchSpy = jest.spyOn(fedora, "patchRdf").mockReturnValue({ statusCode: 204 });
             await fedora.addDatastream(pid, "MASTER", { mimeType: "foo/bar" }, "content");
-            expect(putSpy).toHaveBeenCalledWith(pid, "MASTER", "foo/bar", [201], "content", "");
+            expect(putSpy).toHaveBeenCalledWith(pid, "MASTER", "foo/bar", [201], "content", "", "");
             const expectedTurtle =
                 '<> <http://fedora.info/definitions/1/0/access/objState> "A";\n    <http://purl.org/dc/terms/title> "test4_MASTER".\n';
             expect(patchSpy).toHaveBeenCalledWith(`/${pid}/MASTER/fcr:metadata`, expectedTurtle);

@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
+  outputFileTracingRoot: __dirname,
   reactStrictMode: true,
   typescript: {
     // !! WARN !!

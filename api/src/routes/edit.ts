@@ -188,7 +188,7 @@ async function getChildCounts(req, res) {
 }
 
 function uploadFile(req, res, next) {
-    const { pid, stream } = req.params;
+    const { pid, stream } = req.params as { pid: string; stream: string };
     const form = new IncomingForm({ multiples: true, maxFileSize: Config.getInstance().maxUploadSize });
 
     form.parse(req, async (err, fields, files) => {
@@ -214,7 +214,7 @@ edit.post(
     bodyParser.json(),
     datastreamSanitizer,
     async function (req, res) {
-        const { pid, stream } = req.params;
+        const { pid, stream } = req.params as { pid: string; stream: string };
         const { licenseKey } = req.body;
         try {
             const datastream = DatastreamManager.getInstance();
@@ -229,7 +229,7 @@ edit.post(
 
 edit.get("/object/:pid/datastream/:stream/license", requireToken, datastreamSanitizer, async (req, res) => {
     try {
-        const { pid, stream } = req.params;
+        const { pid, stream } = req.params as { pid: string; stream: string };
         const datastream = DatastreamManager.getInstance();
         const licenseKey = await datastream.getLicenseKey(pid, stream);
         res.status(200).send(licenseKey);
@@ -245,7 +245,7 @@ edit.post(
     datastreamSanitizer,
     async (req, res) => {
         try {
-            const { pid, stream } = req.params;
+            const { pid, stream } = req.params as { pid: string; stream: string };
             const { agents } = req.body;
             const datastream = DatastreamManager.getInstance();
             await datastream.uploadAgents(pid, stream, agents);
@@ -263,7 +263,7 @@ edit.post(
     datastreamSanitizer,
     async (req, res) => {
         try {
-            const { pid, stream } = req.params;
+            const { pid, stream } = req.params as { pid: string; stream: string };
             const { processMetadata } = req.body;
             const datastream = DatastreamManager.getInstance();
             await datastream.uploadProcessMetadata(pid, stream, processMetadata);
@@ -281,7 +281,7 @@ edit.post(
     datastreamSanitizer,
     async (req, res) => {
         try {
-            const { pid, stream } = req.params;
+            const { pid, stream } = req.params as { pid: string; stream: string };
             const { metadata } = req.body;
             const datastream = DatastreamManager.getInstance();
             await datastream.uploadDublinCoreMetadata(pid, stream, metadata);
@@ -294,7 +294,7 @@ edit.post(
 
 edit.get("/object/:pid/datastream/:stream/agents", requireToken, datastreamSanitizer, async (req, res) => {
     try {
-        const { pid, stream } = req.params;
+        const { pid, stream } = req.params as { pid: string; stream: string };
         const datastream = DatastreamManager.getInstance();
         const agents = await datastream.getAgents(pid, stream);
         res.status(200).send(agents);
@@ -305,7 +305,7 @@ edit.get("/object/:pid/datastream/:stream/agents", requireToken, datastreamSanit
 
 edit.get("/object/:pid/datastream/:stream/metadata", requireToken, datastreamSanitizer, async (req, res) => {
     try {
-        const { pid, stream } = req.params;
+        const { pid, stream } = req.params as { pid: string; stream: string };
         const datastream = DatastreamManager.getInstance();
         const metadata = await datastream.getMetadata(pid, stream);
         res.status(200).send(metadata);
@@ -316,7 +316,7 @@ edit.get("/object/:pid/datastream/:stream/metadata", requireToken, datastreamSan
 
 edit.get("/object/:pid/datastream/:stream/processMetadata", requireToken, datastreamSanitizer, async (req, res) => {
     try {
-        const { pid, stream } = req.params;
+        const { pid, stream } = req.params as { pid: string; stream: string };
         const datastream = DatastreamManager.getInstance();
         const metadata = await datastream.getProcessMetadata(pid, stream);
         res.status(200).send(metadata);
@@ -329,7 +329,8 @@ edit.get("/topLevelObjects", requireToken, getChildren);
 edit.get("/object/:pid/children", requireToken, pidSanitizer, getChildren);
 edit.get("/object/:pid/childCounts", requireToken, pidSanitizer, getChildCounts);
 edit.get("/object/:pid/lastChildPosition", requireToken, pidSanitizer, async (req, res) => {
-    const cleanPid = req.params.pid.replace(/["]/g, "");
+    const { pid } = req.params as { pid: string};
+    const cleanPid = pid.replace(/["]/g, "");
     const query = `fedora_parent_id_str_mv:"${cleanPid}"`;
     const sequenceField = `sequence_${cleanPid.replace(/:/g, "_")}_str`;
     const sort = `${sequenceField} DESC`;
@@ -374,7 +375,7 @@ edit.get(
     pidSanitizer,
     getChildPidHandlerForField("fedora_parent_id_str_mv"),
 );
-edit.get("/object/:pid/details", requireToken, pidSanitizer, async function (req, res) {
+edit.get("/object/:pid/details", requireToken, pidSanitizer, async function (req: express.Request<{ pid: string }>, res) {
     try {
         const { fedoraDatastreams, metadata, models, pid, sortOn, sequences, state } =
             await FedoraDataCollector.getInstance().getObjectData(req.params.pid);
@@ -385,7 +386,7 @@ edit.get("/object/:pid/details", requireToken, pidSanitizer, async function (req
     }
 });
 
-edit.get("/object/:pid/parents", pidSanitizer, requireToken, async function (req, res) {
+edit.get("/object/:pid/parents", pidSanitizer, requireToken, async function (req: express.Request<{ pid: string }>, res) {
     try {
         const fedoraData = await FedoraDataCollector.getInstance().getHierarchy(
             req.params.pid,
@@ -398,7 +399,7 @@ edit.get("/object/:pid/parents", pidSanitizer, requireToken, async function (req
     }
 });
 
-edit.get("/object/:pid/datastream/:stream/download", datastreamSanitizer, requireToken, async function (req, res) {
+edit.get("/object/:pid/datastream/:stream/download", datastreamSanitizer, requireToken, async function (req: express.Request<{ pid: string; stream: string }>, res) {
     try {
         const pid = req.params.pid;
         const stream = req.params.stream;
@@ -419,7 +420,7 @@ edit.get("/object/:pid/datastream/:stream/download", datastreamSanitizer, requir
     }
 });
 
-edit.delete("/object/:pid/datastream/:stream", requireToken, datastreamSanitizer, async function (req, res) {
+edit.delete("/object/:pid/datastream/:stream", requireToken, datastreamSanitizer, async function (req: express.Request<{ pid: string; stream: string }>, res) {
     const pid = req.params.pid;
     const stream = req.params.stream;
     const datastreamManager = DatastreamManager.getInstance();
@@ -433,7 +434,7 @@ edit.delete("/object/:pid/datastream/:stream", requireToken, datastreamSanitizer
     }
 });
 
-edit.get("/object/:pid/datastream/:stream/view", requireToken, datastreamSanitizer, async function (req, res) {
+edit.get("/object/:pid/datastream/:stream/view", requireToken, datastreamSanitizer, async function (req: express.Request<{ pid: string; stream: string }>, res) {
     try {
         const pid = req.params.pid;
         const stream = req.params.stream;
@@ -451,7 +452,7 @@ edit.get("/object/:pid/datastream/:stream/view", requireToken, datastreamSanitiz
     }
 });
 
-edit.get("/object/:pid/datastream/:stream/mimetype", requireToken, datastreamSanitizer, async function (req, res) {
+edit.get("/object/:pid/datastream/:stream/mimetype", requireToken, datastreamSanitizer, async function (req: express.Request<{ pid: string; stream: string }>, res) {
     try {
         const pid = req.params.pid;
         const stream = req.params.stream;
@@ -464,7 +465,7 @@ edit.get("/object/:pid/datastream/:stream/mimetype", requireToken, datastreamSan
     }
 });
 
-edit.put("/object/:pid/state", requireToken, pidSanitizer, bodyParser.text(), async function (req, res) {
+edit.put("/object/:pid/state", requireToken, pidSanitizer, bodyParser.text(), async function (req: express.Request<{ pid: string }>, res) {
     try {
         const pid = req.params.pid;
         const fedora = Fedora.getInstance();
@@ -492,7 +493,7 @@ edit.post(
     requireToken,
     pidAndParentPidSanitizer,
     bodyParser.text(),
-    async function (req, res) {
+    async function (req: express.Request<{ pid: string; parentPid: string }>, res) {
         try {
             const { pid, parentPid } = req.params;
             const pos = parseInt(req.body);
@@ -519,7 +520,7 @@ edit.put(
     requireToken,
     pidAndParentPidSanitizer,
     bodyParser.text(),
-    async function (req, res) {
+    async function (req: express.Request<{ pid: string; parentPid: string }>, res) {
         try {
             const { pid, parentPid } = req.params;
             const pos = parseInt(req.body);
@@ -545,7 +546,7 @@ edit.put(
         }
     },
 );
-edit.delete("/object/:pid/parent/:parentPid", requireToken, pidAndParentPidSanitizer, async function (req, res) {
+edit.delete("/object/:pid/parent/:parentPid", requireToken, pidAndParentPidSanitizer, async function (req: express.Request<{ pid: string; parentPid: string }>, res) {
     try {
         const pid = req.params.pid;
         const parent = req.params.parentPid;
@@ -570,7 +571,7 @@ edit.delete("/object/:pid/parent/:parentPid", requireToken, pidAndParentPidSanit
         res.status(500).send(error.message);
     }
 });
-edit.put("/object/:pid/sortOn", requireToken, pidSanitizer, bodyParser.text(), async function (req, res) {
+edit.put("/object/:pid/sortOn", requireToken, pidSanitizer, bodyParser.text(), async function (req: express.Request<{ pid: string }>, res) {
     try {
         const pid = req.params.pid;
         const fedora = Fedora.getInstance();
@@ -594,7 +595,7 @@ edit.delete(
     "/object/:pid/positionInParent/:parentPid",
     requireToken,
     pidAndParentPidSanitizer,
-    async function (req, res) {
+    async function (req: express.Request<{ pid: string; parentPid: string }>, res) {
         try {
             const pid = req.params.pid;
             const parent = req.params.parentPid;
@@ -622,7 +623,7 @@ edit.put(
     requireToken,
     pidAndParentPidSanitizer,
     bodyParser.text(),
-    async function (req, res) {
+    async function (req: express.Request<{ pid: string; parentPid: string }>, res) {
         try {
             const pid = req.params.pid;
             const parent = req.params.parentPid;

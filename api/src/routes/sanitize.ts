@@ -8,10 +8,14 @@ export const defaultSanitizeRegEx = /^[-.a-zA-Z0-9_]+$/;
 export const pidSanitizeRegEx = /^[a-zA-Z]+:[0-9]+$/;
 
 export function sanitizeParameters(customRules = {}, defaultRule = defaultSanitizeRegEx) {
-    return function (req: Request, res: Response, next: NextFunction) {
-        for (const x in req.params) {
-            if (!req.params[x].match(customRules[x] ?? defaultRule)) {
-                return res.status(400).json({ error: "invalid: " + x });
+    return function (req: Request , res: Response, next: NextFunction) {
+        for (const key in req.params) {
+            const val = req.params[key];
+
+            // make sure it's a string before matching
+            if (typeof val !== "string" ||
+                !val.match(customRules[key] ?? defaultRule)) {
+                return res.status(400).json({ error: "invalid: " + key });
             }
         }
         next();

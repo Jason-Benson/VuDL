@@ -7,12 +7,12 @@ import { requireToken } from "./auth";
 import { pidSanitizer } from "./sanitize";
 const messenger = express.Router();
 
-messenger.post("/pdfgenerator/:pid", pidSanitizer, requireToken, async function (req, res) {
+messenger.post("/pdfgenerator/:pid", pidSanitizer, requireToken, async function (req: express.Request<{ pid: string }>, res) {
     QueueManager.getInstance().generatePdf(req.params.pid);
     res.status(200).send("ok");
 });
 
-messenger.get("/solrindex/:pid", pidSanitizer, requireToken, async function (req, res) {
+messenger.get("/solrindex/:pid", pidSanitizer, requireToken, async function (req: express.Request<{ pid: string }>, res) {
     const indexer = SolrIndexer.getInstance();
     try {
         const fedoraFields = await indexer.getFields(req.params.pid);
@@ -23,7 +23,7 @@ messenger.get("/solrindex/:pid", pidSanitizer, requireToken, async function (req
     }
 });
 
-messenger.post("/solrindex/:pid", pidSanitizer, requireToken, async function (req, res) {
+messenger.post("/solrindex/:pid", pidSanitizer, requireToken, async function (req: express.Request<{ pid: string }>, res) {
     const indexer = SolrIndexer.getInstance();
     try {
         const result = await indexer.indexPid(req.params.pid);

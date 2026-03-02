@@ -187,8 +187,8 @@ async function getChildCounts(req, res) {
     res.json(response);
 }
 
-function uploadFile(req, res, next) {
-    const { pid, stream } = req.params as { pid: string; stream: string };
+function uploadFile(req: express.Request<{ pid: string; stream: string }>, res, next) {
+    const { pid, stream } = req.params;
     const form = new IncomingForm({ multiples: true, maxFileSize: Config.getInstance().maxUploadSize });
 
     form.parse(req, async (err, fields, files) => {
@@ -213,8 +213,8 @@ edit.post(
     requireToken,
     bodyParser.json(),
     datastreamSanitizer,
-    async function (req, res) {
-        const { pid, stream } = req.params as { pid: string; stream: string };
+    async function (req: express.Request<{ pid: string; stream: string }>, res) {
+        const { pid, stream } = req.params;
         const { licenseKey } = req.body;
         try {
             const datastream = DatastreamManager.getInstance();
@@ -227,9 +227,9 @@ edit.post(
     },
 );
 
-edit.get("/object/:pid/datastream/:stream/license", requireToken, datastreamSanitizer, async (req, res) => {
+edit.get("/object/:pid/datastream/:stream/license", requireToken, datastreamSanitizer, async (req: express.Request<{ pid: string; stream: string }>, res) => {
     try {
-        const { pid, stream } = req.params as { pid: string; stream: string };
+        const { pid, stream } = req.params;
         const datastream = DatastreamManager.getInstance();
         const licenseKey = await datastream.getLicenseKey(pid, stream);
         res.status(200).send(licenseKey);
@@ -243,9 +243,9 @@ edit.post(
     requireToken,
     bodyParser.json(),
     datastreamSanitizer,
-    async (req, res) => {
+    async (req: express.Request<{ pid: string; stream: string }>, res) => {
         try {
-            const { pid, stream } = req.params as { pid: string; stream: string };
+            const { pid, stream } = req.params;
             const { agents } = req.body;
             const datastream = DatastreamManager.getInstance();
             await datastream.uploadAgents(pid, stream, agents);
@@ -261,9 +261,9 @@ edit.post(
     requireToken,
     bodyParser.json(),
     datastreamSanitizer,
-    async (req, res) => {
+    async (req: express.Request<{ pid: string; stream: string }>, res) => {
         try {
-            const { pid, stream } = req.params as { pid: string; stream: string };
+            const { pid, stream } = req.params;
             const { processMetadata } = req.body;
             const datastream = DatastreamManager.getInstance();
             await datastream.uploadProcessMetadata(pid, stream, processMetadata);
@@ -279,9 +279,9 @@ edit.post(
     requireToken,
     bodyParser.json(),
     datastreamSanitizer,
-    async (req, res) => {
+    async (req: express.Request<{ pid: string; stream: string }>, res) => {
         try {
-            const { pid, stream } = req.params as { pid: string; stream: string };
+            const { pid, stream } = req.params;
             const { metadata } = req.body;
             const datastream = DatastreamManager.getInstance();
             await datastream.uploadDublinCoreMetadata(pid, stream, metadata);
@@ -292,9 +292,9 @@ edit.post(
     },
 );
 
-edit.get("/object/:pid/datastream/:stream/agents", requireToken, datastreamSanitizer, async (req, res) => {
+edit.get("/object/:pid/datastream/:stream/agents", requireToken, datastreamSanitizer, async (req: express.Request<{ pid: string; stream: string }>, res) => {
     try {
-        const { pid, stream } = req.params as { pid: string; stream: string };
+        const { pid, stream } = req.params;
         const datastream = DatastreamManager.getInstance();
         const agents = await datastream.getAgents(pid, stream);
         res.status(200).send(agents);
@@ -314,9 +314,9 @@ edit.get("/object/:pid/datastream/:stream/metadata", requireToken, datastreamSan
     }
 });
 
-edit.get("/object/:pid/datastream/:stream/processMetadata", requireToken, datastreamSanitizer, async (req, res) => {
+edit.get("/object/:pid/datastream/:stream/processMetadata", requireToken, datastreamSanitizer, async (req: express.Request<{ pid: string; stream: string }>, res) => {
     try {
-        const { pid, stream } = req.params as { pid: string; stream: string };
+        const { pid, stream } = req.params;
         const datastream = DatastreamManager.getInstance();
         const metadata = await datastream.getProcessMetadata(pid, stream);
         res.status(200).send(metadata);
@@ -328,9 +328,8 @@ edit.get("/object/:pid/datastream/:stream/processMetadata", requireToken, datast
 edit.get("/topLevelObjects", requireToken, getChildren);
 edit.get("/object/:pid/children", requireToken, pidSanitizer, getChildren);
 edit.get("/object/:pid/childCounts", requireToken, pidSanitizer, getChildCounts);
-edit.get("/object/:pid/lastChildPosition", requireToken, pidSanitizer, async (req, res) => {
-    const { pid } = req.params as { pid: string };
-    const cleanPid = pid.replace(/["]/g, "");
+edit.get("/object/:pid/lastChildPosition", requireToken, pidSanitizer, async (req: express.Request<{ pid: string}>, res) => {
+    const cleanPid = req.params.pid.replace(/["]/g, "");
     const query = `fedora_parent_id_str_mv:"${cleanPid}"`;
     const sequenceField = `sequence_${cleanPid.replace(/:/g, "_")}_str`;
     const sort = `${sequenceField} DESC`;

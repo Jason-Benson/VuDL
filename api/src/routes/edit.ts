@@ -227,16 +227,21 @@ edit.post(
     },
 );
 
-edit.get("/object/:pid/datastream/:stream/license", requireToken, datastreamSanitizer, async (req: express.Request<{ pid: string; stream: string }>, res) => {
-    try {
-        const { pid, stream } = req.params;
-        const datastream = DatastreamManager.getInstance();
-        const licenseKey = await datastream.getLicenseKey(pid, stream);
-        res.status(200).send(licenseKey);
-    } catch (error) {
-        res.status(500).send(error.message);
-    }
-});
+edit.get(
+    "/object/:pid/datastream/:stream/license",
+    requireToken,
+    datastreamSanitizer,
+    async (req: express.Request<{ pid: string; stream: string }>, res) => {
+        try {
+            const { pid, stream } = req.params;
+            const datastream = DatastreamManager.getInstance();
+            const licenseKey = await datastream.getLicenseKey(pid, stream);
+            res.status(200).send(licenseKey);
+        } catch (error) {
+            res.status(500).send(error.message);
+        }
+    },
+);
 
 edit.post(
     "/object/:pid/datastream/:stream/agents",
@@ -292,16 +297,21 @@ edit.post(
     },
 );
 
-edit.get("/object/:pid/datastream/:stream/agents", requireToken, datastreamSanitizer, async (req: express.Request<{ pid: string; stream: string }>, res) => {
-    try {
-        const { pid, stream } = req.params;
-        const datastream = DatastreamManager.getInstance();
-        const agents = await datastream.getAgents(pid, stream);
-        res.status(200).send(agents);
-    } catch (error) {
-        res.status(500).send(error.message);
-    }
-});
+edit.get(
+    "/object/:pid/datastream/:stream/agents",
+    requireToken,
+    datastreamSanitizer,
+    async (req: express.Request<{ pid: string; stream: string }>, res) => {
+        try {
+            const { pid, stream } = req.params;
+            const datastream = DatastreamManager.getInstance();
+            const agents = await datastream.getAgents(pid, stream);
+            res.status(200).send(agents);
+        } catch (error) {
+            res.status(500).send(error.message);
+        }
+    },
+);
 
 edit.get("/object/:pid/datastream/:stream/metadata", requireToken, datastreamSanitizer, async (req, res) => {
     try {
@@ -314,36 +324,46 @@ edit.get("/object/:pid/datastream/:stream/metadata", requireToken, datastreamSan
     }
 });
 
-edit.get("/object/:pid/datastream/:stream/processMetadata", requireToken, datastreamSanitizer, async (req: express.Request<{ pid: string; stream: string }>, res) => {
-    try {
-        const { pid, stream } = req.params;
-        const datastream = DatastreamManager.getInstance();
-        const metadata = await datastream.getProcessMetadata(pid, stream);
-        res.status(200).send(metadata);
-    } catch (error) {
-        res.status(500).send(error.message);
-    }
-});
+edit.get(
+    "/object/:pid/datastream/:stream/processMetadata",
+    requireToken,
+    datastreamSanitizer,
+    async (req: express.Request<{ pid: string; stream: string }>, res) => {
+        try {
+            const { pid, stream } = req.params;
+            const datastream = DatastreamManager.getInstance();
+            const metadata = await datastream.getProcessMetadata(pid, stream);
+            res.status(200).send(metadata);
+        } catch (error) {
+            res.status(500).send(error.message);
+        }
+    },
+);
 
 edit.get("/topLevelObjects", requireToken, getChildren);
 edit.get("/object/:pid/children", requireToken, pidSanitizer, getChildren);
 edit.get("/object/:pid/childCounts", requireToken, pidSanitizer, getChildCounts);
-edit.get("/object/:pid/lastChildPosition", requireToken, pidSanitizer, async (req: express.Request<{ pid: string}>, res) => {
-    const cleanPid = req.params.pid.replace(/["]/g, "");
-    const query = `fedora_parent_id_str_mv:"${cleanPid}"`;
-    const sequenceField = `sequence_${cleanPid.replace(/:/g, "_")}_str`;
-    const sort = `${sequenceField} DESC`;
-    const config = Config.getInstance();
-    const solr = Solr.getInstance();
-    const rows = "1";
-    const result = await solr.query(config.solrCore, query, { sort, fl: sequenceField, rows });
-    if (result.statusCode !== 200) {
-        res.status(result.statusCode ?? 500).send("Unexpected Solr response code.");
-        return;
-    }
-    const docs = result?.body?.response?.docs ?? [];
-    res.status(200).send(docs?.[0]?.[sequenceField] ?? "0");
-});
+edit.get(
+    "/object/:pid/lastChildPosition",
+    requireToken,
+    pidSanitizer,
+    async (req: express.Request<{ pid: string }>, res) => {
+        const cleanPid = req.params.pid.replace(/["]/g, "");
+        const query = `fedora_parent_id_str_mv:"${cleanPid}"`;
+        const sequenceField = `sequence_${cleanPid.replace(/:/g, "_")}_str`;
+        const sort = `${sequenceField} DESC`;
+        const config = Config.getInstance();
+        const solr = Solr.getInstance();
+        const rows = "1";
+        const result = await solr.query(config.solrCore, query, { sort, fl: sequenceField, rows });
+        if (result.statusCode !== 200) {
+            res.status(result.statusCode ?? 500).send("Unexpected Solr response code.");
+            return;
+        }
+        const docs = result?.body?.response?.docs ?? [];
+        res.status(200).send(docs?.[0]?.[sequenceField] ?? "0");
+    },
+);
 function getChildPidHandlerForField(field) {
     return async function (req, res) {
         const cleanPid = req.params.pid.replace(/["]/g, "");

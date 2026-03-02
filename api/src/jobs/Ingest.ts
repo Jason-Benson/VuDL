@@ -94,6 +94,17 @@ export class IngestProcessor {
         }
     }
 
+    async generateOcrForAllPages(): Promise<void> {
+        const order = this.job.metadata.order.pages;
+        for (const i in order) {
+            const page = order[i];
+            const number = parseInt(i) + 1;
+            this.logger.info("Checking/generating OCR for page " + number + " of " + order.length);
+            const image = ImageFile.build(this.job.dir + "/" + page.filename);
+            await image.ocr();
+        }
+    }
+
     async addPages(pageList: FedoraObject): Promise<void> {
         const order = this.job.metadata.order.pages;
         for (const i in order) {
@@ -125,6 +136,17 @@ export class IngestProcessor {
         }
     }
 
+    async generateAllAudioDerivatives(): Promise<void> {
+        const order = this.job.metadata.audio.list;
+        for (const i in order) {
+            const audio = order[i];
+            const number = parseInt(i) + 1;
+            this.logger.info("Pregenerating derivatives for audio file " + number);
+            audio.derivative("MP3");
+            audio.derivative("OGG");
+        }
+    }
+
     async addAudio(audioList: FedoraObject): Promise<void> {
         const order = this.job.metadata.audio.list;
         for (const i in order) {
@@ -133,6 +155,18 @@ export class IngestProcessor {
             this.logger.info("Adding " + number + " of " + order.length + " - " + audio.filename);
             const audioData = await this.buildAudio(audioList, audio, number);
             await this.addDatastreamsToAudio(audio, audioData);
+        }
+    }
+
+    async generateAllVideoDerivatives(): Promise<void> {
+        const order = this.job.metadata.video.list;
+        for (const i in order) {
+            const video = order[i];
+            const number = parseInt(i) + 1;
+            this.logger.info("Pregenerating derivatives for video file " + number);
+            if (video.mimeType !== "video/mp4") {
+                video.derivative("MP4");
+            }
         }
     }
 
@@ -259,9 +293,24 @@ export class IngestProcessor {
         fs.rmSync(target + "/ingest.lock");
     }
 
+    async pregenerateDerivatives(): Promise<void> {
+        if (this.job.metadata.order.pages.length > 0) {
+            await this.generateOcrForAllPages();
+        }
+        if (this.job.metadata.audio.list.length > 0) {
+            await this.generateAllAudioDerivatives();
+        }
+        if (this.job.metadata.video.list.length > 0) {
+            await this.generateAllVideoDerivatives();
+        }
+    }
+
     async doIngest(): Promise<void> {
         const startTime = Date.now();
         this.logger.info("Beginning ingest.");
+        // Pre-generate derivatives to reduce the odds of something going wrong mid-ingest;
+        // if you skip pre-generation, the process will still work with on-demand generation.
+        await this.pregenerateDerivatives();
         this.logger.info("Target collection ID: " + this.category.targetCollectionId);
         const holdingArea = FedoraObject.build(this.category.targetCollectionId, this.logger);
         if ((await holdingArea.getSortOn()) == "custom") {

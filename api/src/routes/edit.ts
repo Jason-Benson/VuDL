@@ -313,16 +313,21 @@ edit.get(
     },
 );
 
-edit.get("/object/:pid/datastream/:stream/metadata", requireToken, datastreamSanitizer, async (req: express.Request<{ pid: string; stream: string }>, res) => {
-    try {
-        const { pid, stream } = req.params;
-        const datastream = DatastreamManager.getInstance();
-        const metadata = await datastream.getMetadata(pid, stream);
-        res.status(200).send(metadata);
-    } catch (error) {
-        res.status(500).send(error.message);
-    }
-});
+edit.get(
+    "/object/:pid/datastream/:stream/metadata",
+    requireToken,
+    datastreamSanitizer,
+    async (req: express.Request<{ pid: string; stream: string }>, res) => {
+        try {
+            const { pid, stream } = req.params;
+            const datastream = DatastreamManager.getInstance();
+            const metadata = await datastream.getMetadata(pid, stream);
+            res.status(200).send(metadata);
+        } catch (error) {
+            res.status(500).send(error.message);
+        }
+    },
+);
 
 edit.get(
     "/object/:pid/datastream/:stream/processMetadata",

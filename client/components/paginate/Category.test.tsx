@@ -9,10 +9,10 @@ const mockjobList = jest.fn();
 jest.mock(
     "./JobList",
     () =>
-        (function JobList(props) {
+        function JobList(props) {
             mockjobList(props);
             return <mock-JobList />;
-        }),
+        },
 );
 
 describe("Category", () => {

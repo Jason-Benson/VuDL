@@ -8,10 +8,10 @@ const mockjobClickable = jest.fn();
 jest.mock(
     "./JobClickable",
     () =>
-        (function JobClickable(props) {
+        function JobClickable(props) {
             mockjobClickable(props);
             return "JobClickable";
-        }),
+        },
 );
 
 describe("Job", () => {

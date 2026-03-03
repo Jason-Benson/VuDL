@@ -226,7 +226,7 @@ describe("useEditorContext", () => {
             });
             await result.current.action.loadCurrentObjectDetails();
             await waitFor(() => expect(fetchValues.action.fetchJSON).toHaveBeenCalled());
-            expect(result.current.action.extractFirstMetadataValue("field", "default"[0])).toEqual("foo");
+            expect(result.current.action.extractFirstMetadataValue("field", "default")).toEqual("foo");
         });
     });
 

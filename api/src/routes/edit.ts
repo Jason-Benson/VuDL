@@ -313,9 +313,9 @@ edit.get(
     },
 );
 
-edit.get("/object/:pid/datastream/:stream/metadata", requireToken, datastreamSanitizer, async (req, res) => {
+edit.get("/object/:pid/datastream/:stream/metadata", requireToken, datastreamSanitizer, async (req: express.Request<{ pid: string; stream: string }>, res) => {
     try {
-        const { pid, stream } = req.params as { pid: string; stream: string };
+        const { pid, stream } = req.params;
         const datastream = DatastreamManager.getInstance();
         const metadata = await datastream.getMetadata(pid, stream);
         res.status(200).send(metadata);

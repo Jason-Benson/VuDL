@@ -1,6 +1,6 @@
 import React, { Dispatch } from "react";
 import { TreeItem } from "@mui/x-tree-view/TreeItem";
-import { TreeView } from "@mui/x-tree-view/TreeView";
+import { SimpleTreeView } from '@mui/x-tree-view/SimpleTreeView';
 
 interface CategoryTreeViewProps {
     models: Record<string, string>;
@@ -18,7 +18,7 @@ const CategoryTreeView = ({ models, setSelectedModel }: CategoryTreeViewProps): 
         return false;
     }
     return (
-        <TreeView defaultCollapseIcon={"➖"} defaultExpandIcon={"➕"} onNodeSelect={handleSelect}>
+        <SimpleTreeView defaultCollapseIcon={"➖"} defaultExpandIcon={"➕"} onNodeSelect={handleSelect}>
             {Object.entries(models).map(([category, categoryValue]) => {
                 return (
                     <TreeItem key={category} nodeId={`__${category}`} label={category}>
@@ -28,7 +28,7 @@ const CategoryTreeView = ({ models, setSelectedModel }: CategoryTreeViewProps): 
                     </TreeItem>
                 );
             })}
-        </TreeView>
+        </SimpleTreeView>
     );
 };
 

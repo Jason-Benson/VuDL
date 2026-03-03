@@ -99,10 +99,10 @@ exports[`DatastreamAgentsContentNotes renders 1`] = `
                       </div>
                       <fieldset
                         aria-hidden={true}
-                        className="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+                        className="MuiOutlinedInput-notchedOutline css-r01yff-MuiNotchedOutlined-root-MuiOutlinedInput-notchedOutline"
                       >
                         <legend
-                          className="css-14lo706"
+                          className="css-sl37lx-MuiNotchedOutlined-root"
                         >
                           <span>
                             Note
@@ -174,10 +174,10 @@ exports[`DatastreamAgentsContentNotes renders 1`] = `
                       </div>
                       <fieldset
                         aria-hidden={true}
-                        className="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+                        className="MuiOutlinedInput-notchedOutline css-r01yff-MuiNotchedOutlined-root-MuiOutlinedInput-notchedOutline"
                       >
                         <legend
-                          className="css-ihdtdm"
+                          className="css-1whs34k-MuiNotchedOutlined-root"
                         >
                           <span
                             className="notranslate"

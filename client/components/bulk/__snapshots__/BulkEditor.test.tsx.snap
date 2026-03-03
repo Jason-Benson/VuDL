@@ -43,10 +43,10 @@ exports[`BulkEditor renders 1`] = `
         />
         <fieldset
           aria-hidden={true}
-          className="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+          className="MuiOutlinedInput-notchedOutline css-r01yff-MuiNotchedOutlined-root-MuiOutlinedInput-notchedOutline"
         >
           <legend
-            className="css-yjsfm1"
+            className="css-njhac4-MuiNotchedOutlined-root"
           >
             <span>
               Search Query
@@ -90,10 +90,10 @@ exports[`BulkEditor renders 1`] = `
         />
         <fieldset
           aria-hidden={true}
-          className="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+          className="MuiOutlinedInput-notchedOutline css-r01yff-MuiNotchedOutlined-root-MuiOutlinedInput-notchedOutline"
         >
           <legend
-            className="css-14lo706"
+            className="css-sl37lx-MuiNotchedOutlined-root"
           >
             <span>
               Result Limit
@@ -132,7 +132,7 @@ exports[`BulkEditor renders 1`] = `
       Choose New License
     </label>
     <div
-      className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl  css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
+      className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
       onClick={[Function]}
     >
       <div
@@ -177,10 +177,10 @@ exports[`BulkEditor renders 1`] = `
       </svg>
       <fieldset
         aria-hidden={true}
-        className="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+        className="MuiOutlinedInput-notchedOutline css-r01yff-MuiNotchedOutlined-root-MuiOutlinedInput-notchedOutline"
       >
         <legend
-          className="css-yjsfm1"
+          className="css-njhac4-MuiNotchedOutlined-root"
         >
           <span>
             Choose New License

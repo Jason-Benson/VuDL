@@ -33,10 +33,10 @@ exports[`DatastreamProcessMetadataContent renders a form when empty data is load
         />
         <fieldset
           aria-hidden={true}
-          className="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+          className="MuiOutlinedInput-notchedOutline css-r01yff-MuiNotchedOutlined-root-MuiOutlinedInput-notchedOutline"
         >
           <legend
-            className="css-yjsfm1"
+            className="css-njhac4-MuiNotchedOutlined-root"
           >
             <span>
               Process Label
@@ -62,10 +62,10 @@ exports[`DatastreamProcessMetadataContent renders a form when empty data is load
         />
         <fieldset
           aria-hidden={true}
-          className="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+          className="MuiOutlinedInput-notchedOutline css-r01yff-MuiNotchedOutlined-root-MuiOutlinedInput-notchedOutline"
         >
           <legend
-            className="css-yjsfm1"
+            className="css-njhac4-MuiNotchedOutlined-root"
           >
             <span>
               Process Creator
@@ -92,10 +92,10 @@ exports[`DatastreamProcessMetadataContent renders a form when empty data is load
         />
         <fieldset
           aria-hidden={true}
-          className="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+          className="MuiOutlinedInput-notchedOutline css-r01yff-MuiNotchedOutlined-root-MuiOutlinedInput-notchedOutline"
         >
           <legend
-            className="css-yjsfm1"
+            className="css-njhac4-MuiNotchedOutlined-root"
           >
             <span>
               Process Organization
@@ -209,10 +209,10 @@ exports[`DatastreamProcessMetadataContent renders a form when non-empty data is 
         />
         <fieldset
           aria-hidden={true}
-          className="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+          className="MuiOutlinedInput-notchedOutline css-r01yff-MuiNotchedOutlined-root-MuiOutlinedInput-notchedOutline"
         >
           <legend
-            className="css-yjsfm1"
+            className="css-njhac4-MuiNotchedOutlined-root"
           >
             <span>
               Process Label
@@ -238,10 +238,10 @@ exports[`DatastreamProcessMetadataContent renders a form when non-empty data is 
         />
         <fieldset
           aria-hidden={true}
-          className="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+          className="MuiOutlinedInput-notchedOutline css-r01yff-MuiNotchedOutlined-root-MuiOutlinedInput-notchedOutline"
         >
           <legend
-            className="css-yjsfm1"
+            className="css-njhac4-MuiNotchedOutlined-root"
           >
             <span>
               Process Creator
@@ -268,10 +268,10 @@ exports[`DatastreamProcessMetadataContent renders a form when non-empty data is 
         />
         <fieldset
           aria-hidden={true}
-          className="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+          className="MuiOutlinedInput-notchedOutline css-r01yff-MuiNotchedOutlined-root-MuiOutlinedInput-notchedOutline"
         >
           <legend
-            className="css-yjsfm1"
+            className="css-njhac4-MuiNotchedOutlined-root"
           >
             <span>
               Process Organization
@@ -388,10 +388,10 @@ exports[`DatastreamProcessMetadataContent supports tab switching 1`] = `
         />
         <fieldset
           aria-hidden={true}
-          className="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+          className="MuiOutlinedInput-notchedOutline css-r01yff-MuiNotchedOutlined-root-MuiOutlinedInput-notchedOutline"
         >
           <legend
-            className="css-yjsfm1"
+            className="css-njhac4-MuiNotchedOutlined-root"
           >
             <span>
               Process Label
@@ -417,10 +417,10 @@ exports[`DatastreamProcessMetadataContent supports tab switching 1`] = `
         />
         <fieldset
           aria-hidden={true}
-          className="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+          className="MuiOutlinedInput-notchedOutline css-r01yff-MuiNotchedOutlined-root-MuiOutlinedInput-notchedOutline"
         >
           <legend
-            className="css-yjsfm1"
+            className="css-njhac4-MuiNotchedOutlined-root"
           >
             <span>
               Process Creator
@@ -447,10 +447,10 @@ exports[`DatastreamProcessMetadataContent supports tab switching 1`] = `
         />
         <fieldset
           aria-hidden={true}
-          className="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+          className="MuiOutlinedInput-notchedOutline css-r01yff-MuiNotchedOutlined-root-MuiOutlinedInput-notchedOutline"
         >
           <legend
-            className="css-yjsfm1"
+            className="css-njhac4-MuiNotchedOutlined-root"
           >
             <span>
               Process Organization

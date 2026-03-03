@@ -84,7 +84,7 @@ ingest.get(
     "/:category/:job/:image/:size",
     sanitizeParameters(),
     requireToken,
-    async function (req: express.Request<{ image: string; size: string }>, res) {
+    async function (req: express.Request<{ category: string; job: string; image: string; size: string }>, res) {
         const legalSizes: Record<string, string> = {
             thumb: "THUMBNAIL",
             medium: "MEDIUM",
@@ -107,7 +107,7 @@ ingest.delete(
         "/:category/:job/:image/\\*",
         sanitizeParameters({ 0: /^\*$/ }),
         requireToken,
-        async function (req: express.Request<{ image: string }>, res) {
+        async function (req: express.Request<{ category: string; job: string; image: string }>, res) {
             const image: string = req.params.image;
             const job = getJobFromRequest(req);
             if (job == null) {

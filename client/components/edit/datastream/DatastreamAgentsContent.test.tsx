@@ -2,7 +2,7 @@ import React from "react";
 import { describe, beforeEach, afterEach, expect, it, jest } from "@jest/globals";
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { act } from "react-dom/test-utils";
+import { act } from "react";
 import renderer from "react-test-renderer";
 import DatastreamAgentsContent from "./DatastreamAgentsContent";
 

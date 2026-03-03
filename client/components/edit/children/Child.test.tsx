@@ -2,7 +2,7 @@ import React from "react";
 import { beforeEach, describe, expect, it, jest } from "@jest/globals";
 import { render, screen, waitFor } from "@testing-library/react";
 import renderer from "react-test-renderer";
-import { act } from "react-dom/test-utils";
+import { act } from "react";
 import userEvent from "@testing-library/user-event";
 import { ChildProps, Child } from "./Child";
 import { EditorContextProvider, ObjectDetails } from "../../../context/EditorContext";

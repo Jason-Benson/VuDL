@@ -5,7 +5,7 @@ import userEvent from "@testing-library/user-event";
 import renderer from "react-test-renderer";
 import DatastreamProcessMetadataContent from "./DatastreamProcessMetadataContent";
 import { waitFor } from "@testing-library/react";
-import { act } from "react-dom/test-utils";
+import { act } from "react";
 
 const mockUseGlobalContext = jest.fn();
 jest.mock("../../../context/GlobalContext", () => ({

@@ -1,6 +1,6 @@
 import React from "react";
 import { beforeEach, describe, expect, it, jest } from "@jest/globals";
-import { act } from "react-dom/test-utils";
+import { act } from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
 import renderer from "react-test-renderer";
 import ChildPosition from "./ChildPosition";

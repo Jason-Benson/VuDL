@@ -2,7 +2,7 @@ import React from "react";
 import { describe, beforeEach, expect, it, jest } from "@jest/globals";
 import { fireEvent, render, screen } from "@testing-library/react";
 import renderer from "react-test-renderer";
-import { act } from "react-dom/test-utils";
+import { act } from "react";
 import DatastreamLicenseContent from "./DatastreamLicenseContent";
 
 jest.mock("@mui/material/RadioGroup", () => () => "RadioGroup");

@@ -15,9 +15,9 @@ jest.mock("@mui/x-tree-view/TreeItem", function () {
     return { TreeItem: () => "TreeItem" };
 });
 
-jest.mock("@mui/x-tree-view/SimpleTreeView", function () {
+jest.mock("@mui/x-tree-view/TreeView", function () {
     return {
-        SimpleTreeView: ({ onNodeSelect, children }) => {
+        TreeView: ({ onNodeSelect, children }) => {
             nodeSelectFunction = onNodeSelect;
             treeItems = children;
             return children;

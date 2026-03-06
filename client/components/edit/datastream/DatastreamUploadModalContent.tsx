@@ -8,7 +8,7 @@ import DatastreamProcessMetadataContent from "./DatastreamProcessMetadataContent
 import { DublinCoreMetadataContextProvider } from "../../../context/DublinCoreMetadataContext";
 import { ProcessMetadataContextProvider } from "../../../context/ProcessMetadataContext";
 
-const uploadModalMapping: Record<string, React.ReactElement> = {
+const uploadModalMapping: Record<string, React.ReactElement<any>> = {
     LICENSE: <DatastreamLicenseContent />,
     AGENTS: <DatastreamAgentsContent />,
     DC: (
@@ -23,7 +23,7 @@ const uploadModalMapping: Record<string, React.ReactElement> = {
     ),
 };
 
-const DatastreamUploadModalContent = (): React.ReactElement => {
+const DatastreamUploadModalContent = (): React.ReactElement<any> => {
     const {
         state: { activeDatastream },
     } = useEditorContext();

@@ -7,7 +7,7 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import BasicBreadcrumbs from "../shared/BasicBreadcrumbs";
 
-const SolrIndexer = (): React.ReactElement => {
+const SolrIndexer = (): React.ReactElement<any> => {
     const [results, setResults] = useState("");
 
     return (

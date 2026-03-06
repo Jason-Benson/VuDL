@@ -23,12 +23,18 @@ exports[`StateModal renders correctly for a loaded object with children 1`] = `
     onTouchEnd={[Function]}
     onTouchMove={[Function]}
     onTouchStart={[Function]}
+    ref={[Function]}
     tabIndex={0}
     type="button"
   >
     CloseIcon
     <span
       className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+      ref={
+        {
+          "current": null,
+        }
+      }
     />
   </button>,
   "{"pid":"foo:123"}",
@@ -44,6 +50,7 @@ exports[`StateModal renders correctly for a loaded object with children 1`] = `
     <div
       aria-labelledby="state-modal-group-label"
       className="MuiFormGroup-root MuiRadioGroup-root css-dmmspl-MuiFormGroup-root"
+      ref={[Function]}
       role="radiogroup"
     >
       <label
@@ -63,6 +70,7 @@ exports[`StateModal renders correctly for a loaded object with children 1`] = `
           onTouchEnd={[Function]}
           onTouchMove={[Function]}
           onTouchStart={[Function]}
+          ref={[Function]}
           tabIndex={null}
         >
           <input
@@ -103,6 +111,11 @@ exports[`StateModal renders correctly for a loaded object with children 1`] = `
           </span>
           <span
             className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            ref={
+              {
+                "current": null,
+              }
+            }
           />
         </span>
         <span
@@ -128,6 +141,7 @@ exports[`StateModal renders correctly for a loaded object with children 1`] = `
           onTouchEnd={[Function]}
           onTouchMove={[Function]}
           onTouchStart={[Function]}
+          ref={[Function]}
           tabIndex={null}
         >
           <input
@@ -168,6 +182,11 @@ exports[`StateModal renders correctly for a loaded object with children 1`] = `
           </span>
           <span
             className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            ref={
+              {
+                "current": null,
+              }
+            }
           />
         </span>
         <span
@@ -193,6 +212,7 @@ exports[`StateModal renders correctly for a loaded object with children 1`] = `
           onTouchEnd={[Function]}
           onTouchMove={[Function]}
           onTouchStart={[Function]}
+          ref={[Function]}
           tabIndex={null}
         >
           <input
@@ -233,6 +253,11 @@ exports[`StateModal renders correctly for a loaded object with children 1`] = `
           </span>
           <span
             className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            ref={
+              {
+                "current": null,
+              }
+            }
           />
         </span>
         <span
@@ -263,6 +288,7 @@ exports[`StateModal renders correctly for a loaded object with children 1`] = `
         onTouchEnd={[Function]}
         onTouchMove={[Function]}
         onTouchStart={[Function]}
+        ref={[Function]}
         tabIndex={null}
       >
         <input
@@ -288,6 +314,11 @@ exports[`StateModal renders correctly for a loaded object with children 1`] = `
         </svg>
         <span
           className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+          ref={
+            {
+              "current": null,
+            }
+          }
         />
       </span>
       <span
@@ -328,12 +359,18 @@ exports[`StateModal renders correctly for a loaded object without children 1`] =
     onTouchEnd={[Function]}
     onTouchMove={[Function]}
     onTouchStart={[Function]}
+    ref={[Function]}
     tabIndex={0}
     type="button"
   >
     CloseIcon
     <span
       className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+      ref={
+        {
+          "current": null,
+        }
+      }
     />
   </button>,
   "{"pid":"foo:123"}",
@@ -349,6 +386,7 @@ exports[`StateModal renders correctly for a loaded object without children 1`] =
     <div
       aria-labelledby="state-modal-group-label"
       className="MuiFormGroup-root MuiRadioGroup-root css-dmmspl-MuiFormGroup-root"
+      ref={[Function]}
       role="radiogroup"
     >
       <label
@@ -368,6 +406,7 @@ exports[`StateModal renders correctly for a loaded object without children 1`] =
           onTouchEnd={[Function]}
           onTouchMove={[Function]}
           onTouchStart={[Function]}
+          ref={[Function]}
           tabIndex={null}
         >
           <input
@@ -408,6 +447,11 @@ exports[`StateModal renders correctly for a loaded object without children 1`] =
           </span>
           <span
             className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            ref={
+              {
+                "current": null,
+              }
+            }
           />
         </span>
         <span
@@ -433,6 +477,7 @@ exports[`StateModal renders correctly for a loaded object without children 1`] =
           onTouchEnd={[Function]}
           onTouchMove={[Function]}
           onTouchStart={[Function]}
+          ref={[Function]}
           tabIndex={null}
         >
           <input
@@ -473,6 +518,11 @@ exports[`StateModal renders correctly for a loaded object without children 1`] =
           </span>
           <span
             className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            ref={
+              {
+                "current": null,
+              }
+            }
           />
         </span>
         <span
@@ -498,6 +548,7 @@ exports[`StateModal renders correctly for a loaded object without children 1`] =
           onTouchEnd={[Function]}
           onTouchMove={[Function]}
           onTouchStart={[Function]}
+          ref={[Function]}
           tabIndex={null}
         >
           <input
@@ -538,6 +589,11 @@ exports[`StateModal renders correctly for a loaded object without children 1`] =
           </span>
           <span
             className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            ref={
+              {
+                "current": null,
+              }
+            }
           />
         </span>
         <span
@@ -579,12 +635,18 @@ exports[`StateModal renders correctly for a pending object 1`] = `
     onTouchEnd={[Function]}
     onTouchMove={[Function]}
     onTouchStart={[Function]}
+    ref={[Function]}
     tabIndex={0}
     type="button"
   >
     CloseIcon
     <span
       className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+      ref={
+        {
+          "current": null,
+        }
+      }
     />
   </button>,
   "{"pid":"foo:123"}",
@@ -600,6 +662,7 @@ exports[`StateModal renders correctly for a pending object 1`] = `
     <div
       aria-labelledby="state-modal-group-label"
       className="MuiFormGroup-root MuiRadioGroup-root css-dmmspl-MuiFormGroup-root"
+      ref={[Function]}
       role="radiogroup"
     >
       <label
@@ -619,6 +682,7 @@ exports[`StateModal renders correctly for a pending object 1`] = `
           onTouchEnd={[Function]}
           onTouchMove={[Function]}
           onTouchStart={[Function]}
+          ref={[Function]}
           tabIndex={null}
         >
           <input
@@ -659,6 +723,11 @@ exports[`StateModal renders correctly for a pending object 1`] = `
           </span>
           <span
             className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            ref={
+              {
+                "current": null,
+              }
+            }
           />
         </span>
         <span
@@ -684,6 +753,7 @@ exports[`StateModal renders correctly for a pending object 1`] = `
           onTouchEnd={[Function]}
           onTouchMove={[Function]}
           onTouchStart={[Function]}
+          ref={[Function]}
           tabIndex={null}
         >
           <input
@@ -724,6 +794,11 @@ exports[`StateModal renders correctly for a pending object 1`] = `
           </span>
           <span
             className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            ref={
+              {
+                "current": null,
+              }
+            }
           />
         </span>
         <span
@@ -749,6 +824,7 @@ exports[`StateModal renders correctly for a pending object 1`] = `
           onTouchEnd={[Function]}
           onTouchMove={[Function]}
           onTouchStart={[Function]}
+          ref={[Function]}
           tabIndex={null}
         >
           <input
@@ -789,6 +865,11 @@ exports[`StateModal renders correctly for a pending object 1`] = `
           </span>
           <span
             className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            ref={
+              {
+                "current": null,
+              }
+            }
           />
         </span>
         <span
@@ -833,12 +914,18 @@ exports[`StateModal renders correctly when closed 1`] = `
     onTouchEnd={[Function]}
     onTouchMove={[Function]}
     onTouchStart={[Function]}
+    ref={[Function]}
     tabIndex={0}
     type="button"
   >
     CloseIcon
     <span
       className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+      ref={
+        {
+          "current": null,
+        }
+      }
     />
   </button>,
   "{"pid":"foo:123"}",
@@ -854,6 +941,7 @@ exports[`StateModal renders correctly when closed 1`] = `
     <div
       aria-labelledby="state-modal-group-label"
       className="MuiFormGroup-root MuiRadioGroup-root css-dmmspl-MuiFormGroup-root"
+      ref={[Function]}
       role="radiogroup"
     >
       <label
@@ -873,6 +961,7 @@ exports[`StateModal renders correctly when closed 1`] = `
           onTouchEnd={[Function]}
           onTouchMove={[Function]}
           onTouchStart={[Function]}
+          ref={[Function]}
           tabIndex={null}
         >
           <input
@@ -913,6 +1002,11 @@ exports[`StateModal renders correctly when closed 1`] = `
           </span>
           <span
             className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            ref={
+              {
+                "current": null,
+              }
+            }
           />
         </span>
         <span
@@ -938,6 +1032,7 @@ exports[`StateModal renders correctly when closed 1`] = `
           onTouchEnd={[Function]}
           onTouchMove={[Function]}
           onTouchStart={[Function]}
+          ref={[Function]}
           tabIndex={null}
         >
           <input
@@ -978,6 +1073,11 @@ exports[`StateModal renders correctly when closed 1`] = `
           </span>
           <span
             className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            ref={
+              {
+                "current": null,
+              }
+            }
           />
         </span>
         <span
@@ -1003,6 +1103,7 @@ exports[`StateModal renders correctly when closed 1`] = `
           onTouchEnd={[Function]}
           onTouchMove={[Function]}
           onTouchStart={[Function]}
+          ref={[Function]}
           tabIndex={null}
         >
           <input
@@ -1043,6 +1144,11 @@ exports[`StateModal renders correctly when closed 1`] = `
           </span>
           <span
             className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            ref={
+              {
+                "current": null,
+              }
+            }
           />
         </span>
         <span

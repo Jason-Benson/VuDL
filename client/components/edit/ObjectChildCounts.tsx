@@ -6,7 +6,7 @@ export interface ObjectChildCountsProps {
     pid: string;
 }
 
-export const ObjectChildCounts = ({ pid }: ObjectChildCountsProps): React.ReactElement => {
+export const ObjectChildCounts = ({ pid }: ObjectChildCountsProps): React.ReactElement<any> => {
     const {
         state: { childCountsStorage },
         action: { loadChildCountsIntoStorage },

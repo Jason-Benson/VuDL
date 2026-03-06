@@ -7,7 +7,7 @@ interface ThumbnailProps {
     selected: boolean;
 }
 
-const Thumbnail = forwardRef(({ scrollTo, number, selected }: ThumbnailProps, ref): React.ReactElement => {
+const Thumbnail = forwardRef(({ scrollTo, number, selected }: ThumbnailProps, ref): React.ReactElement<any> => {
     const {
         state: { order },
         action: { getLabel, getMagicLabel, setPage, getJobImageUrl },

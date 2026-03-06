@@ -7,7 +7,7 @@ interface GenericErrorProps {
     message: string;
 }
 
-const GenericError = ({ message }: GenericErrorProps): React.ReactElement => {
+const GenericError = ({ message }: GenericErrorProps): React.ReactElement<any> => {
     return (
         <Box display="flex" flexDirection="row" justifyContent="center" alignItems="center" minHeight="100vh">
             <SentimentVeryDissatisfiedIcon sx={{ fontSize: "100px", color: "red" }} />

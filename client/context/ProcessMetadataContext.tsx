@@ -1,5 +1,4 @@
 import React, { createContext, useContext, useReducer } from "react";
-import PropTypes from "prop-types";
 
 const ProcessMetadataContext = createContext({});
 
@@ -94,7 +93,13 @@ const processMetadataReducer = (state: ProcessMetadata, { type, payload }: { typ
     return state;
 };
 
-export const ProcessMetadataContextProvider = ({ children }) => {
+interface ProcessMetadataContextProviderProps {
+    children?: React.ReactNode;
+}
+
+export const ProcessMetadataContextProvider = ({
+    children
+}: ProcessMetadataContextProviderProps) => {
     const [state, dispatch] = useReducer(processMetadataReducer, {});
     const value = { state, dispatch };
     return <ProcessMetadataContext.Provider value={value}>{children}</ProcessMetadataContext.Provider>;
@@ -180,10 +185,6 @@ export const useProcessMetadataContext = () => {
             setProcessOrganization,
         },
     };
-};
-
-ProcessMetadataContextProvider.propTypes = {
-    children: PropTypes.node,
 };
 
 export default { ProcessMetadataContextProvider, useProcessMetadataContext };

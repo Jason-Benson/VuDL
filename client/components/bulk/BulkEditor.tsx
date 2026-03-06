@@ -9,7 +9,7 @@ import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import BlurSavingTextField from "../shared/BlurSavingTextField";
 
-const BulkEditor = (): React.ReactElement => {
+const BulkEditor = (): React.ReactElement<any> => {
     const {
         state: { licensesCatalog },
         action: { initializeCatalog },

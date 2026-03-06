@@ -1,6 +1,5 @@
 import React, { createContext, useContext, useReducer } from "react";
 import { authApiUrl, ingestApiUrl, loginUrl } from "../util/routes";
-import PropTypes from "prop-types";
 
 /**
  * Pass a shared entity to react components,
@@ -34,7 +33,13 @@ const fetchReducer = (state, { type, payload }) => {
     }
 };
 
-export const FetchContextProvider = ({ children }) => {
+interface FetchContextProviderProps {
+    children?: React.ReactNode;
+}
+
+export const FetchContextProvider = ({
+    children
+}: FetchContextProviderProps) => {
     const [state, dispatch] = useReducer(fetchReducer, fetchContextParams);
     const value = { state, dispatch };
     return <FetchContext.Provider value={value}>{children}</FetchContext.Provider>;
@@ -179,10 +184,6 @@ export const useFetchContext = () => {
             makeRequest,
         },
     };
-};
-
-FetchContextProvider.propTypes = {
-    children: PropTypes.node,
 };
 
 export default { FetchContextProvider, useFetchContext };

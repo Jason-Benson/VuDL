@@ -19,7 +19,7 @@ interface DatastreamAgentsContentRowProps {
         name: string;
         notes: Array<string>;
     };
-    additionalControls: React.ReactElement;
+    additionalControls: React.ReactElement<any>;
     initialExpand: boolean;
     namesHelperText: string;
     onRoleChange: (role: string) => void;
@@ -36,7 +36,7 @@ const DatastreamAgentsContentRow = ({
     onTypeChange,
     onNameChange,
     onNotesChange,
-}: DatastreamAgentsContentRowProps): React.ReactElement => {
+}: DatastreamAgentsContentRowProps): React.ReactElement<any> => {
     const {
         state: { agentsCatalog },
     } = useEditorContext();

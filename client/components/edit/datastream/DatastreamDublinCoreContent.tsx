@@ -11,7 +11,7 @@ import DatastreamDublinCoreValues from "./DatastreamDublinCoreValues";
 import DatastreamDublinCoreAddButtons from "./DatastreamDublinCoreAddButtons";
 import ObjectPreviewButton from "../ObjectPreviewButton";
 
-const DatastreamDublinCoreContent = (): React.ReactElement => {
+const DatastreamDublinCoreContent = (): React.ReactElement<any> => {
     const {
         state: { currentPid, objectDetailsStorage },
     } = useEditorContext();

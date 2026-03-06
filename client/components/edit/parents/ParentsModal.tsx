@@ -11,7 +11,7 @@ import ObjectLoader from "../ObjectLoader";
 import ParentList from "./ParentList";
 import ParentPicker from "./ParentPicker";
 
-const ParentsModal = (): React.ReactElement => {
+const ParentsModal = (): React.ReactElement<any> => {
     const {
         action: { isModalOpen, closeModal },
     } = useGlobalContext();

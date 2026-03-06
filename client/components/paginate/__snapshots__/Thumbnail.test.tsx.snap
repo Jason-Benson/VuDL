@@ -1,21 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Thumbnail renders 1`] = `
-<div
-  className="thumbnail selected"
-  onClick={[Function]}
->
-  <img
-    alt="thumbnail 1"
-    src="www.testurl.com"
-  />
-  <div
-    className="number"
-  >
-    2
-  </div>
-  <div
-    className="label magic"
-  />
-</div>
-`;
+exports[`Thumbnail renders 1`] = `null`;

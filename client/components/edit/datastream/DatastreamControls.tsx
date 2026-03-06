@@ -9,7 +9,7 @@ interface DatastreamControlsProps {
     disabled: boolean;
 }
 
-const DatastreamControls = ({ datastream, disabled }: DatastreamControlsProps): React.ReactElement => {
+const DatastreamControls = ({ datastream, disabled }: DatastreamControlsProps): React.ReactElement<any> => {
     return (
         <Box className="datastreamControls">
             <ButtonGroup variant="text">

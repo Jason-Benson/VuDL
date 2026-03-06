@@ -3,7 +3,7 @@ import { useEditorContext } from "../../../context/EditorContext";
 import { useDublinCoreMetadataContext } from "../../../context/DublinCoreMetadataContext";
 import DatastreamDublinCoreFieldGroup from "./DatastreamDublinCoreFieldGroup";
 
-const DatastreamDublinCoreValues = (): React.ReactElement => {
+const DatastreamDublinCoreValues = (): React.ReactElement<any> => {
     const {
         state: { dublinCoreFieldCatalog },
     } = useEditorContext();

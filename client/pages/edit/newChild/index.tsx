@@ -1,7 +1,7 @@
 import React from "react";
 import CreateObject from "../../../components/edit/create/CreateObject";
 
-function NewChild(): React.ReactElement {
+function NewChild(): React.ReactElement<any> {
     return <CreateObject allowNoParentPid={true} allowChangeParentPid={false} />;
 }
 

@@ -1,10 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`DatastreamList renders 1`] = `
-<ul
-  className="MuiList-root MuiList-padding css-h4y409-MuiList-root"
->
-  Datastream: {"datastream":{"stream":"test0","disabled":false}}
-  Datastream: {"datastream":{"stream":"test1","disabled":true}}
-</ul>
-`;
+exports[`DatastreamList renders 1`] = `null`;

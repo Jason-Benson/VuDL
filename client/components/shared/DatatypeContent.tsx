@@ -7,7 +7,7 @@ interface DatatypeContentProps {
     mimeType: string;
 }
 
-const DatatypeContent = ({ data, mimeType }: DatatypeContentProps): React.ReactElement => {
+const DatatypeContent = ({ data, mimeType }: DatatypeContentProps): React.ReactElement<any> => {
     switch (true) {
         case /image\/[-+.\w]+/.test(mimeType):
             return <img className={styles.viewContentImage} src={data} alt="Datastream Image" />;

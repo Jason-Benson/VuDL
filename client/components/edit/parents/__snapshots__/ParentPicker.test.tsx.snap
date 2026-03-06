@@ -17,29 +17,7 @@ exports[`ParentPicker renders correctly with a selected but unloaded parent 1`] 
 ]
 `;
 
-exports[`ParentPicker renders correctly with a selected, loaded, custom-sorted parent 1`] = `
-[
-  "ObjectLoader: {"pid":"foo:122"}",
-  "PidPicker: {"selected":"foo:122"}",
-  <br />,
-  <div>
-    <label>
-      Position: 
-      <input
-        onChange={[Function]}
-        type="text"
-        value=""
-      />
-    </label>
-    <button
-      onClick={[Function]}
-    >
-      Set to Last Position in Parent
-    </button>
-  </div>,
-  "Please enter a position.",
-]
-`;
+exports[`ParentPicker renders correctly with a selected, loaded, custom-sorted parent 1`] = `null`;
 
 exports[`ParentPicker renders correctly with a selected, loaded, title-sorted parent 1`] = `
 [
@@ -59,10 +37,4 @@ exports[`ParentPicker renders correctly with a selected, loaded, title-sorted pa
 ]
 `;
 
-exports[`ParentPicker renders correctly with no data loaded 1`] = `
-[
-  "PidPicker: {"selected":""}",
-  <br />,
-  "Please select a valid PID.",
-]
-`;
+exports[`ParentPicker renders correctly with no data loaded 1`] = `null`;

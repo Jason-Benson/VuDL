@@ -14,18 +14,19 @@ import { useProcessMetadataContext } from "../../../context/ProcessMetadataConte
 import BlurSavingTextField from "../../shared/BlurSavingTextField";
 import Grid from "@mui/material/Grid";
 import DatastreamProcessMetadataTask from "./DatastreamProcessMetadataTask";
-import { DateTimePicker, LocalizationProvider } from "@mui/x-date-pickers";
+import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import type {} from "@mui/x-date-pickers/themeAugmentation";
 import { useEditorContext } from "../../../context/EditorContext";
 import PidPicker from "../PidPicker";
+import dayjs from "dayjs";
 
 // Whenever a task is added or removed, we need to revise the keys on the task
 // components so that React renders correctly. This counter is incremented on each
 // task add/remove, and used as part of the keys on related components.
 let taskKeyGeneration = 0;
 
-const DatastreamProcessMetadataContent = (): React.ReactElement => {
+const DatastreamProcessMetadataContent = (): React.ReactElement<any> => {
     const {
         action: { closeModal },
     } = useGlobalContext();
@@ -155,11 +156,13 @@ const DatastreamProcessMetadataContent = (): React.ReactElement => {
                         </Grid>
                         <Grid item xs={3}>
                             <LocalizationProvider dateAdapter={AdapterDayjs}>
-                                <DateTimePicker
-                                    renderInput={(props) => <TextField {...props} />}
+                                <DatePicker
                                     label="Process Date/Time"
-                                    value={processMetadata.processDateTime ?? ""}
+                                    value={processMetadata.processDateTime ? dayjs(processMetadata.processDateTime) : null}
                                     onChange={setProcessDateTime}
+                                    slotProps={{
+                                        textField: { fullWidth: true }
+                                    }}
                                 />
                             </LocalizationProvider>
                         </Grid>

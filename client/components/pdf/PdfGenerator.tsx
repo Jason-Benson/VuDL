@@ -3,7 +3,7 @@ import { baseUrl } from "../../util/routes";
 import { useFetchContext } from "../../context/FetchContext";
 import BasicBreadcrumbs from "../shared/BasicBreadcrumbs";
 
-const PdfGenerator = (): React.ReactElement => {
+const PdfGenerator = (): React.ReactElement<any> => {
     const [pid, setPid] = useState("");
     const [results, setResults] = useState("");
     const {

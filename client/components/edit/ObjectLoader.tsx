@@ -7,7 +7,7 @@ export interface ObjectLoaderProps {
     errorCallback?: ((pid: string) => void) | null;
 }
 
-export const ObjectLoader = ({ pid, errorCallback = null }: ObjectLoaderProps): React.ReactElement | null => {
+export const ObjectLoader = ({ pid, errorCallback = null }: ObjectLoaderProps): React.ReactElement<any> | null => {
     const {
         state: { objectDetailsStorage },
         action: { loadObjectDetailsIntoStorage },

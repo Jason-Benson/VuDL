@@ -2,7 +2,7 @@ import React from "react";
 import DialogContent from "@mui/material/DialogContent";
 import useDatastreamOperation from "../../../hooks/useDatastreamOperation";
 
-const DatastreamUploadContent = (): React.ReactElement => {
+const DatastreamUploadContent = (): React.ReactElement<any> => {
     const { uploadFile } = useDatastreamOperation();
     const onChange = (event) => {
         uploadFile(event.target.files[0]);

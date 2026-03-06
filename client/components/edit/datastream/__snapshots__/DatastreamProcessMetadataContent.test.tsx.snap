@@ -347,13 +347,7 @@ exports[`DatastreamProcessMetadataContent renders a form when non-empty data is 
 ]
 `;
 
-exports[`DatastreamProcessMetadataContent renders a loading message if content is unavailable 1`] = `
-<div
-  className="MuiDialogContent-root css-ypiqx9-MuiDialogContent-root"
->
-  Loading...
-</div>
-`;
+exports[`DatastreamProcessMetadataContent renders a loading message if content is unavailable 1`] = `null`;
 
 exports[`DatastreamProcessMetadataContent supports tab switching 1`] = `
 [

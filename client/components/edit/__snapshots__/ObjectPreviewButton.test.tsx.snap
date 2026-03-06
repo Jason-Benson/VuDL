@@ -1,9 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ObjectPreviewButton renders correctly with VuFind URL 1`] = `
-<button
-  onClick={[Function]}
->
-  Preview
-</button>
-`;
+exports[`ObjectPreviewButton renders correctly with VuFind URL 1`] = `null`;

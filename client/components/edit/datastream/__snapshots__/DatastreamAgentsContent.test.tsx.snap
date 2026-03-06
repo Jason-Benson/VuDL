@@ -4,6 +4,11 @@ exports[`DatastreamAgentsContent renders, and calls getAgents on render 1`] = `
 [
   <div
     className="MuiDialogContent-root css-pvro84-MuiDialogContent-root"
+    ref={
+      {
+        "current": null,
+      }
+    }
   >
     <div
       className="MuiBox-root css-1hjmj0z"
@@ -63,12 +68,18 @@ exports[`DatastreamAgentsContent renders, and calls getAgents on render 1`] = `
       onTouchEnd={[Function]}
       onTouchMove={[Function]}
       onTouchStart={[Function]}
+      ref={[Function]}
       tabIndex={0}
       type="button"
     >
       Save Changes
       <span
         className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+        ref={
+          {
+            "current": null,
+          }
+        }
       />
     </button>
     <button
@@ -87,12 +98,18 @@ exports[`DatastreamAgentsContent renders, and calls getAgents on render 1`] = `
       onTouchEnd={[Function]}
       onTouchMove={[Function]}
       onTouchStart={[Function]}
+      ref={[Function]}
       tabIndex={0}
       type="button"
     >
       Save And Close
       <span
         className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+        ref={
+          {
+            "current": null,
+          }
+        }
       />
     </button>
     <button
@@ -111,12 +128,18 @@ exports[`DatastreamAgentsContent renders, and calls getAgents on render 1`] = `
       onTouchEnd={[Function]}
       onTouchMove={[Function]}
       onTouchStart={[Function]}
+      ref={[Function]}
       tabIndex={0}
       type="button"
     >
       Cancel
       <span
         className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+        ref={
+          {
+            "current": null,
+          }
+        }
       />
     </button>
   </div>,
@@ -127,6 +150,11 @@ exports[`DatastreamAgentsContent supports tab switching 1`] = `
 [
   <div
     className="MuiDialogContent-root css-pvro84-MuiDialogContent-root"
+    ref={
+      {
+        "current": null,
+      }
+    }
   >
     <div
       className="MuiBox-root css-1hjmj0z"
@@ -186,12 +214,18 @@ exports[`DatastreamAgentsContent supports tab switching 1`] = `
       onTouchEnd={[Function]}
       onTouchMove={[Function]}
       onTouchStart={[Function]}
+      ref={[Function]}
       tabIndex={0}
       type="button"
     >
       Save Changes
       <span
         className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+        ref={
+          {
+            "current": null,
+          }
+        }
       />
     </button>
     <button
@@ -210,12 +244,18 @@ exports[`DatastreamAgentsContent supports tab switching 1`] = `
       onTouchEnd={[Function]}
       onTouchMove={[Function]}
       onTouchStart={[Function]}
+      ref={[Function]}
       tabIndex={0}
       type="button"
     >
       Save And Close
       <span
         className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+        ref={
+          {
+            "current": null,
+          }
+        }
       />
     </button>
     <button
@@ -234,12 +274,18 @@ exports[`DatastreamAgentsContent supports tab switching 1`] = `
       onTouchEnd={[Function]}
       onTouchMove={[Function]}
       onTouchStart={[Function]}
+      ref={[Function]}
       tabIndex={0}
       type="button"
     >
       Cancel
       <span
         className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+        ref={
+          {
+            "current": null,
+          }
+        }
       />
     </button>
   </div>,

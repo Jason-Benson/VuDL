@@ -14,7 +14,7 @@ import "../styles/variables.css";
 import "../styles/global.css";
 import "../styles/job-paginator.css";
 
-function MyApp({ Component, pageProps }: { Component: React.ReactNode }): React.ReactElement {
+function MyApp({ Component, pageProps }: { Component: React.ReactNode }): React.ReactElement<any> {
     return (
         <GlobalContextProvider>
             <PaginatorContextProvider>

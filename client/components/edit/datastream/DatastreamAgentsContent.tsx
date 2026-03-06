@@ -16,7 +16,7 @@ import Tab from "@mui/material/Tab";
 import Tabs from "@mui/material/Tabs";
 import PidPicker from "../PidPicker";
 
-const DatastreamAgentsContent = (): React.ReactElement => {
+const DatastreamAgentsContent = (): React.ReactElement<any> => {
     const {
         state: { agentsCatalog, currentAgents, objectDetailsStorage },
         action: { loadObjectDetailsIntoStorage, setCurrentAgents },
@@ -82,7 +82,7 @@ const DatastreamAgentsContent = (): React.ReactElement => {
         await uploadAgents(agents);
         setIsLoading(false);
     };
-    const contentRef = useRef();
+    const contentRef = useRef(undefined);
 
     useLayoutEffect(() => {
         if (contentRef.current) {

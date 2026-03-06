@@ -6,7 +6,7 @@ interface JobListProps {
     data: Array<string>;
 }
 
-const JobList = ({ category, data }: JobListProps): React.ReactElement => {
+const JobList = ({ category, data }: JobListProps): React.ReactElement<any> => {
     return (
         <ul>
             {data.map((job) => (

@@ -11,7 +11,7 @@ import ObjectThumbnail from "./ObjectThumbnail";
 import ObjectChildCounts from "./ObjectChildCounts";
 import { updateRecentPidsCatalog } from "../../util/RecentPidsCatalog";
 
-const ObjectSummary = (): React.ReactElement => {
+const ObjectSummary = (): React.ReactElement<any> => {
     const {
         state: { currentPid, objectDetailsStorage },
         action: { extractFirstMetadataValue, loadCurrentObjectDetails },

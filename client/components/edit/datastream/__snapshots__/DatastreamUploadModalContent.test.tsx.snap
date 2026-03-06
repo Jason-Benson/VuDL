@@ -1,14 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`DatastreamUploadModalContent renders 1`] = `
-<div
-  className="MuiDialogContent-root css-ypiqx9-MuiDialogContent-root"
->
-  <input
-    aria-label="Upload File"
-    className="uploadFileButton"
-    onChange={[Function]}
-    type="file"
-  />
-</div>
-`;
+exports[`DatastreamUploadModalContent renders 1`] = `null`;

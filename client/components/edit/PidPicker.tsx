@@ -18,7 +18,7 @@ interface PidPickerProps {
     parents?: Array<Parent>;
 }
 
-const PidPicker = ({ selected, setSelected, parents = [] }: PidPickerProps): React.ReactElement => {
+const PidPicker = ({ selected, setSelected, parents = [] }: PidPickerProps): React.ReactElement<any> => {
     const {
         state: { favoritePidsCatalog },
     } = useEditorContext();

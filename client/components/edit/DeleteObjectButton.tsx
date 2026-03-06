@@ -10,7 +10,7 @@ export interface DeleteObjectButtonProps {
     pid: string;
 }
 
-const DeleteObjectButton = ({ pid }: DeleteObjectButtonProps): React.ReactElement => {
+const DeleteObjectButton = ({ pid }: DeleteObjectButtonProps): React.ReactElement<any> => {
     const {
         action: { attachObjectToParent, getParentCountForPid, moveObjectToParent, updateObjectState },
         state: { objectDetailsStorage, trashPid },

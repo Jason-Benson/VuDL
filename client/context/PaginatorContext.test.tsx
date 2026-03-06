@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { beforeEach, describe, expect, it, jest } from "@jest/globals";
 import { renderHook, act } from "@testing-library/react";
 import * as JobPaginatorState from "./JobPaginatorState";
@@ -7,7 +6,13 @@ import * as routes from "../util/routes";
 import { FetchContextProvider } from "./FetchContext";
 import { PaginatorContextProvider, usePaginatorContext } from "./PaginatorContext";
 
-const wrapper = ({ children }) => {
+interface wrapperProps {
+    children?: React.ReactNode;
+}
+
+const wrapper = ({
+    children
+}: wrapperProps) => {
     return (
         <FetchContextProvider>
             <PaginatorContextProvider>{children}</PaginatorContextProvider>
@@ -15,9 +20,6 @@ const wrapper = ({ children }) => {
     );
 };
 wrapper.displayName = "wrapper";
-wrapper.propTypes = {
-    children: PropTypes.node,
-};
 describe("usePaginatorContext", () => {
     let json;
     beforeEach(() => {

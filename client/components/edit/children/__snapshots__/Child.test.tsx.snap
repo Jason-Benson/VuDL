@@ -34,6 +34,7 @@ exports[`Child handles empty titles appropriately 1`] = `
         onClick={[Function]}
         onMouseEnter={[Function]}
         onTouchStart={[Function]}
+        ref={[Function]}
       >
         -
       </a>
@@ -96,6 +97,7 @@ exports[`Child renders a thumbnail 1`] = `
         onClick={[Function]}
         onMouseEnter={[Function]}
         onTouchStart={[Function]}
+        ref={[Function]}
       >
         ajax-loaded title
       </a>
@@ -163,6 +165,7 @@ exports[`Child renders child counts 1`] = `
         onClick={[Function]}
         onMouseEnter={[Function]}
         onTouchStart={[Function]}
+        ref={[Function]}
       >
         ajax-loaded title
       </a>
@@ -230,6 +233,7 @@ exports[`Child renders thumbnail and child counts 1`] = `
         onClick={[Function]}
         onMouseEnter={[Function]}
         onTouchStart={[Function]}
+        ref={[Function]}
       >
         ajax-loaded title
       </a>
@@ -298,6 +302,7 @@ exports[`Child renders using ajax-loaded data 1`] = `
         onClick={[Function]}
         onMouseEnter={[Function]}
         onTouchStart={[Function]}
+        ref={[Function]}
       >
         ajax-loaded title
       </a>

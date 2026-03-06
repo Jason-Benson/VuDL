@@ -1540,19 +1540,4 @@ exports[`Breadcrumb renders using ajax-loaded object data (simple case, shallow 
 </ul>
 `;
 
-exports[`Breadcrumb renders without a pid 1`] = `
-<ul
-  className="breadcrumbs"
->
-  <li>
-    <a
-      href="/"
-      onClick={[Function]}
-      onMouseEnter={[Function]}
-      onTouchStart={[Function]}
-    >
-      Main Menu
-    </a>
-  </li>
-</ul>
-`;
+exports[`Breadcrumb renders without a pid 1`] = `null`;

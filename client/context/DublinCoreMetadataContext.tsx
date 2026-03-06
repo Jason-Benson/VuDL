@@ -1,5 +1,4 @@
 import React, { createContext, useContext, useReducer } from "react";
-import PropTypes from "prop-types";
 import { constants } from "buffer";
 
 export interface DublinCoreMetadata {
@@ -134,7 +133,13 @@ const dublinCoreMetadataReducer = (state: DublinCoreMetadata, { type, payload }:
     return state;
 };
 
-export const DublinCoreMetadataContextProvider = ({ children }) => {
+interface DublinCoreMetadataContextProviderProps {
+    children?: React.ReactNode;
+}
+
+export const DublinCoreMetadataContextProvider = ({
+    children
+}: DublinCoreMetadataContextProviderProps) => {
     const [state, dispatch] = useReducer(dublinCoreMetadataReducer, dublinCoreContextParams);
     const value = { state, dispatch };
     return <DublinCoreMetadataContext.Provider value={value}>{children}</DublinCoreMetadataContext.Provider>;
@@ -199,10 +204,6 @@ export const useDublinCoreMetadataContext = () => {
             setCurrentDublinCore,
         },
     };
-};
-
-DublinCoreMetadataContextProvider.propTypes = {
-    children: PropTypes.node,
 };
 
 export default { DublinCoreMetadataContextProvider, useDublinCoreMetadataContext };

@@ -40,10 +40,10 @@ const DatastreamModal = (): React.ReactElement<any> => {
         >
             <DialogTitle>
                 <Grid container>
-                    <Grid item xs={11}>
+                    <Grid size={11}>
                         {datastreamModalState}
                     </Grid>
-                    <Grid item xs={1} display="flex" justifyContent="flex-end">
+                    <Grid display="flex" justifyContent="flex-end" size={1}>
                         <IconButton className="closeButton" onClick={() => closeModal("datastream")}>
                             <CloseIcon />
                         </IconButton>

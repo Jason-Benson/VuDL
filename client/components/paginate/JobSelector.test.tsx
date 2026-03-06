@@ -9,10 +9,10 @@ const mockCategory = jest.fn();
 jest.mock(
     "./Category",
     () =>
-        function Category(props) {
+        (function Category(props) {
             mockCategory(props);
             return <mock-Category />;
-        },
+        }),
 );
 jest.mock("../shared/BasicBreadcrumbs", () => () => "BasicBreadcrumbs");
 

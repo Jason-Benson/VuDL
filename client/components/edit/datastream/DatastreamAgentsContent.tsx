@@ -130,16 +130,16 @@ const DatastreamAgentsContent = (): React.ReactElement<any> => {
                         </Box>
                         <div style={{ display: tab == EDIT_TAB ? "block" : "none" }}>
                             <Grid container spacing={1} sx={{ padding: "20px 24px" }}>
-                                <Grid container item xs={3}>
+                                <Grid container size={3}>
                                     Role
                                 </Grid>
-                                <Grid container item xs={3}>
+                                <Grid container size={3}>
                                     Type
                                 </Grid>
-                                <Grid container item xs={5}>
+                                <Grid container size={5}>
                                     Name
                                 </Grid>
-                                <Grid container item xs={1}>
+                                <Grid container size={1}>
                                     Actions
                                 </Grid>
                             </Grid>
@@ -173,7 +173,7 @@ const DatastreamAgentsContent = (): React.ReactElement<any> => {
             <Divider />
             <DialogActions sx={{ padding: "20px 24px" }}>
                 <Grid container spacing={1} justifyContent="flex-end">
-                    <Grid container item xs={6}>
+                    <Grid container size={6}>
                         {hasChanges && (
                             <Typography
                                 variant="subtitle1"
@@ -190,7 +190,7 @@ const DatastreamAgentsContent = (): React.ReactElement<any> => {
                             </Typography>
                         )}
                     </Grid>
-                    <Grid container item xs={6} justifyContent="flex-end">
+                    <Grid container justifyContent="flex-end" size={6}>
                         {hasChanges && (
                             <Button
                                 className="agentsSaveChangesButton"

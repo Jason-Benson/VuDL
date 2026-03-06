@@ -135,16 +135,16 @@ export const ChildList = ({
     return (
         <div className={styles.childlist}>
             <Grid container spacing={2} alignItems="center">
-                <Grid item xs="auto">
+                <Grid size="auto">
                     {paginatorLabel}
                 </Grid>
-                <Grid item xs="auto">
+                <Grid size="auto">
                     {paginator}
                 </Grid>
-                <Grid item xs>
+                <Grid size="grow">
                     &nbsp;
                 </Grid>
-                <Grid item xs="auto" className={styles.childlist__toggles}>
+                <Grid className={styles.childlist__toggles} size="auto">
                     {thumbsButton}
                     {modelsButton}
                     {childButton}

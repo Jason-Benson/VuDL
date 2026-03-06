@@ -136,7 +136,7 @@ const DatastreamProcessMetadataContent = (): React.ReactElement<any> => {
                 </Box>
                 <div style={{ display: tab == EDIT_TAB ? "block" : "none" }}>
                     <Grid container spacing={1} style={{ marginBottom: "10px" }}>
-                        <Grid item xs={3}>
+                        <Grid size={3}>
                             <FormControl fullWidth={true}>
                                 <BlurSavingTextField
                                     options={{ label: "Process Label" }}
@@ -145,7 +145,7 @@ const DatastreamProcessMetadataContent = (): React.ReactElement<any> => {
                                 />
                             </FormControl>
                         </Grid>
-                        <Grid item xs={3}>
+                        <Grid size={3}>
                             <FormControl fullWidth={true}>
                                 <BlurSavingTextField
                                     options={{ label: "Process Creator" }}
@@ -154,7 +154,7 @@ const DatastreamProcessMetadataContent = (): React.ReactElement<any> => {
                                 />
                             </FormControl>
                         </Grid>
-                        <Grid item xs={3}>
+                        <Grid size={3}>
                             <LocalizationProvider dateAdapter={AdapterDayjs}>
                                 <DatePicker
                                     label="Process Date/Time"
@@ -166,7 +166,7 @@ const DatastreamProcessMetadataContent = (): React.ReactElement<any> => {
                                 />
                             </LocalizationProvider>
                         </Grid>
-                        <Grid item xs={3}>
+                        <Grid size={3}>
                             <FormControl fullWidth={true}>
                                 <BlurSavingTextField
                                     options={{ label: "Process Organization" }}

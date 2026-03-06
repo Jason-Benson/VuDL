@@ -13,10 +13,10 @@ const mockThumbnail = jest.fn();
 jest.mock(
     "./Thumbnail",
     () =>
-        function Thumbnail(props) {
+        (function Thumbnail(props) {
             mockThumbnail(props);
             return "Thumbnail";
-        },
+        }),
 );
 
 describe("PaginatorList", () => {

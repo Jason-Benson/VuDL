@@ -8,8 +8,8 @@ exports[`StateModal renders correctly for a loaded object with children 1`] = `
   "foo:123",
   ")",
   <button
-    className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium closeButton css-78trlr-MuiButtonBase-root-MuiIconButton-root"
-    disabled={false}
+    className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium closeButton css-53g0n7-MuiButtonBase-root-MuiIconButton-root"
+    disabled={null}
     onBlur={[Function]}
     onClick={[Function]}
     onContextMenu={[Function]}
@@ -28,36 +28,28 @@ exports[`StateModal renders correctly for a loaded object with children 1`] = `
     type="button"
   >
     CloseIcon
-    <span
-      className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-      ref={
-        {
-          "current": null,
-        }
-      }
-    />
   </button>,
   "{"pid":"foo:123"}",
   <div
-    className="MuiFormControl-root css-1nrlq1o-MuiFormControl-root"
+    className="MuiFormControl-root css-1iw3t7y-MuiFormControl-root"
   >
     <label
-      className="MuiFormLabel-root MuiFormLabel-colorPrimary css-u4tvz2-MuiFormLabel-root"
+      className="MuiFormLabel-root MuiFormLabel-colorPrimary css-nwsdb5-MuiFormLabel-root"
       id="state-modal-group-label"
     >
       State
     </label>
     <div
       aria-labelledby="state-modal-group-label"
-      className="MuiFormGroup-root MuiRadioGroup-root css-dmmspl-MuiFormGroup-root"
+      className="MuiFormGroup-root MuiRadioGroup-root css-1mac7pt-MuiFormGroup-root"
       ref={[Function]}
       role="radiogroup"
     >
       <label
-        className="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-j204z7-MuiFormControlLabel-root"
+        className="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-19opgx6-MuiFormControlLabel-root"
       >
         <span
-          className="MuiButtonBase-root MuiRadio-root MuiRadio-colorPrimary PrivateSwitchBase-root MuiRadio-root MuiRadio-colorPrimary Mui-checked MuiRadio-root MuiRadio-colorPrimary css-1p3cwfz-MuiButtonBase-root-MuiSwitchBase-root-MuiRadio-root"
+          className="MuiButtonBase-root MuiRadio-root MuiRadio-colorPrimary PrivateSwitchBase-root MuiRadio-root MuiRadio-colorPrimary Mui-checked MuiRadio-root MuiRadio-colorPrimary css-1q72ply-MuiButtonBase-root-MuiSwitchBase-root-MuiRadio-root"
           onBlur={[Function]}
           onContextMenu={[Function]}
           onDragLeave={[Function]}
@@ -75,7 +67,7 @@ exports[`StateModal renders correctly for a loaded object with children 1`] = `
         >
           <input
             checked={true}
-            className="PrivateSwitchBase-input css-1p3z7et-MuiSwitchBase-root"
+            className="PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
             disabled={false}
             name="state-modal-group"
             onChange={[Function]}
@@ -84,11 +76,11 @@ exports[`StateModal renders correctly for a loaded object with children 1`] = `
             value="Active"
           />
           <span
-            className="css-19y5vkv-MuiRadioButtonIcon-root"
+            className="css-9oxshb-MuiRadioButtonIcon-root"
           >
             <svg
               aria-hidden={true}
-              className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1nih4k0-MuiSvgIcon-root-MuiRadioButtonIcon-root"
+              className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-iy8fvg-MuiSvgIcon-root-MuiRadioButtonIcon-root"
               data-testid="RadioButtonUncheckedIcon"
               focusable="false"
               viewBox="0 0 24 24"
@@ -99,7 +91,7 @@ exports[`StateModal renders correctly for a loaded object with children 1`] = `
             </svg>
             <svg
               aria-hidden={true}
-              className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1jq7105-MuiSvgIcon-root-MuiRadioButtonIcon-root"
+              className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1pqw2bl-MuiSvgIcon-root-MuiRadioButtonIcon-root"
               data-testid="RadioButtonCheckedIcon"
               focusable="false"
               viewBox="0 0 24 24"
@@ -109,26 +101,19 @@ exports[`StateModal renders correctly for a loaded object with children 1`] = `
               />
             </svg>
           </span>
-          <span
-            className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-            ref={
-              {
-                "current": null,
-              }
-            }
-          />
         </span>
         <span
-          className="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-ahj2mt-MuiTypography-root"
+          className="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-rizt0-MuiTypography-root"
+          style={{}}
         >
           Active
         </span>
       </label>
       <label
-        className="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-j204z7-MuiFormControlLabel-root"
+        className="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-19opgx6-MuiFormControlLabel-root"
       >
         <span
-          className="MuiButtonBase-root MuiRadio-root MuiRadio-colorPrimary PrivateSwitchBase-root MuiRadio-root MuiRadio-colorPrimary MuiRadio-root MuiRadio-colorPrimary css-1p3cwfz-MuiButtonBase-root-MuiSwitchBase-root-MuiRadio-root"
+          className="MuiButtonBase-root MuiRadio-root MuiRadio-colorPrimary PrivateSwitchBase-root MuiRadio-root MuiRadio-colorPrimary MuiRadio-root MuiRadio-colorPrimary css-1q72ply-MuiButtonBase-root-MuiSwitchBase-root-MuiRadio-root"
           onBlur={[Function]}
           onContextMenu={[Function]}
           onDragLeave={[Function]}
@@ -146,7 +131,7 @@ exports[`StateModal renders correctly for a loaded object with children 1`] = `
         >
           <input
             checked={false}
-            className="PrivateSwitchBase-input css-1p3z7et-MuiSwitchBase-root"
+            className="PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
             disabled={false}
             name="state-modal-group"
             onChange={[Function]}
@@ -155,11 +140,11 @@ exports[`StateModal renders correctly for a loaded object with children 1`] = `
             value="Inactive"
           />
           <span
-            className="css-19y5vkv-MuiRadioButtonIcon-root"
+            className="css-9oxshb-MuiRadioButtonIcon-root"
           >
             <svg
               aria-hidden={true}
-              className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1nih4k0-MuiSvgIcon-root-MuiRadioButtonIcon-root"
+              className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-iy8fvg-MuiSvgIcon-root-MuiRadioButtonIcon-root"
               data-testid="RadioButtonUncheckedIcon"
               focusable="false"
               viewBox="0 0 24 24"
@@ -170,7 +155,7 @@ exports[`StateModal renders correctly for a loaded object with children 1`] = `
             </svg>
             <svg
               aria-hidden={true}
-              className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-yve00p-MuiSvgIcon-root-MuiRadioButtonIcon-root"
+              className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-cpa8b4-MuiSvgIcon-root-MuiRadioButtonIcon-root"
               data-testid="RadioButtonCheckedIcon"
               focusable="false"
               viewBox="0 0 24 24"
@@ -180,26 +165,19 @@ exports[`StateModal renders correctly for a loaded object with children 1`] = `
               />
             </svg>
           </span>
-          <span
-            className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-            ref={
-              {
-                "current": null,
-              }
-            }
-          />
         </span>
         <span
-          className="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-ahj2mt-MuiTypography-root"
+          className="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-rizt0-MuiTypography-root"
+          style={{}}
         >
           Inactive
         </span>
       </label>
       <label
-        className="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-j204z7-MuiFormControlLabel-root"
+        className="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-19opgx6-MuiFormControlLabel-root"
       >
         <span
-          className="MuiButtonBase-root MuiRadio-root MuiRadio-colorPrimary PrivateSwitchBase-root MuiRadio-root MuiRadio-colorPrimary MuiRadio-root MuiRadio-colorPrimary css-1p3cwfz-MuiButtonBase-root-MuiSwitchBase-root-MuiRadio-root"
+          className="MuiButtonBase-root MuiRadio-root MuiRadio-colorPrimary PrivateSwitchBase-root MuiRadio-root MuiRadio-colorPrimary MuiRadio-root MuiRadio-colorPrimary css-1q72ply-MuiButtonBase-root-MuiSwitchBase-root-MuiRadio-root"
           onBlur={[Function]}
           onContextMenu={[Function]}
           onDragLeave={[Function]}
@@ -217,7 +195,7 @@ exports[`StateModal renders correctly for a loaded object with children 1`] = `
         >
           <input
             checked={false}
-            className="PrivateSwitchBase-input css-1p3z7et-MuiSwitchBase-root"
+            className="PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
             disabled={false}
             name="state-modal-group"
             onChange={[Function]}
@@ -226,11 +204,11 @@ exports[`StateModal renders correctly for a loaded object with children 1`] = `
             value="Deleted"
           />
           <span
-            className="css-19y5vkv-MuiRadioButtonIcon-root"
+            className="css-9oxshb-MuiRadioButtonIcon-root"
           >
             <svg
               aria-hidden={true}
-              className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1nih4k0-MuiSvgIcon-root-MuiRadioButtonIcon-root"
+              className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-iy8fvg-MuiSvgIcon-root-MuiRadioButtonIcon-root"
               data-testid="RadioButtonUncheckedIcon"
               focusable="false"
               viewBox="0 0 24 24"
@@ -241,7 +219,7 @@ exports[`StateModal renders correctly for a loaded object with children 1`] = `
             </svg>
             <svg
               aria-hidden={true}
-              className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-yve00p-MuiSvgIcon-root-MuiRadioButtonIcon-root"
+              className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-cpa8b4-MuiSvgIcon-root-MuiRadioButtonIcon-root"
               data-testid="RadioButtonCheckedIcon"
               focusable="false"
               viewBox="0 0 24 24"
@@ -251,17 +229,10 @@ exports[`StateModal renders correctly for a loaded object with children 1`] = `
               />
             </svg>
           </span>
-          <span
-            className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-            ref={
-              {
-                "current": null,
-              }
-            }
-          />
         </span>
         <span
-          className="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-ahj2mt-MuiTypography-root"
+          className="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-rizt0-MuiTypography-root"
+          style={{}}
         >
           Deleted
         </span>
@@ -269,13 +240,13 @@ exports[`StateModal renders correctly for a loaded object with children 1`] = `
     </div>
   </div>,
   <div
-    className="MuiFormControl-root css-1nrlq1o-MuiFormControl-root"
+    className="MuiFormControl-root css-1iw3t7y-MuiFormControl-root"
   >
     <label
-      className="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-j204z7-MuiFormControlLabel-root"
+      className="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-19opgx6-MuiFormControlLabel-root"
     >
       <span
-        className="MuiButtonBase-root MuiCheckbox-root MuiCheckbox-colorPrimary MuiCheckbox-sizeMedium PrivateSwitchBase-root MuiCheckbox-root MuiCheckbox-colorPrimary MuiCheckbox-sizeMedium MuiCheckbox-root MuiCheckbox-colorPrimary MuiCheckbox-sizeMedium css-p6iyue-MuiButtonBase-root-MuiSwitchBase-root-MuiCheckbox-root"
+        className="MuiButtonBase-root MuiCheckbox-root MuiCheckbox-colorPrimary MuiCheckbox-sizeMedium PrivateSwitchBase-root MuiCheckbox-root MuiCheckbox-colorPrimary MuiCheckbox-sizeMedium MuiCheckbox-root MuiCheckbox-colorPrimary MuiCheckbox-sizeMedium css-vuhw6e-MuiButtonBase-root-MuiSwitchBase-root-MuiCheckbox-root"
         onBlur={[Function]}
         onContextMenu={[Function]}
         onDragLeave={[Function]}
@@ -293,7 +264,7 @@ exports[`StateModal renders correctly for a loaded object with children 1`] = `
       >
         <input
           checked={false}
-          className="PrivateSwitchBase-input css-1p3z7et-MuiSwitchBase-root"
+          className="PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
           data-indeterminate={false}
           disabled={false}
           onChange={[Function]}
@@ -303,7 +274,7 @@ exports[`StateModal renders correctly for a loaded object with children 1`] = `
         />
         <svg
           aria-hidden={true}
-          className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+          className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root"
           data-testid="CheckBoxOutlineBlankIcon"
           focusable="false"
           viewBox="0 0 24 24"
@@ -312,17 +283,10 @@ exports[`StateModal renders correctly for a loaded object with children 1`] = `
             d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
           />
         </svg>
-        <span
-          className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-          ref={
-            {
-              "current": null,
-            }
-          }
-        />
       </span>
       <span
-        className="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-ahj2mt-MuiTypography-root"
+        className="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-rizt0-MuiTypography-root"
+        style={{}}
       >
         Update 100 children to match
       </span>
@@ -344,8 +308,8 @@ exports[`StateModal renders correctly for a loaded object without children 1`] =
   "foo:123",
   ")",
   <button
-    className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium closeButton css-78trlr-MuiButtonBase-root-MuiIconButton-root"
-    disabled={false}
+    className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium closeButton css-53g0n7-MuiButtonBase-root-MuiIconButton-root"
+    disabled={null}
     onBlur={[Function]}
     onClick={[Function]}
     onContextMenu={[Function]}
@@ -364,36 +328,28 @@ exports[`StateModal renders correctly for a loaded object without children 1`] =
     type="button"
   >
     CloseIcon
-    <span
-      className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-      ref={
-        {
-          "current": null,
-        }
-      }
-    />
   </button>,
   "{"pid":"foo:123"}",
   <div
-    className="MuiFormControl-root css-1nrlq1o-MuiFormControl-root"
+    className="MuiFormControl-root css-1iw3t7y-MuiFormControl-root"
   >
     <label
-      className="MuiFormLabel-root MuiFormLabel-colorPrimary css-u4tvz2-MuiFormLabel-root"
+      className="MuiFormLabel-root MuiFormLabel-colorPrimary css-nwsdb5-MuiFormLabel-root"
       id="state-modal-group-label"
     >
       State
     </label>
     <div
       aria-labelledby="state-modal-group-label"
-      className="MuiFormGroup-root MuiRadioGroup-root css-dmmspl-MuiFormGroup-root"
+      className="MuiFormGroup-root MuiRadioGroup-root css-1mac7pt-MuiFormGroup-root"
       ref={[Function]}
       role="radiogroup"
     >
       <label
-        className="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-j204z7-MuiFormControlLabel-root"
+        className="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-19opgx6-MuiFormControlLabel-root"
       >
         <span
-          className="MuiButtonBase-root MuiRadio-root MuiRadio-colorPrimary PrivateSwitchBase-root MuiRadio-root MuiRadio-colorPrimary Mui-checked MuiRadio-root MuiRadio-colorPrimary css-1p3cwfz-MuiButtonBase-root-MuiSwitchBase-root-MuiRadio-root"
+          className="MuiButtonBase-root MuiRadio-root MuiRadio-colorPrimary PrivateSwitchBase-root MuiRadio-root MuiRadio-colorPrimary Mui-checked MuiRadio-root MuiRadio-colorPrimary css-1q72ply-MuiButtonBase-root-MuiSwitchBase-root-MuiRadio-root"
           onBlur={[Function]}
           onContextMenu={[Function]}
           onDragLeave={[Function]}
@@ -411,7 +367,7 @@ exports[`StateModal renders correctly for a loaded object without children 1`] =
         >
           <input
             checked={true}
-            className="PrivateSwitchBase-input css-1p3z7et-MuiSwitchBase-root"
+            className="PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
             disabled={false}
             name="state-modal-group"
             onChange={[Function]}
@@ -420,11 +376,11 @@ exports[`StateModal renders correctly for a loaded object without children 1`] =
             value="Active"
           />
           <span
-            className="css-19y5vkv-MuiRadioButtonIcon-root"
+            className="css-9oxshb-MuiRadioButtonIcon-root"
           >
             <svg
               aria-hidden={true}
-              className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1nih4k0-MuiSvgIcon-root-MuiRadioButtonIcon-root"
+              className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-iy8fvg-MuiSvgIcon-root-MuiRadioButtonIcon-root"
               data-testid="RadioButtonUncheckedIcon"
               focusable="false"
               viewBox="0 0 24 24"
@@ -435,7 +391,7 @@ exports[`StateModal renders correctly for a loaded object without children 1`] =
             </svg>
             <svg
               aria-hidden={true}
-              className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1jq7105-MuiSvgIcon-root-MuiRadioButtonIcon-root"
+              className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1pqw2bl-MuiSvgIcon-root-MuiRadioButtonIcon-root"
               data-testid="RadioButtonCheckedIcon"
               focusable="false"
               viewBox="0 0 24 24"
@@ -445,26 +401,19 @@ exports[`StateModal renders correctly for a loaded object without children 1`] =
               />
             </svg>
           </span>
-          <span
-            className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-            ref={
-              {
-                "current": null,
-              }
-            }
-          />
         </span>
         <span
-          className="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-ahj2mt-MuiTypography-root"
+          className="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-rizt0-MuiTypography-root"
+          style={{}}
         >
           Active
         </span>
       </label>
       <label
-        className="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-j204z7-MuiFormControlLabel-root"
+        className="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-19opgx6-MuiFormControlLabel-root"
       >
         <span
-          className="MuiButtonBase-root MuiRadio-root MuiRadio-colorPrimary PrivateSwitchBase-root MuiRadio-root MuiRadio-colorPrimary MuiRadio-root MuiRadio-colorPrimary css-1p3cwfz-MuiButtonBase-root-MuiSwitchBase-root-MuiRadio-root"
+          className="MuiButtonBase-root MuiRadio-root MuiRadio-colorPrimary PrivateSwitchBase-root MuiRadio-root MuiRadio-colorPrimary MuiRadio-root MuiRadio-colorPrimary css-1q72ply-MuiButtonBase-root-MuiSwitchBase-root-MuiRadio-root"
           onBlur={[Function]}
           onContextMenu={[Function]}
           onDragLeave={[Function]}
@@ -482,7 +431,7 @@ exports[`StateModal renders correctly for a loaded object without children 1`] =
         >
           <input
             checked={false}
-            className="PrivateSwitchBase-input css-1p3z7et-MuiSwitchBase-root"
+            className="PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
             disabled={false}
             name="state-modal-group"
             onChange={[Function]}
@@ -491,11 +440,11 @@ exports[`StateModal renders correctly for a loaded object without children 1`] =
             value="Inactive"
           />
           <span
-            className="css-19y5vkv-MuiRadioButtonIcon-root"
+            className="css-9oxshb-MuiRadioButtonIcon-root"
           >
             <svg
               aria-hidden={true}
-              className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1nih4k0-MuiSvgIcon-root-MuiRadioButtonIcon-root"
+              className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-iy8fvg-MuiSvgIcon-root-MuiRadioButtonIcon-root"
               data-testid="RadioButtonUncheckedIcon"
               focusable="false"
               viewBox="0 0 24 24"
@@ -506,7 +455,7 @@ exports[`StateModal renders correctly for a loaded object without children 1`] =
             </svg>
             <svg
               aria-hidden={true}
-              className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-yve00p-MuiSvgIcon-root-MuiRadioButtonIcon-root"
+              className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-cpa8b4-MuiSvgIcon-root-MuiRadioButtonIcon-root"
               data-testid="RadioButtonCheckedIcon"
               focusable="false"
               viewBox="0 0 24 24"
@@ -516,26 +465,19 @@ exports[`StateModal renders correctly for a loaded object without children 1`] =
               />
             </svg>
           </span>
-          <span
-            className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-            ref={
-              {
-                "current": null,
-              }
-            }
-          />
         </span>
         <span
-          className="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-ahj2mt-MuiTypography-root"
+          className="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-rizt0-MuiTypography-root"
+          style={{}}
         >
           Inactive
         </span>
       </label>
       <label
-        className="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-j204z7-MuiFormControlLabel-root"
+        className="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-19opgx6-MuiFormControlLabel-root"
       >
         <span
-          className="MuiButtonBase-root MuiRadio-root MuiRadio-colorPrimary PrivateSwitchBase-root MuiRadio-root MuiRadio-colorPrimary MuiRadio-root MuiRadio-colorPrimary css-1p3cwfz-MuiButtonBase-root-MuiSwitchBase-root-MuiRadio-root"
+          className="MuiButtonBase-root MuiRadio-root MuiRadio-colorPrimary PrivateSwitchBase-root MuiRadio-root MuiRadio-colorPrimary MuiRadio-root MuiRadio-colorPrimary css-1q72ply-MuiButtonBase-root-MuiSwitchBase-root-MuiRadio-root"
           onBlur={[Function]}
           onContextMenu={[Function]}
           onDragLeave={[Function]}
@@ -553,7 +495,7 @@ exports[`StateModal renders correctly for a loaded object without children 1`] =
         >
           <input
             checked={false}
-            className="PrivateSwitchBase-input css-1p3z7et-MuiSwitchBase-root"
+            className="PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
             disabled={false}
             name="state-modal-group"
             onChange={[Function]}
@@ -562,11 +504,11 @@ exports[`StateModal renders correctly for a loaded object without children 1`] =
             value="Deleted"
           />
           <span
-            className="css-19y5vkv-MuiRadioButtonIcon-root"
+            className="css-9oxshb-MuiRadioButtonIcon-root"
           >
             <svg
               aria-hidden={true}
-              className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1nih4k0-MuiSvgIcon-root-MuiRadioButtonIcon-root"
+              className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-iy8fvg-MuiSvgIcon-root-MuiRadioButtonIcon-root"
               data-testid="RadioButtonUncheckedIcon"
               focusable="false"
               viewBox="0 0 24 24"
@@ -577,7 +519,7 @@ exports[`StateModal renders correctly for a loaded object without children 1`] =
             </svg>
             <svg
               aria-hidden={true}
-              className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-yve00p-MuiSvgIcon-root-MuiRadioButtonIcon-root"
+              className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-cpa8b4-MuiSvgIcon-root-MuiRadioButtonIcon-root"
               data-testid="RadioButtonCheckedIcon"
               focusable="false"
               viewBox="0 0 24 24"
@@ -587,17 +529,10 @@ exports[`StateModal renders correctly for a loaded object without children 1`] =
               />
             </svg>
           </span>
-          <span
-            className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-            ref={
-              {
-                "current": null,
-              }
-            }
-          />
         </span>
         <span
-          className="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-ahj2mt-MuiTypography-root"
+          className="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-rizt0-MuiTypography-root"
+          style={{}}
         >
           Deleted
         </span>
@@ -620,8 +555,8 @@ exports[`StateModal renders correctly for a pending object 1`] = `
   "foo:123",
   ")",
   <button
-    className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium closeButton css-78trlr-MuiButtonBase-root-MuiIconButton-root"
-    disabled={false}
+    className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium closeButton css-53g0n7-MuiButtonBase-root-MuiIconButton-root"
+    disabled={null}
     onBlur={[Function]}
     onClick={[Function]}
     onContextMenu={[Function]}
@@ -640,36 +575,28 @@ exports[`StateModal renders correctly for a pending object 1`] = `
     type="button"
   >
     CloseIcon
-    <span
-      className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-      ref={
-        {
-          "current": null,
-        }
-      }
-    />
   </button>,
   "{"pid":"foo:123"}",
   <div
-    className="MuiFormControl-root css-1nrlq1o-MuiFormControl-root"
+    className="MuiFormControl-root css-1iw3t7y-MuiFormControl-root"
   >
     <label
-      className="MuiFormLabel-root MuiFormLabel-colorPrimary css-u4tvz2-MuiFormLabel-root"
+      className="MuiFormLabel-root MuiFormLabel-colorPrimary css-nwsdb5-MuiFormLabel-root"
       id="state-modal-group-label"
     >
       State
     </label>
     <div
       aria-labelledby="state-modal-group-label"
-      className="MuiFormGroup-root MuiRadioGroup-root css-dmmspl-MuiFormGroup-root"
+      className="MuiFormGroup-root MuiRadioGroup-root css-1mac7pt-MuiFormGroup-root"
       ref={[Function]}
       role="radiogroup"
     >
       <label
-        className="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-j204z7-MuiFormControlLabel-root"
+        className="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-19opgx6-MuiFormControlLabel-root"
       >
         <span
-          className="MuiButtonBase-root MuiRadio-root MuiRadio-colorPrimary PrivateSwitchBase-root MuiRadio-root MuiRadio-colorPrimary MuiRadio-root MuiRadio-colorPrimary css-1p3cwfz-MuiButtonBase-root-MuiSwitchBase-root-MuiRadio-root"
+          className="MuiButtonBase-root MuiRadio-root MuiRadio-colorPrimary PrivateSwitchBase-root MuiRadio-root MuiRadio-colorPrimary MuiRadio-root MuiRadio-colorPrimary css-1q72ply-MuiButtonBase-root-MuiSwitchBase-root-MuiRadio-root"
           onBlur={[Function]}
           onContextMenu={[Function]}
           onDragLeave={[Function]}
@@ -687,7 +614,7 @@ exports[`StateModal renders correctly for a pending object 1`] = `
         >
           <input
             checked={false}
-            className="PrivateSwitchBase-input css-1p3z7et-MuiSwitchBase-root"
+            className="PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
             disabled={false}
             name="state-modal-group"
             onChange={[Function]}
@@ -696,11 +623,11 @@ exports[`StateModal renders correctly for a pending object 1`] = `
             value="Active"
           />
           <span
-            className="css-19y5vkv-MuiRadioButtonIcon-root"
+            className="css-9oxshb-MuiRadioButtonIcon-root"
           >
             <svg
               aria-hidden={true}
-              className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1nih4k0-MuiSvgIcon-root-MuiRadioButtonIcon-root"
+              className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-iy8fvg-MuiSvgIcon-root-MuiRadioButtonIcon-root"
               data-testid="RadioButtonUncheckedIcon"
               focusable="false"
               viewBox="0 0 24 24"
@@ -711,7 +638,7 @@ exports[`StateModal renders correctly for a pending object 1`] = `
             </svg>
             <svg
               aria-hidden={true}
-              className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-yve00p-MuiSvgIcon-root-MuiRadioButtonIcon-root"
+              className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-cpa8b4-MuiSvgIcon-root-MuiRadioButtonIcon-root"
               data-testid="RadioButtonCheckedIcon"
               focusable="false"
               viewBox="0 0 24 24"
@@ -721,26 +648,19 @@ exports[`StateModal renders correctly for a pending object 1`] = `
               />
             </svg>
           </span>
-          <span
-            className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-            ref={
-              {
-                "current": null,
-              }
-            }
-          />
         </span>
         <span
-          className="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-ahj2mt-MuiTypography-root"
+          className="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-rizt0-MuiTypography-root"
+          style={{}}
         >
           Active
         </span>
       </label>
       <label
-        className="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-j204z7-MuiFormControlLabel-root"
+        className="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-19opgx6-MuiFormControlLabel-root"
       >
         <span
-          className="MuiButtonBase-root MuiRadio-root MuiRadio-colorPrimary PrivateSwitchBase-root MuiRadio-root MuiRadio-colorPrimary Mui-checked MuiRadio-root MuiRadio-colorPrimary css-1p3cwfz-MuiButtonBase-root-MuiSwitchBase-root-MuiRadio-root"
+          className="MuiButtonBase-root MuiRadio-root MuiRadio-colorPrimary PrivateSwitchBase-root MuiRadio-root MuiRadio-colorPrimary Mui-checked MuiRadio-root MuiRadio-colorPrimary css-1q72ply-MuiButtonBase-root-MuiSwitchBase-root-MuiRadio-root"
           onBlur={[Function]}
           onContextMenu={[Function]}
           onDragLeave={[Function]}
@@ -758,7 +678,7 @@ exports[`StateModal renders correctly for a pending object 1`] = `
         >
           <input
             checked={true}
-            className="PrivateSwitchBase-input css-1p3z7et-MuiSwitchBase-root"
+            className="PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
             disabled={false}
             name="state-modal-group"
             onChange={[Function]}
@@ -767,11 +687,11 @@ exports[`StateModal renders correctly for a pending object 1`] = `
             value="Inactive"
           />
           <span
-            className="css-19y5vkv-MuiRadioButtonIcon-root"
+            className="css-9oxshb-MuiRadioButtonIcon-root"
           >
             <svg
               aria-hidden={true}
-              className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1nih4k0-MuiSvgIcon-root-MuiRadioButtonIcon-root"
+              className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-iy8fvg-MuiSvgIcon-root-MuiRadioButtonIcon-root"
               data-testid="RadioButtonUncheckedIcon"
               focusable="false"
               viewBox="0 0 24 24"
@@ -782,7 +702,7 @@ exports[`StateModal renders correctly for a pending object 1`] = `
             </svg>
             <svg
               aria-hidden={true}
-              className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1jq7105-MuiSvgIcon-root-MuiRadioButtonIcon-root"
+              className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1pqw2bl-MuiSvgIcon-root-MuiRadioButtonIcon-root"
               data-testid="RadioButtonCheckedIcon"
               focusable="false"
               viewBox="0 0 24 24"
@@ -792,26 +712,19 @@ exports[`StateModal renders correctly for a pending object 1`] = `
               />
             </svg>
           </span>
-          <span
-            className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-            ref={
-              {
-                "current": null,
-              }
-            }
-          />
         </span>
         <span
-          className="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-ahj2mt-MuiTypography-root"
+          className="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-rizt0-MuiTypography-root"
+          style={{}}
         >
           Inactive
         </span>
       </label>
       <label
-        className="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-j204z7-MuiFormControlLabel-root"
+        className="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-19opgx6-MuiFormControlLabel-root"
       >
         <span
-          className="MuiButtonBase-root MuiRadio-root MuiRadio-colorPrimary PrivateSwitchBase-root MuiRadio-root MuiRadio-colorPrimary MuiRadio-root MuiRadio-colorPrimary css-1p3cwfz-MuiButtonBase-root-MuiSwitchBase-root-MuiRadio-root"
+          className="MuiButtonBase-root MuiRadio-root MuiRadio-colorPrimary PrivateSwitchBase-root MuiRadio-root MuiRadio-colorPrimary MuiRadio-root MuiRadio-colorPrimary css-1q72ply-MuiButtonBase-root-MuiSwitchBase-root-MuiRadio-root"
           onBlur={[Function]}
           onContextMenu={[Function]}
           onDragLeave={[Function]}
@@ -829,7 +742,7 @@ exports[`StateModal renders correctly for a pending object 1`] = `
         >
           <input
             checked={false}
-            className="PrivateSwitchBase-input css-1p3z7et-MuiSwitchBase-root"
+            className="PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
             disabled={false}
             name="state-modal-group"
             onChange={[Function]}
@@ -838,11 +751,11 @@ exports[`StateModal renders correctly for a pending object 1`] = `
             value="Deleted"
           />
           <span
-            className="css-19y5vkv-MuiRadioButtonIcon-root"
+            className="css-9oxshb-MuiRadioButtonIcon-root"
           >
             <svg
               aria-hidden={true}
-              className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1nih4k0-MuiSvgIcon-root-MuiRadioButtonIcon-root"
+              className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-iy8fvg-MuiSvgIcon-root-MuiRadioButtonIcon-root"
               data-testid="RadioButtonUncheckedIcon"
               focusable="false"
               viewBox="0 0 24 24"
@@ -853,7 +766,7 @@ exports[`StateModal renders correctly for a pending object 1`] = `
             </svg>
             <svg
               aria-hidden={true}
-              className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-yve00p-MuiSvgIcon-root-MuiRadioButtonIcon-root"
+              className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-cpa8b4-MuiSvgIcon-root-MuiRadioButtonIcon-root"
               data-testid="RadioButtonCheckedIcon"
               focusable="false"
               viewBox="0 0 24 24"
@@ -863,17 +776,10 @@ exports[`StateModal renders correctly for a pending object 1`] = `
               />
             </svg>
           </span>
-          <span
-            className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-            ref={
-              {
-                "current": null,
-              }
-            }
-          />
         </span>
         <span
-          className="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-ahj2mt-MuiTypography-root"
+          className="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-rizt0-MuiTypography-root"
+          style={{}}
         >
           Deleted
         </span>
@@ -899,8 +805,8 @@ exports[`StateModal renders correctly when closed 1`] = `
   "foo:123",
   ")",
   <button
-    className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium closeButton css-78trlr-MuiButtonBase-root-MuiIconButton-root"
-    disabled={false}
+    className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium closeButton css-53g0n7-MuiButtonBase-root-MuiIconButton-root"
+    disabled={null}
     onBlur={[Function]}
     onClick={[Function]}
     onContextMenu={[Function]}
@@ -919,36 +825,28 @@ exports[`StateModal renders correctly when closed 1`] = `
     type="button"
   >
     CloseIcon
-    <span
-      className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-      ref={
-        {
-          "current": null,
-        }
-      }
-    />
   </button>,
   "{"pid":"foo:123"}",
   <div
-    className="MuiFormControl-root css-1nrlq1o-MuiFormControl-root"
+    className="MuiFormControl-root css-1iw3t7y-MuiFormControl-root"
   >
     <label
-      className="MuiFormLabel-root MuiFormLabel-colorPrimary css-u4tvz2-MuiFormLabel-root"
+      className="MuiFormLabel-root MuiFormLabel-colorPrimary css-nwsdb5-MuiFormLabel-root"
       id="state-modal-group-label"
     >
       State
     </label>
     <div
       aria-labelledby="state-modal-group-label"
-      className="MuiFormGroup-root MuiRadioGroup-root css-dmmspl-MuiFormGroup-root"
+      className="MuiFormGroup-root MuiRadioGroup-root css-1mac7pt-MuiFormGroup-root"
       ref={[Function]}
       role="radiogroup"
     >
       <label
-        className="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-j204z7-MuiFormControlLabel-root"
+        className="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-19opgx6-MuiFormControlLabel-root"
       >
         <span
-          className="MuiButtonBase-root MuiRadio-root MuiRadio-colorPrimary PrivateSwitchBase-root MuiRadio-root MuiRadio-colorPrimary MuiRadio-root MuiRadio-colorPrimary css-1p3cwfz-MuiButtonBase-root-MuiSwitchBase-root-MuiRadio-root"
+          className="MuiButtonBase-root MuiRadio-root MuiRadio-colorPrimary PrivateSwitchBase-root MuiRadio-root MuiRadio-colorPrimary MuiRadio-root MuiRadio-colorPrimary css-1q72ply-MuiButtonBase-root-MuiSwitchBase-root-MuiRadio-root"
           onBlur={[Function]}
           onContextMenu={[Function]}
           onDragLeave={[Function]}
@@ -966,7 +864,7 @@ exports[`StateModal renders correctly when closed 1`] = `
         >
           <input
             checked={false}
-            className="PrivateSwitchBase-input css-1p3z7et-MuiSwitchBase-root"
+            className="PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
             disabled={false}
             name="state-modal-group"
             onChange={[Function]}
@@ -975,11 +873,11 @@ exports[`StateModal renders correctly when closed 1`] = `
             value="Active"
           />
           <span
-            className="css-19y5vkv-MuiRadioButtonIcon-root"
+            className="css-9oxshb-MuiRadioButtonIcon-root"
           >
             <svg
               aria-hidden={true}
-              className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1nih4k0-MuiSvgIcon-root-MuiRadioButtonIcon-root"
+              className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-iy8fvg-MuiSvgIcon-root-MuiRadioButtonIcon-root"
               data-testid="RadioButtonUncheckedIcon"
               focusable="false"
               viewBox="0 0 24 24"
@@ -990,7 +888,7 @@ exports[`StateModal renders correctly when closed 1`] = `
             </svg>
             <svg
               aria-hidden={true}
-              className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-yve00p-MuiSvgIcon-root-MuiRadioButtonIcon-root"
+              className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-cpa8b4-MuiSvgIcon-root-MuiRadioButtonIcon-root"
               data-testid="RadioButtonCheckedIcon"
               focusable="false"
               viewBox="0 0 24 24"
@@ -1000,26 +898,19 @@ exports[`StateModal renders correctly when closed 1`] = `
               />
             </svg>
           </span>
-          <span
-            className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-            ref={
-              {
-                "current": null,
-              }
-            }
-          />
         </span>
         <span
-          className="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-ahj2mt-MuiTypography-root"
+          className="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-rizt0-MuiTypography-root"
+          style={{}}
         >
           Active
         </span>
       </label>
       <label
-        className="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-j204z7-MuiFormControlLabel-root"
+        className="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-19opgx6-MuiFormControlLabel-root"
       >
         <span
-          className="MuiButtonBase-root MuiRadio-root MuiRadio-colorPrimary PrivateSwitchBase-root MuiRadio-root MuiRadio-colorPrimary Mui-checked MuiRadio-root MuiRadio-colorPrimary css-1p3cwfz-MuiButtonBase-root-MuiSwitchBase-root-MuiRadio-root"
+          className="MuiButtonBase-root MuiRadio-root MuiRadio-colorPrimary PrivateSwitchBase-root MuiRadio-root MuiRadio-colorPrimary Mui-checked MuiRadio-root MuiRadio-colorPrimary css-1q72ply-MuiButtonBase-root-MuiSwitchBase-root-MuiRadio-root"
           onBlur={[Function]}
           onContextMenu={[Function]}
           onDragLeave={[Function]}
@@ -1037,7 +928,7 @@ exports[`StateModal renders correctly when closed 1`] = `
         >
           <input
             checked={true}
-            className="PrivateSwitchBase-input css-1p3z7et-MuiSwitchBase-root"
+            className="PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
             disabled={false}
             name="state-modal-group"
             onChange={[Function]}
@@ -1046,11 +937,11 @@ exports[`StateModal renders correctly when closed 1`] = `
             value="Inactive"
           />
           <span
-            className="css-19y5vkv-MuiRadioButtonIcon-root"
+            className="css-9oxshb-MuiRadioButtonIcon-root"
           >
             <svg
               aria-hidden={true}
-              className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1nih4k0-MuiSvgIcon-root-MuiRadioButtonIcon-root"
+              className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-iy8fvg-MuiSvgIcon-root-MuiRadioButtonIcon-root"
               data-testid="RadioButtonUncheckedIcon"
               focusable="false"
               viewBox="0 0 24 24"
@@ -1061,7 +952,7 @@ exports[`StateModal renders correctly when closed 1`] = `
             </svg>
             <svg
               aria-hidden={true}
-              className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1jq7105-MuiSvgIcon-root-MuiRadioButtonIcon-root"
+              className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1pqw2bl-MuiSvgIcon-root-MuiRadioButtonIcon-root"
               data-testid="RadioButtonCheckedIcon"
               focusable="false"
               viewBox="0 0 24 24"
@@ -1071,26 +962,19 @@ exports[`StateModal renders correctly when closed 1`] = `
               />
             </svg>
           </span>
-          <span
-            className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-            ref={
-              {
-                "current": null,
-              }
-            }
-          />
         </span>
         <span
-          className="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-ahj2mt-MuiTypography-root"
+          className="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-rizt0-MuiTypography-root"
+          style={{}}
         >
           Inactive
         </span>
       </label>
       <label
-        className="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-j204z7-MuiFormControlLabel-root"
+        className="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-19opgx6-MuiFormControlLabel-root"
       >
         <span
-          className="MuiButtonBase-root MuiRadio-root MuiRadio-colorPrimary PrivateSwitchBase-root MuiRadio-root MuiRadio-colorPrimary MuiRadio-root MuiRadio-colorPrimary css-1p3cwfz-MuiButtonBase-root-MuiSwitchBase-root-MuiRadio-root"
+          className="MuiButtonBase-root MuiRadio-root MuiRadio-colorPrimary PrivateSwitchBase-root MuiRadio-root MuiRadio-colorPrimary MuiRadio-root MuiRadio-colorPrimary css-1q72ply-MuiButtonBase-root-MuiSwitchBase-root-MuiRadio-root"
           onBlur={[Function]}
           onContextMenu={[Function]}
           onDragLeave={[Function]}
@@ -1108,7 +992,7 @@ exports[`StateModal renders correctly when closed 1`] = `
         >
           <input
             checked={false}
-            className="PrivateSwitchBase-input css-1p3z7et-MuiSwitchBase-root"
+            className="PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
             disabled={false}
             name="state-modal-group"
             onChange={[Function]}
@@ -1117,11 +1001,11 @@ exports[`StateModal renders correctly when closed 1`] = `
             value="Deleted"
           />
           <span
-            className="css-19y5vkv-MuiRadioButtonIcon-root"
+            className="css-9oxshb-MuiRadioButtonIcon-root"
           >
             <svg
               aria-hidden={true}
-              className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1nih4k0-MuiSvgIcon-root-MuiRadioButtonIcon-root"
+              className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-iy8fvg-MuiSvgIcon-root-MuiRadioButtonIcon-root"
               data-testid="RadioButtonUncheckedIcon"
               focusable="false"
               viewBox="0 0 24 24"
@@ -1132,7 +1016,7 @@ exports[`StateModal renders correctly when closed 1`] = `
             </svg>
             <svg
               aria-hidden={true}
-              className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-yve00p-MuiSvgIcon-root-MuiRadioButtonIcon-root"
+              className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-cpa8b4-MuiSvgIcon-root-MuiRadioButtonIcon-root"
               data-testid="RadioButtonCheckedIcon"
               focusable="false"
               viewBox="0 0 24 24"
@@ -1142,17 +1026,10 @@ exports[`StateModal renders correctly when closed 1`] = `
               />
             </svg>
           </span>
-          <span
-            className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-            ref={
-              {
-                "current": null,
-              }
-            }
-          />
         </span>
         <span
-          className="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-ahj2mt-MuiTypography-root"
+          className="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-rizt0-MuiTypography-root"
+          style={{}}
         >
           Deleted
         </span>

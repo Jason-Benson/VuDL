@@ -5,16 +5,16 @@ exports[`Child handles empty titles appropriately 1`] = `
   className="childlist__item"
 >
   <div
-    className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2 css-ofrcno-MuiGrid-root"
+    className="MuiGrid-root MuiGrid-container MuiGrid-direction-xs-row MuiGrid-spacing-xs-2 css-mwb7rv-MuiGrid-root"
   >
     <div
-      className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-true css-1vd824g-MuiGrid-root"
+      className="MuiGrid-root MuiGrid-direction-xs-row MuiGrid-grid-xs-grow css-1ynczkt-MuiGrid-root"
     >
       <span
         onClick={[Function]}
       >
         <svg
-          className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium childlist__expandicon css-i4bv87-MuiSvgIcon-root"
+          className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium childlist__expandicon css-1umw9bq-MuiSvgIcon-root"
           data-testid="AddBoxIcon"
           focusable="false"
           role="img"
@@ -40,17 +40,17 @@ exports[`Child handles empty titles appropriately 1`] = `
       </a>
     </div>
     <div
-      className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-1 childlist__pid css-u78q51-MuiGrid-root"
+      className="MuiGrid-root MuiGrid-direction-xs-row MuiGrid-grid-xs-1 childlist__pid css-11rz0ao-MuiGrid-root"
     >
       foo:123
     </div>
     <div
-      className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-none css-116ifgy-MuiGrid-root"
+      className="MuiGrid-root MuiGrid-direction-xs-row MuiGrid-grid-xs-none css-17fpwt7-MuiGrid-root"
     >
       CopyPidButton
     </div>
     <div
-      className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-none css-116ifgy-MuiGrid-root"
+      className="MuiGrid-root MuiGrid-direction-xs-row MuiGrid-grid-xs-none css-17fpwt7-MuiGrid-root"
       style={
         {
           "textAlign": "right",
@@ -68,16 +68,16 @@ exports[`Child renders a thumbnail 1`] = `
   className="childlist__item"
 >
   <div
-    className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2 css-ofrcno-MuiGrid-root"
+    className="MuiGrid-root MuiGrid-container MuiGrid-direction-xs-row MuiGrid-spacing-xs-2 css-mwb7rv-MuiGrid-root"
   >
     <div
-      className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-true css-1vd824g-MuiGrid-root"
+      className="MuiGrid-root MuiGrid-direction-xs-row MuiGrid-grid-xs-grow css-1ynczkt-MuiGrid-root"
     >
       <span
         onClick={[Function]}
       >
         <svg
-          className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium childlist__expandicon css-i4bv87-MuiSvgIcon-root"
+          className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium childlist__expandicon css-1umw9bq-MuiSvgIcon-root"
           data-testid="AddBoxIcon"
           focusable="false"
           role="img"
@@ -103,22 +103,22 @@ exports[`Child renders a thumbnail 1`] = `
       </a>
     </div>
     <div
-      className="MuiGrid-root MuiGrid-item css-13i4rnv-MuiGrid-root"
+      className="MuiGrid-root MuiGrid-direction-xs-row css-17fpwt7-MuiGrid-root"
     >
       ObjectThumbnail: {"pid":"foo:123"}
     </div>
     <div
-      className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-1 childlist__pid css-u78q51-MuiGrid-root"
+      className="MuiGrid-root MuiGrid-direction-xs-row MuiGrid-grid-xs-1 childlist__pid css-11rz0ao-MuiGrid-root"
     >
       foo:123
     </div>
     <div
-      className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-none css-116ifgy-MuiGrid-root"
+      className="MuiGrid-root MuiGrid-direction-xs-row MuiGrid-grid-xs-none css-17fpwt7-MuiGrid-root"
     >
       CopyPidButton
     </div>
     <div
-      className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-none css-116ifgy-MuiGrid-root"
+      className="MuiGrid-root MuiGrid-direction-xs-row MuiGrid-grid-xs-none css-17fpwt7-MuiGrid-root"
       style={
         {
           "textAlign": "right",
@@ -136,16 +136,16 @@ exports[`Child renders child counts 1`] = `
   className="childlist__item"
 >
   <div
-    className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2 css-ofrcno-MuiGrid-root"
+    className="MuiGrid-root MuiGrid-container MuiGrid-direction-xs-row MuiGrid-spacing-xs-2 css-mwb7rv-MuiGrid-root"
   >
     <div
-      className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-true css-1vd824g-MuiGrid-root"
+      className="MuiGrid-root MuiGrid-direction-xs-row MuiGrid-grid-xs-grow css-1ynczkt-MuiGrid-root"
     >
       <span
         onClick={[Function]}
       >
         <svg
-          className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium childlist__expandicon css-i4bv87-MuiSvgIcon-root"
+          className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium childlist__expandicon css-1umw9bq-MuiSvgIcon-root"
           data-testid="AddBoxIcon"
           focusable="false"
           role="img"
@@ -171,22 +171,22 @@ exports[`Child renders child counts 1`] = `
       </a>
     </div>
     <div
-      className="MuiGrid-root MuiGrid-item css-13i4rnv-MuiGrid-root"
+      className="MuiGrid-root MuiGrid-direction-xs-row css-17fpwt7-MuiGrid-root"
     >
       ObjectChildCounts:{"pid":"foo:123"}
     </div>
     <div
-      className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-1 childlist__pid css-u78q51-MuiGrid-root"
+      className="MuiGrid-root MuiGrid-direction-xs-row MuiGrid-grid-xs-1 childlist__pid css-11rz0ao-MuiGrid-root"
     >
       foo:123
     </div>
     <div
-      className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-none css-116ifgy-MuiGrid-root"
+      className="MuiGrid-root MuiGrid-direction-xs-row MuiGrid-grid-xs-none css-17fpwt7-MuiGrid-root"
     >
       CopyPidButton
     </div>
     <div
-      className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-none css-116ifgy-MuiGrid-root"
+      className="MuiGrid-root MuiGrid-direction-xs-row MuiGrid-grid-xs-none css-17fpwt7-MuiGrid-root"
       style={
         {
           "textAlign": "right",
@@ -204,16 +204,16 @@ exports[`Child renders thumbnail and child counts 1`] = `
   className="childlist__item"
 >
   <div
-    className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2 css-ofrcno-MuiGrid-root"
+    className="MuiGrid-root MuiGrid-container MuiGrid-direction-xs-row MuiGrid-spacing-xs-2 css-mwb7rv-MuiGrid-root"
   >
     <div
-      className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-true css-1vd824g-MuiGrid-root"
+      className="MuiGrid-root MuiGrid-direction-xs-row MuiGrid-grid-xs-grow css-1ynczkt-MuiGrid-root"
     >
       <span
         onClick={[Function]}
       >
         <svg
-          className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium childlist__expandicon css-i4bv87-MuiSvgIcon-root"
+          className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium childlist__expandicon css-1umw9bq-MuiSvgIcon-root"
           data-testid="AddBoxIcon"
           focusable="false"
           role="img"
@@ -239,23 +239,23 @@ exports[`Child renders thumbnail and child counts 1`] = `
       </a>
     </div>
     <div
-      className="MuiGrid-root MuiGrid-item css-13i4rnv-MuiGrid-root"
+      className="MuiGrid-root MuiGrid-direction-xs-row css-17fpwt7-MuiGrid-root"
     >
       ObjectThumbnail: {"pid":"foo:123"}
       ObjectChildCounts:{"pid":"foo:123"}
     </div>
     <div
-      className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-1 childlist__pid css-u78q51-MuiGrid-root"
+      className="MuiGrid-root MuiGrid-direction-xs-row MuiGrid-grid-xs-1 childlist__pid css-11rz0ao-MuiGrid-root"
     >
       foo:123
     </div>
     <div
-      className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-none css-116ifgy-MuiGrid-root"
+      className="MuiGrid-root MuiGrid-direction-xs-row MuiGrid-grid-xs-none css-17fpwt7-MuiGrid-root"
     >
       CopyPidButton
     </div>
     <div
-      className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-none css-116ifgy-MuiGrid-root"
+      className="MuiGrid-root MuiGrid-direction-xs-row MuiGrid-grid-xs-none css-17fpwt7-MuiGrid-root"
       style={
         {
           "textAlign": "right",
@@ -273,16 +273,16 @@ exports[`Child renders using ajax-loaded data 1`] = `
   className="childlist__item"
 >
   <div
-    className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2 css-ofrcno-MuiGrid-root"
+    className="MuiGrid-root MuiGrid-container MuiGrid-direction-xs-row MuiGrid-spacing-xs-2 css-mwb7rv-MuiGrid-root"
   >
     <div
-      className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-true css-1vd824g-MuiGrid-root"
+      className="MuiGrid-root MuiGrid-direction-xs-row MuiGrid-grid-xs-grow css-1ynczkt-MuiGrid-root"
     >
       <span
         onClick={[Function]}
       >
         <svg
-          className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium childlist__expandicon css-i4bv87-MuiSvgIcon-root"
+          className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium childlist__expandicon css-1umw9bq-MuiSvgIcon-root"
           data-testid="AddBoxIcon"
           focusable="false"
           role="img"
@@ -308,17 +308,17 @@ exports[`Child renders using ajax-loaded data 1`] = `
       </a>
     </div>
     <div
-      className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-1 childlist__pid css-u78q51-MuiGrid-root"
+      className="MuiGrid-root MuiGrid-direction-xs-row MuiGrid-grid-xs-1 childlist__pid css-11rz0ao-MuiGrid-root"
     >
       foo:123
     </div>
     <div
-      className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-none css-116ifgy-MuiGrid-root"
+      className="MuiGrid-root MuiGrid-direction-xs-row MuiGrid-grid-xs-none css-17fpwt7-MuiGrid-root"
     >
       CopyPidButton
     </div>
     <div
-      className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-none css-116ifgy-MuiGrid-root"
+      className="MuiGrid-root MuiGrid-direction-xs-row MuiGrid-grid-xs-none css-17fpwt7-MuiGrid-root"
       style={
         {
           "textAlign": "right",

@@ -5,7 +5,7 @@ export interface ObjectThumbnailProps {
     pid: string;
 }
 
-const ObjectThumbnail = ({ pid }: ObjectThumbnailProps): React.ReactElement => {
+const ObjectThumbnail = ({ pid }: ObjectThumbnailProps): React.ReactElement<any> => {
     const {
         state: { vufindUrl, objectDetailsStorage },
     } = useEditorContext();

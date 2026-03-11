@@ -4,7 +4,7 @@ import { useFetchContext } from "../../context/FetchContext";
 interface SinglePidIndexerProps {
     setResults: (pid: string) => void;
 }
-const SinglePidIndexer = ({ setResults }: SinglePidIndexerProps): React.ReactElement => {
+const SinglePidIndexer = ({ setResults }: SinglePidIndexerProps): React.ReactElement<any> => {
     const [pid, setPid] = useState("");
     const {
         action: { fetchText },

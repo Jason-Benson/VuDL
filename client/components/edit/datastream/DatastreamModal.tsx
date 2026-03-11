@@ -22,7 +22,7 @@ const DatastreamModalContent = ({ datastreamModalState }: { datastreamModalState
     return datastreamModalState ? contentMapping[datastreamModalState] : null;
 };
 
-const DatastreamModal = (): React.ReactElement => {
+const DatastreamModal = (): React.ReactElement<any> => {
     const {
         state: { datastreamModalState },
     } = useEditorContext();

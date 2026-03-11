@@ -36,7 +36,7 @@ const DatastreamAgentsContentRow = ({
     onTypeChange,
     onNameChange,
     onNotesChange,
-}: DatastreamAgentsContentRowProps): React.ReactElement => {
+}: DatastreamAgentsContentRowProps): React.ReactElement<any> => {
     const {
         state: { agentsCatalog },
     } = useEditorContext();

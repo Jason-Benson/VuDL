@@ -8,7 +8,7 @@ interface Datastream {
     stream: string;
 }
 
-const DatastreamList = (): React.ReactElement => {
+const DatastreamList = (): React.ReactElement<any> => {
     const {
         state: { modelsDatastreams },
     } = useEditorContext();

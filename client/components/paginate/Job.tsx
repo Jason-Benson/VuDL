@@ -4,7 +4,7 @@ import JobClickable from "./JobClickable";
 
 import useJob, { JobProps } from "../../hooks/useJob";
 
-const Job = ({ category, children }: JobProps): React.ReactElement => {
+const Job = ({ category, children }: JobProps): React.ReactElement<any> => {
     const {
         state: { statusText, clickWarning, action, ingestInfo, clickable, timeoutRef },
         action: { updateStatus },

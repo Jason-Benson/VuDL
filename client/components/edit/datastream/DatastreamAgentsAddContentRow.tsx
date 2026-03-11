@@ -20,7 +20,7 @@ const DatastreamAgentsAddContentRow = ({
     agent,
     setAgent,
     setHasChanges,
-}: DatastreamAgentsAddContentRowProps): React.ReactElement => {
+}: DatastreamAgentsAddContentRowProps): React.ReactElement<any> => {
     const {
         state: { currentAgents },
         action: { setCurrentAgents },

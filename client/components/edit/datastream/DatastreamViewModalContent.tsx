@@ -5,7 +5,7 @@ import DatatypeContent from "../../shared/DatatypeContent";
 import CircularProgress from "@mui/material/CircularProgress";
 import { useEditorContext } from "../../../context/EditorContext";
 
-const DatastreamViewModalContent = (): React.ReactElement => {
+const DatastreamViewModalContent = (): React.ReactElement<any> => {
     const [content, setContent] = useState({
         data: "",
         mimeType: "",

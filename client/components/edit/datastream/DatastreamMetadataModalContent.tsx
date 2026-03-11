@@ -4,7 +4,7 @@ import useDatastreamOperation from "../../../hooks/useDatastreamOperation";
 import DatatypeContent from "../../shared/DatatypeContent";
 import CircularProgress from "@mui/material/CircularProgress";
 
-const DatastreamMetadataModalContent = (): React.ReactElement => {
+const DatastreamMetadataModalContent = (): React.ReactElement<any> => {
     const [content, setContent] = useState({
         data: "",
         mimeType: "",

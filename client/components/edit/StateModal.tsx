@@ -17,7 +17,7 @@ import { getObjectRecursiveChildPidsUrl } from "../../util/routes";
 import { useFetchContext } from "../../context/FetchContext";
 import ObjectLoader from "./ObjectLoader";
 
-const StateModal = (): React.ReactElement => {
+const StateModal = (): React.ReactElement<any> => {
     const {
         action: { closeModal, isModalOpen, setSnackbarState },
     } = useGlobalContext();

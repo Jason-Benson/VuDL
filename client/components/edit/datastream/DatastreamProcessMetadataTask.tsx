@@ -21,7 +21,7 @@ const DatastreamProcessMetadataTask = ({
     deleteTask,
     addBelow,
     setAttributes,
-}: DatastreamProcessMetadataTaskProps): React.ReactElement => {
+}: DatastreamProcessMetadataTaskProps): React.ReactElement<any> => {
     const {
         state: { toolPresets },
     } = useEditorContext();

@@ -17,7 +17,7 @@ const DatastreamDublinCoreEditField = ({
     setValue,
     fieldType,
     legalValues = [],
-}: DatastreamDublinCoreEditFieldProps): React.ReactElement => {
+}: DatastreamDublinCoreEditFieldProps): React.ReactElement<any> => {
     // We need this effect to make TinyMCE pop-up dialogs (e.g. view source) work:
     useEffect(() => {
         const handler = (e) => {

@@ -7,7 +7,7 @@ export interface ObjectOrderProps {
     pid: string;
 }
 
-const ObjectOrder = ({ pid }: ObjectOrderProps): React.ReactElement => {
+const ObjectOrder = ({ pid }: ObjectOrderProps): React.ReactElement<any> => {
     const {
         state: { objectDetailsStorage },
         action: { clearPidFromChildListStorage, removeFromObjectDetailsStorage },

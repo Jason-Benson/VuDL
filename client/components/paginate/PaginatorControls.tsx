@@ -10,7 +10,7 @@ import AutoFixHighIcon from "@mui/icons-material/AutoFixHigh";
 import CompareArrowsIcon from "@mui/icons-material/CompareArrows";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 
-const PaginatorControls = (): React.ReactElement => {
+const PaginatorControls = (): React.ReactElement<any> => {
     const {
         state: { currentPage, zoom, order },
         action: {

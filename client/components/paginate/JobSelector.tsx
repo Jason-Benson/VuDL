@@ -6,7 +6,7 @@ import { ingestApiUrl } from "../../util/routes";
 import { useFetchContext } from "../../context/FetchContext";
 import BasicBreadcrumbs from "../shared/BasicBreadcrumbs";
 
-const JobSelector = (): React.ReactElement => {
+const JobSelector = (): React.ReactElement<any> => {
     const {
         action: { fetchJSON },
     } = useFetchContext();

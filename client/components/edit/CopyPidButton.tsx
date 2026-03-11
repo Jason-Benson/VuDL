@@ -5,7 +5,7 @@ interface CopyPidButtonProps {
     pid: string;
 }
 
-const CopyPidButton = ({ pid }: CopyPidButtonProps): React.ReactElement => {
+const CopyPidButton = ({ pid }: CopyPidButtonProps): React.ReactElement<any> => {
     return (
         <button onClick={() => navigator.clipboard.writeText(pid)}>
             <ContentCopy titleAccess={`Copy PID (${pid}) to clipboard`} />

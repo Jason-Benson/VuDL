@@ -13,7 +13,7 @@ export interface ObjectButtonBarProps {
     pid: string;
 }
 
-const ObjectButtonBar = ({ pid }: ObjectButtonBarProps): React.ReactElement => {
+const ObjectButtonBar = ({ pid }: ObjectButtonBarProps): React.ReactElement<any> => {
     const {
         action: { clearPidFromChildListStorage },
     } = useEditorContext();

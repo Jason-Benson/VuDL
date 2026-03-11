@@ -5,7 +5,7 @@ export interface ObjectPreviewButtonProps {
     pid: string;
 }
 
-const ObjectPreviewButton = ({ pid }: ObjectPreviewButtonProps): React.ReactElement => {
+const ObjectPreviewButton = ({ pid }: ObjectPreviewButtonProps): React.ReactElement<any> => {
     const {
         state: { vufindUrl },
     } = useEditorContext();

@@ -26,7 +26,7 @@ function getStatusIcon(statusText: string) {
     return <HelpOutlineIcon />;
 }
 
-export const ObjectStatus = ({ pid }: ObjectStatusProps): React.ReactElement => {
+export const ObjectStatus = ({ pid }: ObjectStatusProps): React.ReactElement<any> => {
     const {
         action: { openModal },
     } = useGlobalContext();

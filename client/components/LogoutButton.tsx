@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { logoutUrl } from "../util/routes";
 import { useFetchContext } from "../context/FetchContext";
 
-const LogoutButton = (): React.ReactElement => {
+const LogoutButton = (): React.ReactElement<any> => {
     const {
         state: { token },
         action: { clearToken },

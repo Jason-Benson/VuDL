@@ -17,7 +17,7 @@ const CreateObject = ({
     parentPid = "",
     allowNoParentPid = false,
     allowChangeParentPid = true,
-}: CreateObjectProps): React.ReactElement => {
+}: CreateObjectProps): React.ReactElement<any> => {
     const {
         action: { fetchText, fetchJSON },
     } = useFetchContext();

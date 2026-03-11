@@ -14,7 +14,7 @@ interface JobPaginatorProps {
     initialJob: string;
 }
 
-const JobPaginator = ({ initialCategory, initialJob }: JobPaginatorProps): React.ReactElement => {
+const JobPaginator = ({ initialCategory, initialJob }: JobPaginatorProps): React.ReactElement<any> => {
     const {
         state: { category, job },
         action: { loadJob },

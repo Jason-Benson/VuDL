@@ -6,7 +6,7 @@ interface ParentControlProps {
     noParent: boolean;
 }
 
-const ParentControl = ({ parent, handleParentChange, noParent }: ParentControlProps): React.ReactElement => {
+const ParentControl = ({ parent, handleParentChange, noParent }: ParentControlProps): React.ReactElement<any> => {
     return (
         <label>
             Parent ID

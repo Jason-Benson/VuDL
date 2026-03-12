@@ -1,45 +1,42 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ObjectStatus defaults to unknown state 1`] = `
-[
-  <button
-    className="status_btn unknown"
-    onClick={[Function]}
+<DocumentFragment>
+   
+  <span
+    class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary css-1wxecgq-MuiCircularProgress-root"
+    role="progressbar"
+    style="width: 1em; height: 1em;"
   >
-    <span
-      className="indicator"
+    <svg
+      class="MuiCircularProgress-svg css-54pwck-MuiCircularProgress-svg"
+      viewBox="22 22 44 44"
     >
-      <svg
-        aria-hidden={true}
-        className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-        data-testid="HelpOutlineIcon"
-        focusable="false"
-        viewBox="0 0 24 24"
-      >
-        <path
-          d="M11 18h2v-2h-2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4"
-        />
-      </svg>
-    </span>
-     
-    Unknown
-  </button>,
-  ",",
-]
+      <circle
+        class="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate css-19t5dcl-MuiCircularProgress-circle"
+        cx="44"
+        cy="44"
+        fill="none"
+        r="20.2"
+        stroke-width="3.6"
+      />
+    </svg>
+  </span>
+  ,
+</DocumentFragment>
 `;
 
 exports[`ObjectStatus displays the state found in the response 1`] = `
-[
+<DocumentFragment>
   <button
-    className="status_btn inactive"
-    onClick={[Function]}
+    class="status_btn inactive"
   >
     <span
-      className="indicator"
+      class="indicator"
     >
       <svg
-        aria-hidden={true}
-        className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+        aria-hidden="true"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root"
         data-testid="ModeStandbyIcon"
         focusable="false"
         viewBox="0 0 24 24"
@@ -49,9 +46,8 @@ exports[`ObjectStatus displays the state found in the response 1`] = `
         />
       </svg>
     </span>
-     
-    Inactive
-  </button>,
-  ",",
-]
+     Inactive
+  </button>
+  ,
+</DocumentFragment>
 `;

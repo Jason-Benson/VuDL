@@ -19,7 +19,7 @@ interface DatastreamAgentsContentRowProps {
         name: string;
         notes: Array<string>;
     };
-    additionalControls: React.ReactElement<any>;
+    additionalControls: React.ReactElement;
     initialExpand: boolean;
     namesHelperText: string;
     onRoleChange: (role: string) => void;

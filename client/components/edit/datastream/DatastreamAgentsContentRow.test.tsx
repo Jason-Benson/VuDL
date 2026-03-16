@@ -1,8 +1,8 @@
-import React from "react";
 import { describe, afterEach, expect, it, jest } from "@jest/globals";
 import { fireEvent, render, screen } from "@testing-library/react";
 import renderer from "react-test-renderer";
 import DatastreamAgentsContentRow from "./DatastreamAgentsContentRow";
+import type { useEditorContext } from "../../../context/EditorContext";
 
 const mockDatastreamAgentsContentNotes = jest.fn();
 jest.mock("./DatastreamAgentsContentNotes", () => (props) => {
@@ -19,7 +19,7 @@ jest.mock("../../../context/EditorContext", () => ({
 describe("DatastreamAgentsContentRow", () => {
     let agent;
     let props;
-    let editorValues;
+    let editorValues: ReturnType<typeof useEditorContext>;
 
     beforeEach(() => {
         agent = {

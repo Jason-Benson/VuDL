@@ -111,7 +111,9 @@ describe("DatastreamAgentsContent", () => {
         });
         await waitFor(() => expect(datastreamOperationValues.getAgents).toHaveBeenCalled());
         await renderer.act(async () => {
-            tabChangeFunction && tabChangeFunction(null, 1);
+            if (tabChangeFunction) {
+                tabChangeFunction(null, 1);
+            }
         });
         expect(editorValues.action.setCurrentAgents).toHaveBeenCalled();
         expect(tree.toJSON()).toMatchSnapshot();
@@ -157,7 +159,9 @@ describe("DatastreamAgentsContent", () => {
         await renderComponent();
         expect(pidPickerFunction).not.toBeNull();
         await act(async () => {
-            pidPickerFunction && pidPickerFunction("");
+            if (pidPickerFunction) {
+                pidPickerFunction("");
+            }
         });
         expect(editorValues.action.loadObjectDetailsIntoStorage).not.toHaveBeenCalled();
     });
@@ -174,7 +178,9 @@ describe("DatastreamAgentsContent", () => {
         );
         expect(pidPickerFunction).not.toBeNull();
         await act(async () => {
-            pidPickerFunction && pidPickerFunction("foo:123");
+            if (pidPickerFunction) {
+                pidPickerFunction("foo:123");
+            }
         });
         expect(alertSpy).toHaveBeenCalledWith("Cannot load PID: foo:123");
     });
@@ -184,7 +190,9 @@ describe("DatastreamAgentsContent", () => {
         await renderComponent();
         expect(pidPickerFunction).not.toBeNull();
         await act(async () => {
-            pidPickerFunction && pidPickerFunction("foo:123");
+            if (pidPickerFunction) {
+                pidPickerFunction("foo:123");
+            }
         });
         expect(editorValues.action.loadObjectDetailsIntoStorage).toHaveBeenCalledWith("foo:123", expect.anything());
     });
@@ -200,7 +208,9 @@ describe("DatastreamAgentsContent", () => {
         await renderComponent();
         expect(pidPickerFunction).not.toBeNull();
         await act(async () => {
-            pidPickerFunction && pidPickerFunction("foo:123");
+            if (pidPickerFunction) {
+                pidPickerFunction("foo:123");
+            }
         });
         await userEvent.setup().click(screen.getByText("Clone"));
         expect(alertSpy).toHaveBeenCalledWith("foo:123 does not contain an AGENTS datastream.");
@@ -216,7 +226,9 @@ describe("DatastreamAgentsContent", () => {
         await renderComponent();
         expect(pidPickerFunction).not.toBeNull();
         await act(async () => {
-            pidPickerFunction && pidPickerFunction("foo:123");
+            if (pidPickerFunction) {
+                pidPickerFunction("foo:123");
+            }
         });
         await userEvent.setup().click(screen.getByText("Clone"));
         expect(datastreamOperationValues.getAgents).toHaveBeenCalledWith("foo:123", true);

@@ -42,9 +42,11 @@ const ParentList = ({ pid, initiallyShallow = true }: ParentListProps): React.Re
             return;
         }
         const result = await detachObjectFromParent(pid, parentPid);
-        result === "ok"
-            ? showSnackbarMessage(`Successfully removed ${pid} from ${parentPid}`, "info")
-            : showSnackbarMessage(result, "error");
+        if (result === "ok") {
+            showSnackbarMessage(`Successfully removed ${pid} from ${parentPid}`, "info");
+        } else {
+            showSnackbarMessage(result, "error");
+        }
     };
 
     const parents = (loaded ? (parentDetailsStorage[pid][key].parents ?? []) : []).map((parent) => {

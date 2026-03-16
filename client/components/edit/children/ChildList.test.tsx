@@ -1,4 +1,3 @@
-import React from "react";
 import { act } from "react";
 import { beforeEach, describe, expect, it, jest } from "@jest/globals";
 import { render, screen, waitFor } from "@testing-library/react";
@@ -11,16 +10,6 @@ import { FetchContextProvider } from "../../../context/FetchContext";
 jest.mock("@mui/material/Pagination", () => () => "Pagination");
 jest.mock("./Child", () => () => "Child");
 jest.mock("./SelectableChild", () => () => "SelectableChild");
-
-function getMountedChildListComponent(props: ChildListProps) {
-    return renderer.create(
-        <FetchContextProvider>
-            <EditorContextProvider>
-                <ChildList {...props} />
-            </EditorContextProvider>
-        </FetchContextProvider>,
-    );
-}
 
 describe("ChildList", () => {
     let props: ChildListProps;

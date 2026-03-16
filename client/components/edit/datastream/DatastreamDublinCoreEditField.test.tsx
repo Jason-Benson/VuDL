@@ -35,7 +35,7 @@ describe("DatastreamDublinCoreEditField", () => {
     let fieldType: string;
     let legalValues: Array<string>;
 
-    function getField(): React.ReactElement<any> {
+    function getField(): React.ReactElement {
         const props = {
             value: "foo",
             setValue,

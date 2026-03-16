@@ -177,7 +177,9 @@ describe("DatastreamProcessMetadataContent", () => {
         await renderComponent();
         expect(pidPickerFunction).not.toBeNull();
         await act(async () => {
-            pidPickerFunction && pidPickerFunction("");
+            if (pidPickerFunction) {
+                pidPickerFunction("");
+            }
         });
         expect(editorContext.action.loadObjectDetailsIntoStorage).not.toHaveBeenCalled();
     });
@@ -193,7 +195,9 @@ describe("DatastreamProcessMetadataContent", () => {
         );
         expect(pidPickerFunction).not.toBeNull();
         await act(async () => {
-            pidPickerFunction && pidPickerFunction("foo:123");
+            if (pidPickerFunction) {
+                pidPickerFunction("foo:123");
+            }
         });
         expect(alertSpy).toHaveBeenCalledWith("Cannot load PID: foo:123");
     });
@@ -202,7 +206,9 @@ describe("DatastreamProcessMetadataContent", () => {
         await renderComponent();
         expect(pidPickerFunction).not.toBeNull();
         await act(async () => {
-            pidPickerFunction && pidPickerFunction("foo:123");
+            if (pidPickerFunction) {
+                pidPickerFunction("foo:123");
+            }
         });
         expect(editorContext.action.loadObjectDetailsIntoStorage).toHaveBeenCalledWith("foo:123", expect.anything());
     });
@@ -217,7 +223,9 @@ describe("DatastreamProcessMetadataContent", () => {
         await renderComponent();
         expect(pidPickerFunction).not.toBeNull();
         await act(async () => {
-            pidPickerFunction && pidPickerFunction("foo:123");
+            if (pidPickerFunction) {
+                pidPickerFunction("foo:123");
+            }
         });
         await userEvent.setup().click(screen.getByText("Clone"));
         expect(alertSpy).toHaveBeenCalledWith("foo:123 does not contain a PROCESS-MD datastream.");
@@ -232,7 +240,9 @@ describe("DatastreamProcessMetadataContent", () => {
         await renderComponent();
         expect(pidPickerFunction).not.toBeNull();
         await act(async () => {
-            pidPickerFunction && pidPickerFunction("foo:123");
+            if (pidPickerFunction) {
+                pidPickerFunction("foo:123");
+            }
         });
         await userEvent.setup().click(screen.getByText("Clone"));
         expect(datastreamOperationValues.getProcessMetadata).toHaveBeenCalledWith("foo:123", true);

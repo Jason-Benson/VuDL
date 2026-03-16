@@ -8,7 +8,7 @@ export interface ParentListProps {
     initiallyShallow?: boolean;
 }
 
-const ParentList = ({ pid, initiallyShallow = true }: ParentListProps): React.ReactElement<any> => {
+const ParentList = ({ pid, initiallyShallow = true }: ParentListProps): React.ReactElement => {
     const {
         action: { setSnackbarState },
     } = useGlobalContext();

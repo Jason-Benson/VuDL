@@ -6,7 +6,7 @@ interface PaginatorControlGroupProps {
     label: string;
 }
 
-const PaginatorControlGroup = ({ callback, children, label }: PaginatorControlGroupProps): React.ReactElement<any> => {
+const PaginatorControlGroup = ({ callback, children, label }: PaginatorControlGroupProps): React.ReactElement => {
     return (
         <div className="group" id={label}>
             {children.map((item) => (

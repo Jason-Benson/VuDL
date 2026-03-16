@@ -3,7 +3,7 @@ import { usePaginatorContext } from "../../context/PaginatorContext";
 import PaginatorPreview from "./PaginatorPreview";
 import PaginatorZoomy from "./PaginatorZoomy";
 
-const JobPaginatorZoomToggle = (): React.ReactElement<any> => {
+const JobPaginatorZoomToggle = (): React.ReactElement => {
     const {
         state: { order, zoom, currentPage },
         action: { getJobImageUrl },

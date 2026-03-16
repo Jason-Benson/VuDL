@@ -23,7 +23,7 @@ export const ChildList = ({
     forceChildCounts = null,
     forceModels = null,
     forceThumbs = null,
-}: ChildListProps): React.ReactElement<any> => {
+}: ChildListProps): React.ReactElement => {
     const {
         state: { childListStorage },
         action: { getChildListStorageKey, loadChildrenIntoStorage },

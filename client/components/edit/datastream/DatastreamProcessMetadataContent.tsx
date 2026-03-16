@@ -26,7 +26,7 @@ import dayjs from "dayjs";
 // task add/remove, and used as part of the keys on related components.
 let taskKeyGeneration = 0;
 
-const DatastreamProcessMetadataContent = (): React.ReactElement<any> => {
+const DatastreamProcessMetadataContent = (): React.ReactElement => {
     const {
         action: { closeModal },
     } = useGlobalContext();

@@ -7,7 +7,7 @@ import EditorSnackbar from "./EditorSnackbar";
 import Link from "next/link";
 import { useEditorContext } from "../../context/EditorContext";
 
-const EditHome = (): React.ReactElement<any> => {
+const EditHome = (): React.ReactElement => {
     const {
         action: { initializeCatalog },
     } = useEditorContext();

@@ -7,7 +7,7 @@ interface CategoryTreeViewProps {
     setSelectedModel: Dispatch<string>;
 }
 
-const CategoryTreeView = ({ models, setSelectedModel }: CategoryTreeViewProps): React.ReactElement<any> => {
+const CategoryTreeView = ({ models, setSelectedModel }: CategoryTreeViewProps): React.ReactElement => {
     function handleSelect(event, model) {
         event.preventDefault();
         // Ignore categories

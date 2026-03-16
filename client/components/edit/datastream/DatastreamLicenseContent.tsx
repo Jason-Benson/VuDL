@@ -11,7 +11,7 @@ import useDatastreamOperation from "../../../hooks/useDatastreamOperation";
 import { useEditorContext } from "../../../context/EditorContext";
 import { useGlobalContext } from "../../../context/GlobalContext";
 
-const DatastreamLicenseContent = (): React.ReactElement<any> => {
+const DatastreamLicenseContent = (): React.ReactElement => {
     const {
         state: { licensesCatalog },
     } = useEditorContext();

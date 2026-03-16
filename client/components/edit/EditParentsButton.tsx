@@ -6,7 +6,7 @@ export interface ObjectStatusProps {
     pid: string;
 }
 
-export const EditParentsButton = ({ pid }: ObjectStatusProps): React.ReactElement<any> => {
+export const EditParentsButton = ({ pid }: ObjectStatusProps): React.ReactElement => {
     const {
         action: { openModal },
     } = useGlobalContext();

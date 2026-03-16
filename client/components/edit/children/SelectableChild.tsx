@@ -18,7 +18,7 @@ export const SelectableChild = ({
     selectCallback,
     initialTitle,
     thumbnail = false,
-}: SelectableChildProps): React.ReactElement<any> => {
+}: SelectableChildProps): React.ReactElement => {
     const {
         state: { objectDetailsStorage },
     } = useEditorContext();

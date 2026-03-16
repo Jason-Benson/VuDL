@@ -4,7 +4,7 @@ import { useFetchContext } from "../../context/FetchContext";
 interface PidRangeIndexerProps {
     setResults: (pid: string) => void;
 }
-const PidRangeIndexer = ({ setResults }: PidRangeIndexerProps): React.ReactElement<any> => {
+const PidRangeIndexer = ({ setResults }: PidRangeIndexerProps): React.ReactElement => {
     const [prefix, setPrefix] = useState("vudl:");
     const [to, setTo] = useState("");
     const [from, setFrom] = useState("");

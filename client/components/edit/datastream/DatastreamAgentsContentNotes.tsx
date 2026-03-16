@@ -17,7 +17,7 @@ const DatastreamAgentsContentNotes = ({
     expanded,
     notes,
     setNotes,
-}: DatastreamAgentsContentNotesProps): React.ReactElement<any> => {
+}: DatastreamAgentsContentNotesProps): React.ReactElement => {
     const [note, setNote] = useState("");
     const onEditNote = (value: string, noteIndex: number) => {
         notes[noteIndex] = value;

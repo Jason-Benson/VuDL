@@ -3,7 +3,7 @@ import { useEditorContext } from "../../../context/EditorContext";
 import { useDublinCoreMetadataContext } from "../../../context/DublinCoreMetadataContext";
 import PidPicker from "../PidPicker";
 
-const DatastreamDublinCoreAddButtons = (): React.ReactElement<any> => {
+const DatastreamDublinCoreAddButtons = (): React.ReactElement => {
     const {
         state: { currentPid, dublinCoreFieldCatalog, objectDetailsStorage, parentDetailsStorage },
         action: { loadObjectDetailsIntoStorage },

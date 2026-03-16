@@ -9,7 +9,7 @@ interface CategoryProps {
     };
 }
 
-const Category = ({ data }: CategoryProps): React.ReactElement<any> => {
+const Category = ({ data }: CategoryProps): React.ReactElement => {
     const { jobs, category } = data;
     const [open, setOpen] = useSessionStorage("open-" + category, false);
     const toggle = (e: React.MouseEvent) => {

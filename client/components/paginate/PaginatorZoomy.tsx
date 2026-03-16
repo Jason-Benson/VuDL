@@ -6,7 +6,7 @@ interface PaginatorZoomyProps {
     img: string;
 }
 
-const PaginatorZoomy = ({ img }: PaginatorZoomyProps): React.ReactElement<any> => {
+const PaginatorZoomy = ({ img }: PaginatorZoomyProps): React.ReactElement => {
     const status = useRef(undefined);
     const initializeZoomy = () => {
         Zoomy.init(document.getElementById("zoomy"));

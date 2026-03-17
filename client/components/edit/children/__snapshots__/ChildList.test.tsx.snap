@@ -1,5 +1,74 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ChildList allows thumbnails to be toggled on 1`] = `<DocumentFragment />`;
+exports[`ChildList displays a paginator when appropriate 1`] = `
+<DocumentFragment>
+  <p>
+    <span
+      class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary css-1wxecgq-MuiCircularProgress-root"
+      role="progressbar"
+      style="width: 1em; height: 1em;"
+    >
+      <svg
+        class="MuiCircularProgress-svg css-54pwck-MuiCircularProgress-svg"
+        viewBox="22 22 44 44"
+      >
+        <circle
+          class="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate css-19t5dcl-MuiCircularProgress-circle"
+          cx="44"
+          cy="44"
+          fill="none"
+          r="20.2"
+          stroke-width="3.6"
+        />
+      </svg>
+    </span>
+     Loading...
+  </p>
+</DocumentFragment>
+`;
+
+exports[`ChildList renders using ajax-loaded object data 1`] = `
+<DocumentFragment>
+  <div
+    class="childlist"
+  >
+    <div
+      class="MuiGrid-root MuiGrid-container MuiGrid-direction-xs-row MuiGrid-spacing-xs-2 css-mwb7rv-MuiGrid-root"
+    >
+      <div
+        class="MuiGrid-root MuiGrid-direction-xs-row MuiGrid-grid-xs-auto css-1hef13s-MuiGrid-root"
+      />
+      <div
+        class="MuiGrid-root MuiGrid-direction-xs-row MuiGrid-grid-xs-auto css-1hef13s-MuiGrid-root"
+      />
+      <div
+        class="MuiGrid-root MuiGrid-direction-xs-row MuiGrid-grid-xs-grow css-1ynczkt-MuiGrid-root"
+      >
+         
+      </div>
+      <div
+        class="MuiGrid-root MuiGrid-direction-xs-row MuiGrid-grid-xs-auto childlist__toggles css-1hef13s-MuiGrid-root"
+      >
+        <button>
+          Show Thumbnails
+        </button>
+        <button>
+          Show Models
+        </button>
+        <button>
+          Show Child Counts
+        </button>
+      </div>
+    </div>
+    <ul
+      class="childlist__list"
+    >
+      <li>
+        Child
+      </li>
+    </ul>
+  </div>
+</DocumentFragment>
+`;
 
 exports[`ChildList renders using ajax-loaded root data 1`] = `<DocumentFragment />`;

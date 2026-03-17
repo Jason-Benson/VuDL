@@ -10,7 +10,7 @@ export default [
     ...tseslint.configs.recommended,
     // local settings:
     {
-        files: ["**/*.ts", "**/*.js", "**/*.jsx"],
+        files: ["**/*.ts", "**/*.js", "**/*.tsx"],
 
         plugins: {
             "@typescript-eslint": typescriptEslint,

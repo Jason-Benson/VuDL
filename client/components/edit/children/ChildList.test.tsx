@@ -2,7 +2,6 @@ import { act } from "react";
 import { beforeEach, describe, expect, it, jest } from "@jest/globals";
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-// import renderer from "react-test-renderer";
 import { ChildListProps, ChildList } from "./ChildList";
 import { EditorContextProvider } from "../../../context/EditorContext";
 import { FetchContextProvider } from "../../../context/FetchContext";
@@ -32,14 +31,6 @@ describe("ChildList", () => {
     });
 
     it("renders using ajax-loaded root data", async () => {
-        // let tree;
-        // await renderer.act(async () => {
-        //     tree = getMountedChildListComponent(props);
-        //     await waitFor(() => expect(global.fetch).toHaveBeenCalledTimes(1));
-        // });
-        // expect(lastRequestUrl).toEqual("http://localhost:9000/api/edit/topLevelObjects?start=0&rows=10");
-        // expect(tree.toJSON()).toMatchSnapshot();
-
         await act(async () => {
             const { asFragment } = render(
                 <FetchContextProvider>
@@ -53,134 +44,133 @@ describe("ChildList", () => {
         expect(lastRequestUrl).toEqual("http://localhost:9000/api/edit/topLevelObjects?start=0&rows=10");
     });
 
-    // it("allows thumbnails to be toggled on", async () => {
-    //     // let tree;
-    //     // await renderer.act(async () => {
-    //     //     tree = getMountedChildListComponent(props);
-    //     //     await waitFor(() => expect(global.fetch).toHaveBeenCalledTimes(1));
-    //     //     expect(lastRequestUrl).toEqual("http://localhost:9000/api/edit/topLevelObjects?start=0&rows=10");
-    //     //     tree.root
-    //     //         .find((element) => {
-    //     //             return element?.children[0] === "Show Thumbnails";
-    //     //         })
-    //     //         .props.onClick();
-    //     // });
-    //     // expect(tree.toJSON()).toMatchSnapshot();
-
-    //     await act(async () => {
-    //         const { asFragment } = render(
-    //             <FetchContextProvider>
-    //                 <EditorContextProvider>
-    //                     <ChildList {...props} />
-    //                 </EditorContextProvider>
-    //             </FetchContextProvider>,
-    //         );
-    //         expect(asFragment()).toMatchSnapshot();
-    //         expect(lastRequestUrl).toEqual("http://localhost:9000/api/edit/topLevelObjects?start=0&rows=10");
-    //         // expect(asFragment().textContent.includes("Show Thumbnails")).toBeTruthy();
-    //     })
-    // });
     it("allows thumbnails to be toggled on", async () => {
         const user = userEvent.setup();
-        
-        await act(async () => {
-            render(
-                <FetchContextProvider>
-                    <EditorContextProvider>
-                        <ChildList {...props} />
-                    </EditorContextProvider>
-                </FetchContextProvider>,
-            );
-            await waitFor(() => expect(global.fetch).toHaveBeenCalledTimes(1));
-        });
 
+        render(
+            <FetchContextProvider>
+                <EditorContextProvider>
+                    <ChildList {...props} />
+                </EditorContextProvider>
+            </FetchContextProvider>,
+        );
+
+        await waitFor(() => expect(global.fetch).toHaveBeenCalledTimes(1));
         expect(lastRequestUrl).toEqual("http://localhost:9000/api/edit/topLevelObjects?start=0&rows=10");
-        
-        // Find and click the "Show Thumbnails" button
-        const thumbnailsButton = screen.getByRole("button", { name: /show thumbnails/i });
+
+        // Wait for the toggle button to appear (component has finished loading)
+        const thumbnailsButton = await waitFor(() =>
+            screen.getByRole("button", { name: /show thumbnails/i }),
+        );
+
+        // Click it to toggle the state
         await user.click(thumbnailsButton);
-        
-        // Verify the result
-        expect(screen.getByText("Show Thumbnails")).toBeInTheDocument();
+
+        // After clicking, the button text should update
+        expect(screen.getByRole("button", { name: /hide thumbnails/i })).toBeInTheDocument();
     });
 
-    // it("allows models to be toggled on", async () => {
-    //     let tree;
-    //     await renderer.act(async () => {
-    //         tree = getMountedChildListComponent(props);
-    //         await waitFor(() => expect(global.fetch).toHaveBeenCalledTimes(1));
-    //         expect(lastRequestUrl).toEqual("http://localhost:9000/api/edit/topLevelObjects?start=0&rows=10");
-    //         tree.root
-    //             .find((element) => {
-    //                 return element?.children[0] === "Show Models";
-    //             })
-    //             .props.onClick();
-    //     });
-    //     expect(tree.toJSON()).toMatchSnapshot();
-    // });
+    it("allows models to be toggled on", async () => {
+        const user = userEvent.setup();
 
-    // it("allows child counts to be toggled on", async () => {
-    //     let tree;
-    //     await renderer.act(async () => {
-    //         tree = getMountedChildListComponent(props);
-    //         await waitFor(() => expect(global.fetch).toHaveBeenCalledTimes(1));
-    //         expect(lastRequestUrl).toEqual("http://localhost:9000/api/edit/topLevelObjects?start=0&rows=10");
-    //         tree.root
-    //             .find((element) => {
-    //                 return element?.children[0] === "Show Child Counts";
-    //             })
-    //             .props.onClick();
-    //     });
-    //     expect(tree.toJSON()).toMatchSnapshot();
-    // });
+        render(
+            <FetchContextProvider>
+                <EditorContextProvider>
+                    <ChildList {...props} />
+                </EditorContextProvider>
+            </FetchContextProvider>,
+        );
 
-    // it("renders using SelectableChild when a callback is provided", async () => {
-    //     props.selectCallback = jest.fn();
-    //     let tree;
-    //     await renderer.act(async () => {
-    //         tree = getMountedChildListComponent(props);
-    //         await waitFor(() => expect(global.fetch).toHaveBeenCalledTimes(1));
-    //     });
-    //     expect(lastRequestUrl).toEqual("http://localhost:9000/api/edit/topLevelObjects?start=0&rows=10");
-    //     expect(tree.toJSON()).toMatchSnapshot();
-    // });
+        await waitFor(() => expect(global.fetch).toHaveBeenCalledTimes(1));
+        expect(lastRequestUrl).toEqual("http://localhost:9000/api/edit/topLevelObjects?start=0&rows=10");
+        const modelsButton = await waitFor(() =>
+            screen.getByRole("button", { name: /show models/i }),
+        );
+        await user.click(modelsButton);
+        expect(screen.getByRole("button", { name: /hide models/i })).toBeInTheDocument();
+    });
 
-    // it("displays a paginator when appropriate", async () => {
-    //     // with a page size of 10, the response will include 10 records, but numFound will show
-    //     // the full result set size
-    //     response = {
-    //         numFound: 10000,
-    //         start: 0,
-    //         docs: [
-    //             { id: "foo:124", title: "hello1" },
-    //             { id: "foo:125", title: "hello2" },
-    //             { id: "foo:126", title: "hello3" },
-    //             { id: "foo:127", title: "hello4" },
-    //             { id: "foo:128", title: "hello5" },
-    //             { id: "foo:129", title: "hello6" },
-    //             { id: "foo:130", title: "hello7" },
-    //             { id: "foo:131", title: "hello8" },
-    //             { id: "foo:132", title: "hello9" },
-    //             { id: "foo:133", title: "hello10" },
-    //         ],
-    //     };
-    //     let tree;
-    //     await renderer.act(async () => {
-    //         tree = getMountedChildListComponent(props);
-    //         await waitFor(() => expect(global.fetch).toHaveBeenCalledTimes(1));
-    //     });
-    //     expect(lastRequestUrl).toEqual("http://localhost:9000/api/edit/topLevelObjects?start=0&rows=10");
-    //     expect(tree.toJSON()).toMatchSnapshot();
-    // });
+    it("allows child counts to be toggled on", async () => {
+        const user = userEvent.setup();
 
-    // it("renders using ajax-loaded object data", async () => {
-    //     props.pid = "foo:123";
-    //     let tree;
-    //     await renderer.act(async () => {
-    //         tree = getMountedChildListComponent(props);
-    //         await waitFor(() => expect(global.fetch).toHaveBeenCalledTimes(1));
-    //     });
-    //     expect(lastRequestUrl).toEqual("http://localhost:9000/api/edit/object/foo%3A123/children?start=0&rows=10");
-    //     expect(tree.toJSON()).toMatchSnapshot();
-    // });
+        render(
+            <FetchContextProvider>
+                <EditorContextProvider>
+                    <ChildList {...props} />
+                </EditorContextProvider>
+            </FetchContextProvider>,
+        );
+
+        await waitFor(() => expect(global.fetch).toHaveBeenCalledTimes(1));
+        expect(lastRequestUrl).toEqual("http://localhost:9000/api/edit/topLevelObjects?start=0&rows=10");
+        const childCountsButton = await waitFor(() =>
+            screen.getByRole("button", { name: /show child counts/i }),
+        );
+        await user.click(childCountsButton);
+        expect(screen.getByRole("button", { name: /hide child counts/i })).toBeInTheDocument();
+    });
+
+    it("renders using SelectableChild when a callback is provided", async () => {
+        props.selectCallback = jest.fn();
+
+        render(
+            <FetchContextProvider>
+                <EditorContextProvider>
+                    <ChildList {...props} />
+                </EditorContextProvider>
+            </FetchContextProvider>,
+        );
+
+        await waitFor(() => expect(global.fetch).toHaveBeenCalledTimes(1));
+        expect(lastRequestUrl).toEqual("http://localhost:9000/api/edit/topLevelObjects?start=0&rows=10");
+
+        // Ensure the SelectableChild mock renders (and the normal Child does not)
+        await waitFor(() => expect(screen.getByText("SelectableChild")).toBeInTheDocument());
+        expect(screen.queryByText("Child")).not.toBeInTheDocument();
+    });
+
+    it("displays a paginator when appropriate", async () => {
+        // with a page size of 10, the response will include 10 records, but numFound will show
+        // the full result set size
+        response = {
+            numFound: 10000,
+            start: 0,
+            docs: [
+                { id: "foo:124", title: "hello1" },
+                { id: "foo:125", title: "hello2" },
+                { id: "foo:126", title: "hello3" },
+                { id: "foo:127", title: "hello4" },
+                { id: "foo:128", title: "hello5" },
+                { id: "foo:129", title: "hello6" },
+                { id: "foo:130", title: "hello7" },
+                { id: "foo:131", title: "hello8" },
+                { id: "foo:132", title: "hello9" },
+                { id: "foo:133", title: "hello10" },
+            ],
+        };
+        const { asFragment } = render(
+            <FetchContextProvider>
+                <EditorContextProvider>
+                    <ChildList {...props} />
+                </EditorContextProvider>
+            </FetchContextProvider>,
+        );
+        await waitFor(() => expect(global.fetch).toHaveBeenCalledTimes(1));
+        expect(lastRequestUrl).toEqual("http://localhost:9000/api/edit/topLevelObjects?start=0&rows=10");
+        expect(asFragment()).toMatchSnapshot();
+    });
+
+    it("renders using ajax-loaded object data", async () => {
+        props.pid = "foo:123";
+        const { asFragment } = render(
+            <FetchContextProvider>
+                <EditorContextProvider>
+                    <ChildList {...props} />
+                </EditorContextProvider>
+            </FetchContextProvider>,
+        );
+        await waitFor(() => expect(global.fetch).toHaveBeenCalledTimes(1));
+        expect(lastRequestUrl).toEqual("http://localhost:9000/api/edit/object/foo%3A123/children?start=0&rows=10");
+        expect(asFragment()).toMatchSnapshot();
+    });
 });

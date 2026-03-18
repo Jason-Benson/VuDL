@@ -115,14 +115,14 @@ const PaginatorControls = (): React.ReactElement => {
         </div>
     ) : (
         // No pages, only show save buttons:
-        (<>
+        <>
             <button className="primary" onClick={() => save(false)}>
                 Save
             </button>
             <button className="primary" onClick={() => save(true)}>
                 Save and Publish
             </button>
-        </>)
+        </>
     );
 };
 

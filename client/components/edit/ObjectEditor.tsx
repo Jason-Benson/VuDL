@@ -35,8 +35,9 @@ const ObjectEditor = ({ pid }: ObjectEditorProps): React.ReactElement => {
             <Grid container>
                 <Grid
                     size={{
-                        md: "grow"
-                    }}>
+                        md: "grow",
+                    }}
+                >
                     <Box>
                         <h3>Object Tools</h3>
                         <ul>
@@ -48,8 +49,9 @@ const ObjectEditor = ({ pid }: ObjectEditorProps): React.ReactElement => {
                 </Grid>
                 <Grid
                     size={{
-                        md: "grow"
-                    }}>
+                        md: "grow",
+                    }}
+                >
                     <Box>
                         <h3>Datastreams</h3>
                         <DatastreamList />

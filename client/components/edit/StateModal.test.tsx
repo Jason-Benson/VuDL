@@ -32,7 +32,7 @@ jest.mock("./ObjectLoader", () => (args) => JSON.stringify(args));
 jest.mock(
     "@mui/material/Dialog",
     () =>
-        (function MockDialog(props: { open: boolean; children: unknown }) {
+        function MockDialog(props: { open: boolean; children: unknown }) {
             return (
                 <>
                     {"Dialog"}
@@ -40,7 +40,7 @@ jest.mock(
                     {props.children}
                 </>
             );
-        }),
+        },
 );
 jest.mock("@mui/material/DialogTitle", () => (props) => props.children);
 jest.mock("@mui/material/DialogContent", () => (props) => props.children);

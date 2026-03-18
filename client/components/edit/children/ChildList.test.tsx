@@ -59,9 +59,7 @@ describe("ChildList", () => {
         expect(lastRequestUrl).toEqual("http://localhost:9000/api/edit/topLevelObjects?start=0&rows=10");
 
         // Wait for the toggle button to appear (component has finished loading)
-        const thumbnailsButton = await waitFor(() =>
-            screen.getByRole("button", { name: /show thumbnails/i }),
-        );
+        const thumbnailsButton = await waitFor(() => screen.getByRole("button", { name: /show thumbnails/i }));
 
         // Click it to toggle the state
         await user.click(thumbnailsButton);
@@ -83,9 +81,7 @@ describe("ChildList", () => {
 
         await waitFor(() => expect(global.fetch).toHaveBeenCalledTimes(1));
         expect(lastRequestUrl).toEqual("http://localhost:9000/api/edit/topLevelObjects?start=0&rows=10");
-        const modelsButton = await waitFor(() =>
-            screen.getByRole("button", { name: /show models/i }),
-        );
+        const modelsButton = await waitFor(() => screen.getByRole("button", { name: /show models/i }));
         await user.click(modelsButton);
         expect(screen.getByRole("button", { name: /hide models/i })).toBeInTheDocument();
     });
@@ -103,9 +99,7 @@ describe("ChildList", () => {
 
         await waitFor(() => expect(global.fetch).toHaveBeenCalledTimes(1));
         expect(lastRequestUrl).toEqual("http://localhost:9000/api/edit/topLevelObjects?start=0&rows=10");
-        const childCountsButton = await waitFor(() =>
-            screen.getByRole("button", { name: /show child counts/i }),
-        );
+        const childCountsButton = await waitFor(() => screen.getByRole("button", { name: /show child counts/i }));
         await user.click(childCountsButton);
         expect(screen.getByRole("button", { name: /hide child counts/i })).toBeInTheDocument();
     });

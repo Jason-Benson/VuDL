@@ -42,9 +42,7 @@ const DatastreamDublinCoreFieldGroup = ({ field }: { field: string }): React.Rea
                         legalValues={catalogData.values ?? []}
                     />
                 </Grid>
-                <Grid size={2}>
-                    {buttons}
-                </Grid>
+                <Grid size={2}>{buttons}</Grid>
             </Grid>
         );
     });

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "@jest/globals";
-import { render, waitFor} from "@testing-library/react";
+import { render, waitFor } from "@testing-library/react";
 import EditHome from "./EditHome";
 
 const mockUseEditorContext = jest.fn();

@@ -13,12 +13,12 @@ describe("PaginatorPreview", () => {
 
     it("renders", () => {
         const { container } = render(<PaginatorPreview {...props} />);
-        expect(container.innerHTML).toContain('preview-image');
+        expect(container.innerHTML).toContain("preview-image");
     });
 
     it("does not render image", () => {
         props.img = "";
         render(<PaginatorPreview {...props} />);
-        expect(screen.queryByRole('img')).not.toBeInTheDocument();  
+        expect(screen.queryByRole("img")).not.toBeInTheDocument();
     });
 });

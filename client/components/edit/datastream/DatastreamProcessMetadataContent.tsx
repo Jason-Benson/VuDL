@@ -157,10 +157,12 @@ const DatastreamProcessMetadataContent = (): React.ReactElement => {
                             <LocalizationProvider dateAdapter={AdapterDayjs}>
                                 <DatePicker
                                     label="Process Date/Time"
-                                    value={processMetadata.processDateTime ? dayjs(processMetadata.processDateTime) : null}
+                                    value={
+                                        processMetadata.processDateTime ? dayjs(processMetadata.processDateTime) : null
+                                    }
                                     onChange={setProcessDateTime}
                                     slotProps={{
-                                        textField: { fullWidth: true }
+                                        textField: { fullWidth: true },
                                     }}
                                 />
                             </LocalizationProvider>

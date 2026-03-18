@@ -6,10 +6,10 @@ const mockJob = jest.fn();
 jest.mock(
     "./Job",
     () =>
-        (function Job(props) {
+        function Job(props) {
             mockJob(props);
             return <mock-job />;
-        }),
+        },
 );
 
 describe("JobList", () => {

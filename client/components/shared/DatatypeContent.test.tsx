@@ -17,37 +17,37 @@ describe("DatatypeContent", () => {
 
         const { container } = render(<DatatypeContent {...props} />);
         const { asFragment } = render(<DatatypeContent {...props} />);
-        expect(container.querySelector('img')).toBeTruthy();
+        expect(container.querySelector("img")).toBeTruthy();
         expect(asFragment()).toMatchSnapshot();
     });
 
     it("renders textarea on text primaryType", () => {
         props.data = "testXml";
         props.mimeType = "text/xml";
-        
+
         const { container } = render(<DatatypeContent {...props} />);
         const { asFragment } = render(<DatatypeContent {...props} />);
-        expect(container.querySelector('div')).toBeTruthy();
+        expect(container.querySelector("div")).toBeTruthy();
         expect(asFragment()).toMatchSnapshot();
     });
 
     it("renders object on application/pdf", () => {
         props.data = "testPdf";
         props.mimeType = "application/pdf";
-        
+
         const { container } = render(<DatatypeContent {...props} />);
         const { asFragment } = render(<DatatypeContent {...props} />);
-        expect(container.querySelector('object')).toBeTruthy();
+        expect(container.querySelector("object")).toBeTruthy();
         expect(asFragment()).toMatchSnapshot();
     });
 
     it("renders audio tag on audio primaryType", () => {
         props.data = "testAudio";
         props.mimeType = "audio/mpeg3";
-        
+
         const { container } = render(<DatatypeContent {...props} />);
         const { asFragment } = render(<DatatypeContent {...props} />);
-        expect(container.querySelector('audio')).toBeTruthy();
+        expect(container.querySelector("audio")).toBeTruthy();
         expect(asFragment()).toMatchSnapshot();
     });
 });

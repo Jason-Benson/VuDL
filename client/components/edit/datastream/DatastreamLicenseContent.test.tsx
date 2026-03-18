@@ -1,9 +1,8 @@
-import React from "react";
 import { describe, beforeEach, expect, it, jest } from "@jest/globals";
-import { fireEvent, render, screen } from "@testing-library/react";
-import renderer from "react-test-renderer";
+import { render, screen } from "@testing-library/react";
 import { act } from "react";
 import DatastreamLicenseContent from "./DatastreamLicenseContent";
+import userEvent from "@testing-library/user-event";
 
 jest.mock("@mui/material/RadioGroup", () => () => "RadioGroup");
 const mockUseEditorContext = jest.fn();
@@ -44,33 +43,30 @@ describe("DatastreamLicenseContent", () => {
         };
         datastreamOperationValues = {
             uploadLicense: jest.fn(),
-            getLicenseKey: jest.fn(),
+            getLicenseKey: jest.fn().mockResolvedValue("testLicenseKey"),
         };
         mockUseEditorContext.mockReturnValue(editorValues);
         mockUseGlobalContext.mockReturnValue(globalValues);
         mockUseDatastreamOperation.mockReturnValue(datastreamOperationValues);
     });
 
-    it("renders", () => {
-        const tree = renderer.create(<DatastreamLicenseContent />).toJSON();
-        expect(tree).toMatchSnapshot();
+    it("renders", async () => {
+        const { asFragment } = await act(async () => render(<DatastreamLicenseContent />));
+        expect(asFragment()).toMatchSnapshot();
     });
 
     it("calls uploadLicense on click", async () => {
         datastreamOperationValues.uploadLicense.mockResolvedValue("upload worked");
-        await act(async () => {
-            await render(<DatastreamLicenseContent />);
-            await fireEvent.click(screen.getByRole("button", { name: "Save" }));
-        });
+        await act(async () => render(<DatastreamLicenseContent />));
+        await userEvent.setup().click(screen.getByRole("button", { name: "Save" }));
+
         expect(datastreamOperationValues.getLicenseKey).toHaveBeenCalled();
         expect(datastreamOperationValues.uploadLicense).toHaveBeenCalled();
     });
 
     it("can be canceled", async () => {
-        await act(async () => {
-            await render(<DatastreamLicenseContent />);
-        });
-        await fireEvent.click(screen.getByText("Cancel"));
+        await act(async () => render(<DatastreamLicenseContent />));
+        await userEvent.setup().click(screen.getByText("Cancel"));
         expect(datastreamOperationValues.uploadLicense).not.toHaveBeenCalled();
         expect(globalValues.action.closeModal).toHaveBeenCalledWith("datastream");
     });

@@ -1,8 +1,6 @@
-import React from "react";
 import { describe, beforeEach, expect, it, jest } from "@jest/globals";
-import renderer from "react-test-renderer";
+import { render, waitFor } from "@testing-library/react";
 import DatastreamViewModalContent from "./DatastreamViewModalContent";
-import { waitFor } from "@testing-library/react";
 
 const mockUseEditorContext = jest.fn();
 jest.mock("../../../context/EditorContext", () => ({
@@ -54,13 +52,10 @@ describe("DatastreamViewModalContent", () => {
             mimeType: "test2",
         };
         datastreamOperationValues.viewDatastream.mockResolvedValue(response);
-        let tree;
-        await renderer.act(async () => {
-            tree = renderer.create(<DatastreamViewModalContent />);
-            await waitFor(() => expect(datastreamOperationValues.viewDatastream).toHaveBeenCalled());
-        });
-        expect(tree.toJSON()).toMatchSnapshot();
-        expect(mockDatatypeContent).toHaveBeenCalledWith(response);
+        const { asFragment } = render(<DatastreamViewModalContent />);
+        await waitFor(() => expect(datastreamOperationValues.viewDatastream).toHaveBeenCalled());
+        expect(asFragment()).toMatchSnapshot();
+        await waitFor(() => expect(mockDatatypeContent).toHaveBeenCalledWith(response));
     });
 
     it("renders for download-only content", async () => {
@@ -69,12 +64,9 @@ describe("DatastreamViewModalContent", () => {
             mimeType: "image/tiff",
         };
         datastreamOperationValues.viewDatastream.mockResolvedValue(response);
-        let tree;
-        await renderer.act(async () => {
-            tree = renderer.create(<DatastreamViewModalContent />);
-            await waitFor(() => expect(datastreamOperationValues.viewDatastream).toHaveBeenCalled());
-        });
-        expect(tree.toJSON()).toMatchSnapshot();
+        const { asFragment } = render(<DatastreamViewModalContent />);
+        await waitFor(() => expect(datastreamOperationValues.viewDatastream).toHaveBeenCalled());
+        expect(asFragment()).toMatchSnapshot();
         expect(mockDatatypeContent).not.toHaveBeenCalled();
     });
 });

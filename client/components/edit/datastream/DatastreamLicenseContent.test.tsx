@@ -59,7 +59,6 @@ describe("DatastreamLicenseContent", () => {
         datastreamOperationValues.uploadLicense.mockResolvedValue("upload worked");
         await act(async () => render(<DatastreamLicenseContent />));
         await userEvent.setup().click(screen.getByRole("button", { name: "Save" }));
-
         expect(datastreamOperationValues.getLicenseKey).toHaveBeenCalled();
         expect(datastreamOperationValues.uploadLicense).toHaveBeenCalled();
     });

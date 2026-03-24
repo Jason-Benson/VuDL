@@ -65,7 +65,7 @@ describe("DatastreamProcessMetadataContent", () => {
     let globalValues;
     let processMetadataValues;
 
-    const renderComponent = async (fakeData = {}, extraStep: (() => void) | null = null) => {
+    const renderComponent = async (fakeData = {}) => {
         datastreamOperationValues.getProcessMetadata.mockResolvedValue(fakeData);
         processMetadataValues.state = fakeData;
 
@@ -137,9 +137,9 @@ describe("DatastreamProcessMetadataContent", () => {
         jest.clearAllMocks();
     });
 
-    it("renders a loading message if content is unavailable", () => {
+    it("renders a loading message if content is unavailable", async () => {
         datastreamOperationValues.getProcessMetadata.mockResolvedValue({});
-        const { asFragment } = render(<DatastreamProcessMetadataContent />);
+        const { asFragment } = await act(async () => render(<DatastreamProcessMetadataContent />));
         expect(asFragment()).toMatchSnapshot();
     });
 

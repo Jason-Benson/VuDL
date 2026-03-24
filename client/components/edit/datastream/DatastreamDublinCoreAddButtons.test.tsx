@@ -1,6 +1,7 @@
 import React from "react";
 import { describe, afterEach, expect, it, jest } from "@jest/globals";
-import renderer from "react-test-renderer";
+//import renderer from "react-test-renderer";
+import { render, screen } from "@testing-library/react";
 import DatastreamDublinCoreAddButtons from "./DatastreamDublinCoreAddButtons";
 import { waitFor } from "@testing-library/react";
 
@@ -56,8 +57,10 @@ describe("DatastreamDublinCoreAddButtons", () => {
     });
 
     it("renders without selected clone pid", () => {
-        const tree = renderer.create(<DatastreamDublinCoreAddButtons />).toJSON();
-        expect(tree).toMatchSnapshot();
+        // const tree = renderer.create(<DatastreamDublinCoreAddButtons />).toJSON();
+        // expect(tree).toMatchSnapshot();
+        const { asFragment } = render(<DatastreamDublinCoreAddButtons />);
+        expect(asFragment()).toMatchSnapshot();
     });
 
     it("renders with selected clone pid", () => {
@@ -75,8 +78,10 @@ describe("DatastreamDublinCoreAddButtons", () => {
                 parents: [{ pid: "parent:123", title: "Parent" }],
             },
         };
-        const tree = renderer.create(<DatastreamDublinCoreAddButtons />).toJSON();
-        expect(tree).toMatchSnapshot();
+        // const tree = renderer.create(<DatastreamDublinCoreAddButtons />).toJSON();
+        // expect(tree).toMatchSnapshot();
+        const { asFragment } = render(<DatastreamDublinCoreAddButtons />);
+        expect(asFragment()).toMatchSnapshot();
     });
 
     it("renders with appropriate parent details (using full storage)", () => {
@@ -85,8 +90,10 @@ describe("DatastreamDublinCoreAddButtons", () => {
                 parents: [{ pid: "parent:123", title: "Parent" }],
             },
         };
-        const tree = renderer.create(<DatastreamDublinCoreAddButtons />).toJSON();
-        expect(tree).toMatchSnapshot();
+        // const tree = renderer.create(<DatastreamDublinCoreAddButtons />).toJSON();
+        // expect(tree).toMatchSnapshot();
+        const { asFragment } = render(<DatastreamDublinCoreAddButtons />);
+        expect(asFragment()).toMatchSnapshot();
     });
 
     it("adds new fields on click", () => {

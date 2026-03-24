@@ -1,5 +1,5 @@
 import { describe, afterEach, expect, it, jest } from "@jest/globals";
-import { act, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import DatastreamDublinCoreFieldGroup from "./DatastreamDublinCoreFieldGroup";
 import userEvent from "@testing-library/user-event";
 

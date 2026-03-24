@@ -68,7 +68,7 @@ describe("DatastreamDublinCoreFieldGroup", () => {
 
     it("inserts values below", async () => {
         render(<DatastreamDublinCoreFieldGroup field="dc:title" />);
-        const addButtons = screen.getAllByRole('button', { name: /add below/i });
+        const addButtons = screen.getAllByRole("button", { name: /add below/i });
         const addButton = addButtons[1];
         await userEvent.click(addButton);
         expect(dcValues.action.addValueBelow).toHaveBeenCalledWith("dc:title", 1, "");
@@ -76,7 +76,7 @@ describe("DatastreamDublinCoreFieldGroup", () => {
 
     it("deletes rows", async () => {
         render(<DatastreamDublinCoreFieldGroup field="dc:title" />);
-        const deleteButtons = screen.getAllByRole('button', { name: /delete row/i });
+        const deleteButtons = screen.getAllByRole("button", { name: /delete row/i });
         const deleteButton = deleteButtons[0];
         await userEvent.click(deleteButton);
         expect(dcValues.action.deleteValue).toHaveBeenCalledWith("dc:title", 0);
@@ -84,7 +84,7 @@ describe("DatastreamDublinCoreFieldGroup", () => {
 
     it("saves values appropriately", async () => {
         render(<DatastreamDublinCoreFieldGroup field="dc:title" />);
-        const inputs = screen.getAllByRole('textbox');
+        const inputs = screen.getAllByRole("textbox");
         const input = inputs[1];
         await userEvent.clear(input);
         await userEvent.type(input, "xyzzy");

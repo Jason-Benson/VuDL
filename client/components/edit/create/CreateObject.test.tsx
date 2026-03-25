@@ -1,10 +1,8 @@
-import React from "react";
 import { beforeEach, describe, expect, it, jest } from "@jest/globals";
 import { act } from "react";
 import { waitFor } from "@testing-library/react";
 import { fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import renderer from "react-test-renderer";
 import CreateObject from "./CreateObject";
 import { FetchContextProvider } from "../../../context/FetchContext";
 
@@ -15,9 +13,9 @@ jest.mock("@mui/x-tree-view/TreeItem", function () {
     return { TreeItem: () => "TreeItem" };
 });
 
-jest.mock("@mui/x-tree-view/TreeView", function () {
+jest.mock("@mui/x-tree-view/SimpleTreeView", function () {
     return {
-        TreeView: ({ onNodeSelect, children }) => {
+        SimpleTreeView: ({ onNodeSelect, children }) => {
             nodeSelectFunction = onNodeSelect;
             treeItems = children;
             return children;
@@ -68,33 +66,24 @@ describe("CreateObject", () => {
     }
 
     it("renders appropriately with default settings", async () => {
-        let tree;
-        await renderer.act(async () => {
-            tree = renderer.create(getCreateObjectToTest({}));
-        });
+        const { asFragment } = render(getCreateObjectToTest());
         await waitFor(() => expect(global.fetch).toHaveBeenCalled());
-        expect(tree.toJSON()).toMatchSnapshot();
+        expect(asFragment()).toMatchSnapshot();
     });
 
     it("renders appropriately with noParent and parent change enabled", async () => {
         props.allowNoParentPid = true;
-        let tree;
-        await renderer.act(async () => {
-            tree = renderer.create(getCreateObjectToTest(props));
-        });
+        const { asFragment } = render(getCreateObjectToTest(props));
         await waitFor(() => expect(global.fetch).toHaveBeenCalled());
-        expect(tree.toJSON()).toMatchSnapshot();
+        expect(asFragment()).toMatchSnapshot();
     });
 
     it("renders appropriately with editing disabled", async () => {
         props.parentPid = "foo:1234";
         props.allowChangeParentPid = false;
-        let tree;
-        await renderer.act(async () => {
-            tree = renderer.create(getCreateObjectToTest(props));
-        });
+        const { asFragment } = render(getCreateObjectToTest(props));
         await waitFor(() => expect(global.fetch).toHaveBeenCalled());
-        expect(tree.toJSON()).toMatchSnapshot();
+        expect(asFragment()).toMatchSnapshot();
     });
 
     it("submits appropriate data in default case", async () => {

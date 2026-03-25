@@ -7,7 +7,7 @@
   "scripts": {
     "build": "next build",
     "check-types": "tsc --noemit",
-    "format": "prettier --check --write *.js components/**",
+    "format": "prettier --check --write *.js *.ts  components/**",
     "lint": "ESLINT_USE_FLAT_CONFIG=true eslint *.js components/ -c eslint.config.mjs --max-warnings 0",
     "postinstall": "cp -r ./node_modules/tinymce ./public/",
     "prod": "next start",

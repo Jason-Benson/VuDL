@@ -1,7 +1,8 @@
 import React from "react";
 import { describe, afterEach, expect, it, jest } from "@jest/globals";
 //import renderer from "react-test-renderer";
-import { render, screen } from "@testing-library/react";
+//, screen
+import { render } from "@testing-library/react";
 import DatastreamDublinCoreAddButtons from "./DatastreamDublinCoreAddButtons";
 import { waitFor } from "@testing-library/react";
 

@@ -14,6 +14,6 @@ exports[`BlurSavingTextField updates the temporary internal value appropriately 
 
 exports[`BlurSavingTextField updates the temporary internal value appropriately 2`] = `
 <DocumentFragment>
-  TextField: {"value":"foo"}
+  TextField: {"value":"bar"}
 </DocumentFragment>
 `;

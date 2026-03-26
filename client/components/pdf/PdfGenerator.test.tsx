@@ -1,9 +1,7 @@
-import React from "react";
 import { beforeEach, describe, expect, it, jest } from "@jest/globals";
 import { act } from "react";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import renderer from "react-test-renderer";
 import PdfGenerator from "./PdfGenerator";
 
 const mockUseFetchContext = jest.fn();
@@ -26,8 +24,8 @@ describe("PdfGenerator", () => {
     });
 
     it("renders", () => {
-        const tree = renderer.create(<PdfGenerator />).toJSON();
-        expect(tree).toMatchSnapshot();
+        const { asFragment } = render(<PdfGenerator />);
+        expect(asFragment()).toMatchSnapshot();
     });
 
     it("changes the pid input", () => {

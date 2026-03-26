@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it, jest } from "@jest/globals";
-import { render } from "@testing-library/react";
+import { render, waitFor } from "@testing-library/react";
 import { FetchContextProvider } from "../../context/FetchContext";
 import Job from "./Job";
 
@@ -18,25 +18,31 @@ describe("Job", () => {
 
     beforeEach(() => {
         props = {
-            data: {
-                category: "testCategory",
-                children: "testChildren",
-            },
+            category: "testCategory",
+            children: "testChildren",
         };
+        // Mock fetch to return a successful response
+        global.fetch.mockResolvedValue({
+            ok: true,
+            status: 200,
+            json: jest.fn().mockResolvedValue({
+                ingest_info: "",
+                published: false,
+                derivatives: { building: false },
+            }),
+        });
     });
 
-    it("renders", () => {
-        // const tree = renderer.create(
-        //     <FetchContextProvider>
-        //         <Job {...props} />
-        //     </FetchContextProvider>,
-        // );
-        // expect(tree.toJSON()).toMatchSnapshot();
+    it("renders", async () => {
         const { asFragment } = render(
             <FetchContextProvider>
                 <Job {...props} />
             </FetchContextProvider>,
         );
-        expect(asFragment()).toMatchSnapshot();
+
+        // Wait for the async fetch and state updates to complete
+        await waitFor(() => {
+            expect(asFragment()).toMatchSnapshot();
+        });
     });
 });

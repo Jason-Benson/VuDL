@@ -1,5 +1,5 @@
 import { describe, beforeEach, expect, it, jest } from "@jest/globals";
-import { render } from "@testing-library/react";
+import { render, act } from "@testing-library/react";
 import BlurSavingTextField, { BlurSavingTextFieldProps } from "./BlurSavingTextField";
 
 const mockTextField = jest.fn();
@@ -38,7 +38,9 @@ describe("BlurSavingTextField", () => {
 
         // Trigger the onChange handler with a new value
         const changeHandler = mockTextField.mock.calls[0][0].onChange;
-        changeHandler({ target: { value: "bar" } });
+        act(() => {
+            changeHandler({ target: { value: "bar" } });
+        });
 
         // The snapshot should show the updated temporary value
         expect(asFragment()).toMatchSnapshot();
@@ -52,7 +54,9 @@ describe("BlurSavingTextField", () => {
         mockTextField.mockClear();
         render(<BlurSavingTextField {...props} />);
         const blurHandler = mockTextField.mock.calls[0][0].onBlur;
-        blurHandler({ target: { value: "bar" } });
+        act(() => {
+            blurHandler({ target: { value: "bar" } });
+        });
         expect(setterWasCalled).toEqual(true);
         expect(value).toEqual("bar");
     });
@@ -61,7 +65,9 @@ describe("BlurSavingTextField", () => {
         mockTextField.mockClear();
         render(<BlurSavingTextField {...props} />);
         const blurHandler = mockTextField.mock.calls[0][0].onBlur;
-        blurHandler({ target: { value: "foo" } });
+        act(() => {
+            blurHandler({ target: { value: "foo" } });
+        });
         expect(setterWasCalled).toEqual(false);
         expect(value).toEqual("foo");
     });

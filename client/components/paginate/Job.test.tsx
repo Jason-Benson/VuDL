@@ -1,6 +1,5 @@
-import React from "react";
 import { beforeEach, describe, expect, it, jest } from "@jest/globals";
-import renderer from "react-test-renderer";
+import { render } from "@testing-library/react";
 import { FetchContextProvider } from "../../context/FetchContext";
 import Job from "./Job";
 
@@ -27,11 +26,17 @@ describe("Job", () => {
     });
 
     it("renders", () => {
-        const tree = renderer.create(
+        // const tree = renderer.create(
+        //     <FetchContextProvider>
+        //         <Job {...props} />
+        //     </FetchContextProvider>,
+        // );
+        // expect(tree.toJSON()).toMatchSnapshot();
+        const { asFragment } = render(
             <FetchContextProvider>
                 <Job {...props} />
             </FetchContextProvider>,
         );
-        expect(tree.toJSON()).toMatchSnapshot();
+        expect(asFragment()).toMatchSnapshot();
     });
 });

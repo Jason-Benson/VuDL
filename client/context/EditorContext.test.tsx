@@ -226,6 +226,7 @@ describe("useEditorContext", () => {
             });
             await result.current.action.loadCurrentObjectDetails();
             await waitFor(() => expect(fetchValues.action.fetchJSON).toHaveBeenCalled());
+            await waitFor(() => expect(result.current.state.objectDetailsStorage).toHaveProperty("test:123"));
             expect(result.current.action.extractFirstMetadataValue("field", "default")).toEqual("foo");
         });
     });

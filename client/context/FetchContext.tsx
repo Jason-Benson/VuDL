@@ -6,7 +6,7 @@ import { authApiUrl, ingestApiUrl, loginUrl } from "../util/routes";
  * specifically a way to make api requests.
  */
 const fetchContextParams = {
-    token: typeof window !== 'undefined' ? sessionStorage.getItem("token") : null,
+    token: typeof window !== "undefined" ? sessionStorage.getItem("token") : null,
 };
 const FetchContext = createContext({});
 
@@ -37,9 +37,7 @@ interface FetchContextProviderProps {
     children?: React.ReactNode;
 }
 
-export const FetchContextProvider = ({
-    children
-}: FetchContextProviderProps) => {
+export const FetchContextProvider = ({ children }: FetchContextProviderProps) => {
     const [state, dispatch] = useReducer(fetchReducer, fetchContextParams);
     const value = { state, dispatch };
     return <FetchContext.Provider value={value}>{children}</FetchContext.Provider>;
@@ -92,7 +90,7 @@ export const useFetchContext = () => {
             type: "CLEAR_TOKEN",
             payload: null,
         });
-    }
+    };
 
     /**
      * Return a customizable response when making a request.
@@ -108,7 +106,7 @@ export const useFetchContext = () => {
             fetchParams(params, {
                 ...headers,
                 Authorization: `Token ${token}`,
-            })
+            }),
         );
         if (response?.status == 401) {
             const token = await refreshToken();
@@ -118,7 +116,7 @@ export const useFetchContext = () => {
                       fetchParams(params, {
                           ...headers,
                           Authorization: `Token ${token}`,
-                      })
+                      }),
                   )
                 : false;
         }
@@ -166,7 +164,7 @@ export const useFetchContext = () => {
             const blob = await response.blob();
             return {
                 headers: response.headers,
-                blob
+                blob,
             };
         }
         throw new Error(response.statusText);

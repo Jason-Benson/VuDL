@@ -10,9 +10,7 @@ interface wrapperProps {
     children?: React.ReactNode;
 }
 
-const wrapper = ({
-    children
-}: wrapperProps) => {
+const wrapper = ({ children }: wrapperProps) => {
     return (
         <FetchContextProvider>
             <PaginatorContextProvider>{children}</PaginatorContextProvider>
@@ -28,7 +26,7 @@ describe("usePaginatorContext", () => {
             Promise.resolve({
                 ok: true,
                 json,
-            })
+            }),
         );
         window.alert = jest.fn();
         window.confirm = jest.fn();
@@ -238,7 +236,7 @@ describe("usePaginatorContext", () => {
                 routes.getJobUrl("testCategory", "testJob"),
                 expect.objectContaining({
                     method: "PUT",
-                })
+                }),
             );
 
             publishValidValues.derivatives.processed = 1;
@@ -254,7 +252,7 @@ describe("usePaginatorContext", () => {
                 routes.getJobUrl(category, job),
                 expect.objectContaining({
                     method: "PUT",
-                })
+                }),
             );
             expect(window.location.assign).toHaveBeenCalledWith("/paginate");
         });
@@ -338,24 +336,27 @@ describe("usePaginatorContext", () => {
 
             json.mockResolvedValueOnce({
                 order: [
-                {
-                    filename: "test1",
-                    label: null,
-                },
-                {
-                    filename: "test2",
-                    label: null,
-                },
-            ]});
+                    {
+                        filename: "test1",
+                        label: null,
+                    },
+                    {
+                        filename: "test2",
+                        label: null,
+                    },
+                ],
+            });
             json.mockResolvedValueOnce({
-                file_problems: { deleted: ["test1"], added: ["test3"] }
+                file_problems: { deleted: ["test1"], added: ["test3"] },
             });
 
             await act(async () => {
                 await result.current.action.loadJob("foo", "bar");
             });
 
-            expect(window.alert).toHaveBeenCalledWith("1 file(s) have been removed from the job since the last edit.\n1 file(s) have been added to the job since the last edit.\n");
+            expect(window.alert).toHaveBeenCalledWith(
+                "1 file(s) have been removed from the job since the last edit.\n1 file(s) have been added to the job since the last edit.\n",
+            );
             expect(result.current.state.order).toEqual([
                 {
                     filename: "test2",

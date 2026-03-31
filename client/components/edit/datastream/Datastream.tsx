@@ -10,7 +10,7 @@ interface DatastreamProps {
         disabled: boolean;
     };
 }
-const Datastream = ({ datastream }: DatastreamProps): React.ReactElement<any> => {
+const Datastream = ({ datastream }: DatastreamProps): React.ReactElement => {
     const { stream, disabled } = datastream;
     return (
         <ListItem

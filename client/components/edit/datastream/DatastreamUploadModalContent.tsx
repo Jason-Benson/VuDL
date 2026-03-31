@@ -23,7 +23,7 @@ const uploadModalMapping: Record<string, React.ReactElement> = {
     ),
 };
 
-const DatastreamUploadModalContent = (): React.ReactElement<any> => {
+const DatastreamUploadModalContent = (): React.ReactElement => {
     const {
         state: { activeDatastream },
     } = useEditorContext();

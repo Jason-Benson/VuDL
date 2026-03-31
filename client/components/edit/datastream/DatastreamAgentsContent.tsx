@@ -16,7 +16,7 @@ import Tab from "@mui/material/Tab";
 import Tabs from "@mui/material/Tabs";
 import PidPicker from "../PidPicker";
 
-const DatastreamAgentsContent = (): React.ReactElement<any> => {
+const DatastreamAgentsContent = (): React.ReactElement => {
     const {
         state: { agentsCatalog, currentAgents, objectDetailsStorage },
         action: { loadObjectDetailsIntoStorage, setCurrentAgents },

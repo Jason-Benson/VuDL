@@ -6,7 +6,7 @@ import DialogContentText from "@mui/material/DialogContentText";
 import { useGlobalContext } from "../../../context/GlobalContext";
 import useDatastreamOperation from "../../../hooks/useDatastreamOperation";
 
-const DatastreamDeleteModalContent = (): React.ReactElement<any> => {
+const DatastreamDeleteModalContent = (): React.ReactElement => {
     const {
         action: { closeModal },
     } = useGlobalContext();

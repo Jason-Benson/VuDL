@@ -9,7 +9,7 @@ interface BreadcrumbsProps {
     initiallyShallow?: boolean;
 }
 
-const Breadcrumbs = ({ pid = null, initiallyShallow = true }: BreadcrumbsProps): React.ReactElement<any> => {
+const Breadcrumbs = ({ pid = null, initiallyShallow = true }: BreadcrumbsProps): React.ReactElement => {
     const {
         state: { parentDetailsStorage, topLevelPids },
         action: { loadParentDetailsIntoStorage },

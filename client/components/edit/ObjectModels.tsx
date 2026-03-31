@@ -5,7 +5,7 @@ export interface ObjectModelsProps {
     pid: string;
 }
 
-const ObjectModels = ({ pid }: ObjectModelsProps): React.ReactElement<any> => {
+const ObjectModels = ({ pid }: ObjectModelsProps): React.ReactElement => {
     const {
         state: { objectDetailsStorage },
     } = useEditorContext();

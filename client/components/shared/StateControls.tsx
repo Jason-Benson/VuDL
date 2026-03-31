@@ -5,7 +5,7 @@ interface StateControlsProp {
     setCurrentState: Dispatch<string>;
 }
 
-const StateControls = ({ currentState, setCurrentState }: StateControlsProp): React.ReactElement<any> => {
+const StateControls = ({ currentState, setCurrentState }: StateControlsProp): React.ReactElement => {
     const handleStateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setCurrentState(event.target.value);
     };

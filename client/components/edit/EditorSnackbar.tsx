@@ -5,7 +5,7 @@ import Snackbar from "@mui/material/Snackbar";
 import CloseIcon from "@mui/icons-material/Close";
 import { useGlobalContext } from "../../context/GlobalContext";
 
-const EditorSnackbar = (): React.ReactElement<any> => {
+const EditorSnackbar = (): React.ReactElement => {
     const {
         state: {
             snackbarState: { message, open, severity },

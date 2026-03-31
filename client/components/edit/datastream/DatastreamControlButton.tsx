@@ -29,7 +29,7 @@ const DatastreamControlButton = ({
     modalState,
     datastream,
     disabled,
-}: DatastreamControlButtonProps): React.ReactElement<any> => {
+}: DatastreamControlButtonProps): React.ReactElement => {
     const [isLoading, setLoading] = useState(false);
     const {
         action: { setActiveDatastream, setDatastreamModalState },

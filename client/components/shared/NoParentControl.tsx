@@ -5,7 +5,7 @@ interface NoParentControlProps {
     noParent: boolean;
 }
 
-const NoParentControl = ({ handleNoParentChange, noParent }: NoParentControlProps): React.ReactElement<any> => {
+const NoParentControl = ({ handleNoParentChange, noParent }: NoParentControlProps): React.ReactElement => {
     return (
         <label>
             <input type="checkbox" name="noParent" value="1" onChange={handleNoParentChange} checked={noParent} />

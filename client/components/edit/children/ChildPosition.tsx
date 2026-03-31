@@ -9,7 +9,7 @@ export interface ChildPositionProps {
     parentPid: string;
 }
 
-export const ChildPosition = ({ pid, parentPid }: ChildPositionProps): React.ReactElement<any> => {
+export const ChildPosition = ({ pid, parentPid }: ChildPositionProps): React.ReactElement => {
     const {
         state: { objectDetailsStorage },
         action: { clearPidFromChildListStorage, removeFromObjectDetailsStorage },

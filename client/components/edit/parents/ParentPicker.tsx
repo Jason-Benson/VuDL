@@ -10,7 +10,7 @@ interface ParentPickerProps {
     pid: string;
 }
 
-const ParentPicker = ({ pid }: ParentPickerProps): React.ReactElement<any> => {
+const ParentPicker = ({ pid }: ParentPickerProps): React.ReactElement => {
     const {
         action: { setSnackbarState },
     } = useGlobalContext();

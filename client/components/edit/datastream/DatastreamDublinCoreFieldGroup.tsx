@@ -7,7 +7,7 @@ import AddCircle from "@mui/icons-material/AddCircle";
 import IconButton from "@mui/material/IconButton";
 import Grid from "@mui/material/Grid";
 
-const DatastreamDublinCoreFieldGroup = ({ field }: { field: string }): React.ReactElement<any> => {
+const DatastreamDublinCoreFieldGroup = ({ field }: { field: string }): React.ReactElement => {
     const {
         state: { dublinCoreFieldCatalog },
     } = useEditorContext();

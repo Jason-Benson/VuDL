@@ -20,7 +20,7 @@ const DatastreamAgentsModifyContentRow = ({
     agent,
     index,
     setHasChanges,
-}: DatastreamAgentsModifyContentRowProps): React.ReactElement<any> => {
+}: DatastreamAgentsModifyContentRowProps): React.ReactElement => {
     const {
         state: { currentAgents },
         action: { setCurrentAgents },

@@ -8,7 +8,7 @@ interface JobClickableProps {
     clickWarning: string;
 }
 
-const JobClickable = ({ category, children, clickable, clickWarning }: JobClickableProps): React.ReactElement<any> => {
+const JobClickable = ({ category, children, clickable, clickWarning }: JobClickableProps): React.ReactElement => {
     const handleClick = (e: React.MouseEvent) => {
         if (clickWarning && !window.confirm(clickWarning)) {
             e.preventDefault();

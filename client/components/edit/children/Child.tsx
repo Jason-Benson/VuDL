@@ -33,7 +33,7 @@ export const Child = ({
     thumbnail = false,
     models = false,
     showChildCounts = false,
-}: ChildProps): React.ReactElement<any> => {
+}: ChildProps): React.ReactElement => {
     const {
         state: { objectDetailsStorage },
     } = useEditorContext();

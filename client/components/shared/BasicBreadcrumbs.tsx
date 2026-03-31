@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 
-const BasicBreadcrumbs = (): React.ReactElement<any> => {
+const BasicBreadcrumbs = (): React.ReactElement => {
     return (
         <ul className="breadcrumbs">
             <li>

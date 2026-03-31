@@ -16,7 +16,7 @@ interface ObjectEditorProps {
     pid: string;
 }
 
-const ObjectEditor = ({ pid }: ObjectEditorProps): React.ReactElement<any> => {
+const ObjectEditor = ({ pid }: ObjectEditorProps): React.ReactElement => {
     const {
         action: { initializeCatalog, loadCurrentObjectDetails, setCurrentPid },
     } = useEditorContext();

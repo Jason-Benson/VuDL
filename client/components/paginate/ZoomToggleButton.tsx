@@ -5,7 +5,7 @@ interface ZoomToggleButtonProps {
     zoom: boolean;
 }
 
-const ZoomToggleButton = ({ toggleZoom, zoom }: ZoomToggleButtonProps): React.ReactElement<any> => {
+const ZoomToggleButton = ({ toggleZoom, zoom }: ZoomToggleButtonProps): React.ReactElement => {
     return <button onClick={toggleZoom}>{`Turn Zoom ${zoom ? "Off" : "On"}`}</button>;
 };
 

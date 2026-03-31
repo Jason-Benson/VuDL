@@ -1,4 +1,3 @@
-/* eslint react/prop-types: 0 */
 import React from "react";
 import { GlobalContextProvider } from "../context/GlobalContext";
 import { PaginatorContextProvider } from "../context/PaginatorContext";
@@ -14,7 +13,7 @@ import "../styles/variables.css";
 import "../styles/global.css";
 import "../styles/job-paginator.css";
 
-function MyApp({ Component, pageProps }: { Component: React.ReactNode }): React.ReactElement<any> {
+function MyApp({ Component, pageProps }: { Component: React.ReactNode }): React.ReactElement {
     return (
         <GlobalContextProvider>
             <PaginatorContextProvider>

@@ -1,5 +1,4 @@
 import React, { createContext, useContext, useReducer } from "react";
-import { constants } from "buffer";
 
 export interface DublinCoreMetadata {
     currentDublinCore: Record<string, Array<string>>;
@@ -134,7 +133,6 @@ const dublinCoreMetadataReducer = (
             currentDublinCore: deleteValue(state.currentDublinCore, field, index),
         };
     } else if (type === "MERGE_VALUES") {
-        const { field, index } = payload as { field: string; index: number };
         return {
             ...state,
             keyCounter: incrementKeyCounters(state.keyCounter, Object.keys(payload)),

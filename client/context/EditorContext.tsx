@@ -53,14 +53,14 @@ export interface ChildCounts {
 interface EditorState {
     modelsCatalog: Record<string, FedoraModel>;
     licensesCatalog: Record<string, License>;
-    agentsCatalog: Record<string, Object>;
+    agentsCatalog: Record<string, object>;
     dublinCoreFieldCatalog: Record<string, Record<string, string>>;
     favoritePidsCatalog: Record<string, string>;
     trashPid: string | null;
     processMetadataDefaults: Record<string, string>;
     toolPresets: Array<Record<string, string>>;
     vufindUrl: string;
-    currentAgents: Array<Object>;
+    currentAgents: Array<object>;
     currentPid: string | null;
     activeDatastream: string | null;
     isDatastreamModalOpen: boolean;
@@ -381,7 +381,7 @@ export const useEditorContext = () => {
         const url = getObjectDetailsUrl(pid);
         try {
             addToObjectDetailsStorage(pid, await fetchJSON(url));
-        } catch (e) {
+        } catch {
             if (errorCallback) {
                 errorCallback(pid);
             }
@@ -401,7 +401,7 @@ export const useEditorContext = () => {
         const url = getObjectParentsUrl(pid, shallow);
         try {
             addToParentDetailsStorage(pid, await fetchJSON(url), shallow);
-        } catch (e) {
+        } catch {
             if (errorCallback) {
                 errorCallback(pid);
             }
@@ -435,7 +435,7 @@ export const useEditorContext = () => {
         const url = getObjectChildrenUrl(pid, (page - 1) * pageSize, pageSize);
         try {
             addToChildListStorage(key, await fetchJSON(url));
-        } catch (e) {
+        } catch {
             console.error("Problem fetching tree data from " + url);
         }
     };
@@ -444,7 +444,7 @@ export const useEditorContext = () => {
         const url = getObjectChildCountsUrl(pid);
         try {
             addToChildCountsStorage(pid, await fetchJSON(url));
-        } catch (e) {
+        } catch {
             console.error("Problem fetching child count data from " + url);
         }
     };
@@ -553,7 +553,7 @@ export const useEditorContext = () => {
             setDublinCoreFieldCatalog(response.dublinCoreFields || {});
             setTopLevelPids(response.topLevelPids || []);
             setVuFindUrl(response.vufindUrl ?? "");
-        } catch (err) {
+        } catch {
             console.error(`Problem fetching object catalog from ${editObjectCatalogUrl}`);
         }
     };

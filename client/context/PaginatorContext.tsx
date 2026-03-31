@@ -245,7 +245,7 @@ export const usePaginatorContext = () => {
                 alert("Success!");
                 window.location.assign("/paginate"); // TODO: Route better?
                 dispatchEvent(new Event("Prep.saved"));
-            } catch (error) {
+            } catch {
                 alert("Unable to save!");
             }
         }

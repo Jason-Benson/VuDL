@@ -160,7 +160,7 @@ describe("usePaginatorContext", () => {
                 await result.current.action.deletePage();
             });
 
-            expect(JobPaginatorState.deletePageValidation).toHaveBeenCalled;
+            expect(JobPaginatorState.deletePageValidation).toHaveBeenCalled();
         });
     });
 

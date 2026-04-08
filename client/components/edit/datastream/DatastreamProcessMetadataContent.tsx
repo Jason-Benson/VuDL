@@ -13,7 +13,7 @@ import { useProcessMetadataContext } from "../../../context/ProcessMetadataConte
 import BlurSavingTextField from "../../shared/BlurSavingTextField";
 import Grid from "@mui/material/Grid";
 import DatastreamProcessMetadataTask from "./DatastreamProcessMetadataTask";
-import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
+import { DateTimePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import type {} from "@mui/x-date-pickers/themeAugmentation";
 import { useEditorContext } from "../../../context/EditorContext";
@@ -155,7 +155,7 @@ const DatastreamProcessMetadataContent = (): React.ReactElement => {
                         </Grid>
                         <Grid size={3}>
                             <LocalizationProvider dateAdapter={AdapterDayjs}>
-                                <DatePicker
+                                <DateTimePicker
                                     label="Process Date/Time"
                                     value={
                                         processMetadata.processDateTime ? dayjs(processMetadata.processDateTime) : null

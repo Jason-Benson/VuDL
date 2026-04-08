@@ -15,8 +15,8 @@ jest.mock("@mui/x-tree-view/TreeItem", function () {
 
 jest.mock("@mui/x-tree-view/SimpleTreeView", function () {
     return {
-        SimpleTreeView: ({ onNodeSelect, children }) => {
-            nodeSelectFunction = onNodeSelect;
+        SimpleTreeView: ({ onItemSelectionToggle, children }) => {
+            nodeSelectFunction = onItemSelectionToggle;
             treeItems = children;
             return children;
         },
@@ -92,9 +92,9 @@ describe("CreateObject", () => {
         });
         await waitFor(() => expect(global.fetch).toHaveBeenCalled());
         await act(async () => {
-            nodeSelectFunction(new Event("event-foo"), "model-foo");
+            nodeSelectFunction(new Event("event-foo"), "model-foo", true);
             // Test that category select has no effect:
-            nodeSelectFunction(new Event("event-foo"), "__categoryWillBeIgnored");
+            nodeSelectFunction(new Event("event-foo"), "__categoryWillBeIgnored", true);
         });
         fireEvent.change(screen.getByRole("textbox", { name: "Title" }), { target: { value: "Test Title" } });
         fireEvent.change(screen.getByRole("textbox", { name: "Parent ID" }), { target: { value: "foo:1234" } });
@@ -126,7 +126,7 @@ describe("CreateObject", () => {
         });
         await waitFor(() => expect(global.fetch).toHaveBeenCalled());
         await act(async () => {
-            nodeSelectFunction(new Event("event-foo"), "model-foo");
+            nodeSelectFunction(new Event("event-foo"), "model-foo", true);
             fireEvent.change(screen.getByRole("textbox", { name: "Title" }), { target: { value: "Test Title" } });
         });
         await userEvent.setup().click(screen.getByRole("button", { name: "Create Object" }));

@@ -8,11 +8,7 @@ interface CategoryTreeViewProps {
 }
 
 const CategoryTreeView = ({ models, setSelectedModel }: CategoryTreeViewProps): React.ReactElement => {
-    const handleItemSelectionToggle = (
-        event: React.SyntheticEvent | null,
-        itemId: string,
-        isSelected: boolean
-    ) => {
+    const handleItemSelectionToggle = (event: React.SyntheticEvent | null, itemId: string, isSelected: boolean) => {
         // Only process when item is selected (not deselected)
         if (!isSelected) {
             return;

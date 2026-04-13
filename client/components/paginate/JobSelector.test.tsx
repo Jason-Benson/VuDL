@@ -39,14 +39,16 @@ describe("JobSelector", () => {
     it("renders", async () => {
         response.json.mockResolvedValueOnce({});
         global.fetch.mockResolvedValueOnce(response);
+        let asFragment;
         await act(async () => {
-            const { asFragment } = render(
+            const result = render(
                 <FetchContextProvider>
                     <JobSelector />
                 </FetchContextProvider>,
             );
-            expect(asFragment()).toMatchSnapshot();
+            asFragment = result.asFragment;
         });
+        expect(asFragment()).toMatchSnapshot();
     });
 
     it("sets category components", async () => {

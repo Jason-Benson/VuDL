@@ -37,13 +37,19 @@ describe("CreateObject", () => {
         global.fetch = jest.fn((url, data) => {
             if (url == "http://localhost:9000/api/edit/models") {
                 // If models were requested, set up fake data:
-                const setFakeModels = function (callback) {
-                    callback(["model-foo", "model-bar", "model-baz"]);
+                const modelsData = {
+                    category1: {
+                        "model-foo": "model-foo",
+                        "model-bar": "model-bar",
+                    },
+                    category2: {
+                        "model-baz": "model-baz",
+                    },
                 };
                 return {
                     ok: true,
                     status: 200,
-                    json: () => new Promise(setFakeModels, jest.fn()),
+                    json: async () => modelsData,
                 };
             } else if (url == "http://localhost:9000/api/edit/object/new") {
                 // If the form was submitted, save the data so we can make assertions about it:
@@ -99,7 +105,7 @@ describe("CreateObject", () => {
         fireEvent.change(screen.getByRole("textbox", { name: "Title" }), { target: { value: "Test Title" } });
         fireEvent.change(screen.getByRole("textbox", { name: "Parent ID" }), { target: { value: "foo:1234" } });
         await userEvent.setup().click(screen.getByRole("button", { name: "Create Object" }));
-        expect(treeItems.length).toEqual(3); // make sure setFakeModels is working
+        expect(treeItems.length).toEqual(2); // two categories
         expect(submittedData).toEqual({
             body: JSON.stringify({
                 title: "Test Title",
@@ -130,7 +136,7 @@ describe("CreateObject", () => {
             fireEvent.change(screen.getByRole("textbox", { name: "Title" }), { target: { value: "Test Title" } });
         });
         await userEvent.setup().click(screen.getByRole("button", { name: "Create Object" }));
-        expect(treeItems.length).toEqual(3); // make sure setFakeModels is working
+        expect(treeItems.length).toEqual(2); // two categories
         expect(submittedData).toEqual({
             body: JSON.stringify({
                 title: "Test Title",
@@ -156,7 +162,7 @@ describe("CreateObject", () => {
         });
         await waitFor(() => expect(global.fetch).toHaveBeenCalled());
         await act(async () => {
-            nodeSelectFunction(new Event("event-foo"), "model-foo");
+            nodeSelectFunction(new Event("event-foo"), "model-foo", true);
             fireEvent.change(screen.getByRole("textbox", { name: "Title" }), { target: { value: "Test Title" } });
         });
         const user = userEvent.setup();
@@ -188,7 +194,7 @@ describe("CreateObject", () => {
         });
         await waitFor(() => expect(global.fetch).toHaveBeenCalled());
         await act(async () => {
-            nodeSelectFunction(new Event("event-foo"), "model-foo");
+            nodeSelectFunction(new Event("event-foo"), "model-foo", true);
         });
         const user = userEvent.setup();
         await act(async () => {

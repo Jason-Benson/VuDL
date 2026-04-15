@@ -72,31 +72,7 @@ describe("DatastreamProcessMetadataContent", () => {
         render(<DatastreamProcessMetadataContent />);
 
         await waitFor(() => expect(processMetadataValues.action.setMetadata).toHaveBeenCalledWith(fakeData));
-        // if (extraStep) {
-        //     await renderer.act(async () => {
-        //         extraStep();
-        //     });
-        // }
     };
-
-    // const getRenderedTree = async (fakeData = {}, extraStep: (() => void) | null = null) => {
-    //     datastreamOperationValues.getProcessMetadata.mockResolvedValue(fakeData);
-    //     processMetadataValues.state = fakeData;
-
-    //     const tree = renderer.create(<DatastreamProcessMetadataContent />);
-    //     render(<DatastreamProcessMetadataContent />);
-
-    //     await renderer.act(async () => {
-    //         await waitFor(() => expect(processMetadataValues.action.setMetadata).toHaveBeenCalledWith(fakeData));
-    //     });
-
-    //     if (extraStep) {
-    //         await renderer.act(async () => {
-    //             extraStep();
-    //         });
-    //     }
-    //     return tree.toJSON();
-    // };
 
     beforeEach(() => {
         editorContext = {

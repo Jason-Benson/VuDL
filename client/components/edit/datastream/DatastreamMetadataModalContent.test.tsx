@@ -36,10 +36,11 @@ describe("DatastreamMetadataModalContent", () => {
             mimeType: "test2",
         };
         datastreamOperationValues.viewMetadata.mockResolvedValue(response);
+        let asFragment;
         await act(async () => {
-            const { asFragment } = render(<DatastreamMetadataModalContent />);
-            expect(asFragment()).toMatchSnapshot();
+            asFragment = render(<DatastreamMetadataModalContent />).asFragment;
         });
+        expect(asFragment()).toMatchSnapshot();
         expect(mockDatatypeContent).toHaveBeenCalledWith(response);
     });
 });

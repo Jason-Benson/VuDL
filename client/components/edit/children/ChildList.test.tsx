@@ -31,17 +31,18 @@ describe("ChildList", () => {
     });
 
     it("renders using ajax-loaded root data", async () => {
+        let asFragment;
         await act(async () => {
-            const { asFragment } = render(
+            asFragment = render(
                 <FetchContextProvider>
                     <EditorContextProvider>
                         <ChildList {...props} />
                     </EditorContextProvider>
                 </FetchContextProvider>,
-            );
-            expect(asFragment()).toMatchSnapshot();
+            ).asFragment;
         });
         expect(lastRequestUrl).toEqual("http://localhost:9000/api/edit/topLevelObjects?start=0&rows=10");
+        expect(asFragment()).toMatchSnapshot();
     });
 
     it("allows thumbnails to be toggled on", async () => {
@@ -142,13 +143,16 @@ describe("ChildList", () => {
                 { id: "foo:133", title: "hello10" },
             ],
         };
-        const { asFragment } = render(
-            <FetchContextProvider>
-                <EditorContextProvider>
-                    <ChildList {...props} />
-                </EditorContextProvider>
-            </FetchContextProvider>,
-        );
+        let asFragment;
+        await act(async () => {
+            asFragment = render(
+                <FetchContextProvider>
+                    <EditorContextProvider>
+                        <ChildList {...props} />
+                    </EditorContextProvider>
+                </FetchContextProvider>,
+            ).asFragment;
+        });
         await waitFor(() => expect(global.fetch).toHaveBeenCalledTimes(1));
         expect(lastRequestUrl).toEqual("http://localhost:9000/api/edit/topLevelObjects?start=0&rows=10");
         expect(asFragment()).toMatchSnapshot();
@@ -156,13 +160,16 @@ describe("ChildList", () => {
 
     it("renders using ajax-loaded object data", async () => {
         props.pid = "foo:123";
-        const { asFragment } = render(
-            <FetchContextProvider>
-                <EditorContextProvider>
-                    <ChildList {...props} />
-                </EditorContextProvider>
-            </FetchContextProvider>,
-        );
+        let asFragment;
+        await act(async () => {
+            asFragment = render(
+                <FetchContextProvider>
+                    <EditorContextProvider>
+                        <ChildList {...props} />
+                    </EditorContextProvider>
+                </FetchContextProvider>,
+            ).asFragment;
+        });
         await waitFor(() => expect(global.fetch).toHaveBeenCalledTimes(1));
         expect(lastRequestUrl).toEqual("http://localhost:9000/api/edit/object/foo%3A123/children?start=0&rows=10");
         expect(asFragment()).toMatchSnapshot();

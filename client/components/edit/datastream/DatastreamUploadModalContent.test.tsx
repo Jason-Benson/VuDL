@@ -43,14 +43,14 @@ describe("DatastreamUploadModalContent", () => {
         editorValues.state.activeDatastream = "LICENSE";
 
         const { container } = render(<DatastreamUploadModalContent />);
-        expect(container.innerHTML).toContain("DatastreamLicenseContent");
+        expect(container.innerHTML).toEqual("DatastreamLicenseContent");
     });
 
     it("renders DatastreamAgentContent", () => {
         editorValues.state.activeDatastream = "AGENTS";
 
         const { container } = render(<DatastreamUploadModalContent />);
-        expect(container.innerHTML).toContain("DatastreamAgentsContent");
+        expect(container.innerHTML).toEqual("DatastreamAgentsContent");
     });
 
     it("calls uploadFile on click", async () => {

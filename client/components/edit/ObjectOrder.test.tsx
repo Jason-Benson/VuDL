@@ -22,7 +22,7 @@ describe("ObjectOrder", () => {
     let editorValues;
     let fetchContextValues;
     const pid = "foo:123";
-    beforeEach(() => {
+    beforeEach(async () => {
         editorValues = {
             state: {
                 objectDetailsStorage: {},
@@ -32,7 +32,9 @@ describe("ObjectOrder", () => {
                 removeFromObjectDetailsStorage: jest.fn(),
             },
         };
-        mockUseEditorContext.mockReturnValue(editorValues);
+        await act(async () => {
+            mockUseEditorContext.mockReturnValue(editorValues);
+        });
         fetchContextValues = {
             action: {
                 fetchJSON: jest.fn(),
@@ -46,16 +48,19 @@ describe("ObjectOrder", () => {
         jest.resetAllMocks();
     });
 
-    function checkSnapshot() {
-        const { asFragment } = render(<ObjectOrder pid={pid} />);
+    async function checkSnapshot() {
+        let asFragment;
+        await act(async () => {
+            asFragment = render(<ObjectOrder pid={pid} />).asFragment;
+        });
         expect(asFragment()).toMatchSnapshot();
     }
 
-    it("defaults to title order for a pending object", () => {
+    it("defaults to title order for a pending object", async () => {
         checkSnapshot();
     });
 
-    it("displays a custom-sorted object correctly", () => {
+    it("displays a custom-sorted object correctly", async () => {
         editorValues.state.objectDetailsStorage[pid] = { pid, sortOn: "custom" };
         checkSnapshot();
     });

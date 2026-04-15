@@ -72,14 +72,20 @@ describe("CreateObject", () => {
     }
 
     it("renders appropriately with default settings", async () => {
-        const { asFragment } = render(getCreateObjectToTest());
+        let asFragment;
+        await act(async () => {
+            asFragment = render(getCreateObjectToTest(props)).asFragment;
+        });
         await waitFor(() => expect(global.fetch).toHaveBeenCalled());
         expect(asFragment()).toMatchSnapshot();
     });
 
     it("renders appropriately with noParent and parent change enabled", async () => {
         props.allowNoParentPid = true;
-        const { asFragment } = render(getCreateObjectToTest(props));
+        let asFragment;
+        await act(async () => {
+            asFragment = render(getCreateObjectToTest(props)).asFragment;
+        });
         await waitFor(() => expect(global.fetch).toHaveBeenCalled());
         expect(asFragment()).toMatchSnapshot();
     });
@@ -87,7 +93,10 @@ describe("CreateObject", () => {
     it("renders appropriately with editing disabled", async () => {
         props.parentPid = "foo:1234";
         props.allowChangeParentPid = false;
-        const { asFragment } = render(getCreateObjectToTest(props));
+        let asFragment;
+        await act(async () => {
+            asFragment = render(getCreateObjectToTest(props)).asFragment;
+        });
         await waitFor(() => expect(global.fetch).toHaveBeenCalled());
         expect(asFragment()).toMatchSnapshot();
     });

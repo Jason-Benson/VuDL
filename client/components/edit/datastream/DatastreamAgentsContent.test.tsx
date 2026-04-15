@@ -92,19 +92,20 @@ describe("DatastreamAgentsContent", () => {
 
     it("renders, and calls getAgents on render", async () => {
         datastreamOperationValues.getAgents.mockResolvedValue([]);
+        let asFragment;
         await act(async () => {
-            const { asFragment } = render(<DatastreamAgentsContent />);
-            expect(asFragment()).toMatchSnapshot();
+            asFragment = render(<DatastreamAgentsContent />).asFragment;
         });
         await waitFor(() => expect(datastreamOperationValues.getAgents).toHaveBeenCalled());
         expect(editorValues.action.setCurrentAgents).toHaveBeenCalled();
+        expect(asFragment()).toMatchSnapshot();
     });
 
     it("supports tab switching", async () => {
         datastreamOperationValues.getAgents.mockResolvedValue([]);
+        let asFragment;
         await act(async () => {
-            const { asFragment } = render(<DatastreamAgentsContent />);
-            expect(asFragment()).toMatchSnapshot();
+            asFragment = render(<DatastreamAgentsContent />).asFragment;
         });
         await waitFor(() => expect(datastreamOperationValues.getAgents).toHaveBeenCalled());
         await act(async () => {
@@ -113,6 +114,7 @@ describe("DatastreamAgentsContent", () => {
             }
         });
         expect(editorValues.action.setCurrentAgents).toHaveBeenCalled();
+        expect(asFragment()).toMatchSnapshot();
     });
 
     it("saves current changes on save changes click", async () => {

@@ -83,15 +83,21 @@ describe("StateModal", () => {
         jest.resetAllMocks();
     });
 
-    it("renders correctly when closed", () => {
+    it("renders correctly when closed", async () => {
         globalValues.action.isModalOpen.mockReturnValue(false);
-        const { asFragment } = render(<StateModal />);
+        let asFragment;
+        await act(async () => {
+            asFragment = render(<StateModal />).asFragment;
+        });
         expect(asFragment()).toMatchSnapshot();
         expect(globalValues.action.isModalOpen).toHaveBeenCalledWith("state");
     });
 
-    it("renders correctly for a pending object", () => {
-        const { asFragment } = render(<StateModal />);
+    it("renders correctly for a pending object", async () => {
+        let asFragment;
+        await act(async () => {
+            asFragment = render(<StateModal />).asFragment;
+        });
         expect(asFragment()).toMatchSnapshot();
         expect(globalValues.action.isModalOpen).toHaveBeenCalledWith("state");
     });
@@ -99,10 +105,11 @@ describe("StateModal", () => {
     it("renders correctly for a loaded object with children", async () => {
         editorValues.state.objectDetailsStorage[pid] = { pid, state: "Active" };
         fetchContextValues.action.fetchJSON.mockResolvedValue({ numFound: 100 });
+        let asFragment;
         await act(async () => {
-            const { asFragment } = render(<StateModal />);
-            expect(asFragment()).toMatchSnapshot();
+            asFragment = render(<StateModal />).asFragment;
         });
+        expect(asFragment()).toMatchSnapshot();
         await waitFor(() => expect(fetchContextValues.action.fetchJSON).toHaveBeenCalled());
         expect(globalValues.action.isModalOpen).toHaveBeenCalledWith("state");
     });
@@ -110,10 +117,11 @@ describe("StateModal", () => {
     it("renders correctly for a loaded object without children", async () => {
         editorValues.state.objectDetailsStorage[pid] = { pid, state: "Active" };
         fetchContextValues.action.fetchJSON.mockResolvedValue({ numFound: 0 });
+        let asFragment;
         await act(async () => {
-            const { asFragment } = render(<StateModal />);
-            expect(asFragment()).toMatchSnapshot();
+            asFragment = render(<StateModal />).asFragment;
         });
+        expect(asFragment()).toMatchSnapshot();
         await waitFor(() => expect(fetchContextValues.action.fetchJSON).toHaveBeenCalled());
         expect(globalValues.action.isModalOpen).toHaveBeenCalledWith("state");
     });

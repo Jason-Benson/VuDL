@@ -52,6 +52,7 @@ exports[`CreateObject renders appropriately with default settings 1`] = `
       Select Model Type:
       <b />
     </label>
+    TreeItemTreeItem
   </form>
 </DocumentFragment>
 `;

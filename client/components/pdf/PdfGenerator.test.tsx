@@ -23,12 +23,15 @@ describe("PdfGenerator", () => {
         mockUseFetchContext.mockReturnValue(fetchContextValues);
     });
 
-    it("renders", () => {
-        const { asFragment } = render(<PdfGenerator />);
+    it("renders", async () => {
+        let asFragment;
+        await act(async () => {
+            asFragment = render(<PdfGenerator />).asFragment;
+        });
         expect(asFragment()).toMatchSnapshot();
     });
 
-    it("changes the pid input", () => {
+    it("changes the pid input", async () => {
         render(<PdfGenerator />);
         const input = screen.getByRole("textbox");
         fireEvent.change(input, {

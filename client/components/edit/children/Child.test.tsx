@@ -58,30 +58,33 @@ describe("Child", () => {
     });
 
     it("renders using ajax-loaded data", async () => {
+        let asFragment;
         await act(async () => {
-            const { asFragment } = render(getChildComponent(props));
-            expect(asFragment()).toMatchSnapshot();
+            asFragment = render(getChildComponent(props)).asFragment;
         });
         await waitFor(() => expect(global.fetch).toHaveBeenCalledTimes(1));
         expect(lastRequestUrl).toEqual("http://localhost:9000/api/edit/object/foo%3A123/details");
+        expect(asFragment()).toMatchSnapshot();
     });
 
     it("renders a thumbnail", async () => {
         props.thumbnail = true;
+        let asFragment;
         await act(async () => {
-            const { asFragment } = render(getChildComponent(props));
-            expect(asFragment()).toMatchSnapshot();
+            asFragment = render(getChildComponent(props)).asFragment;
         });
+        expect(asFragment()).toMatchSnapshot();
         await waitFor(() => expect(global.fetch).toHaveBeenCalledTimes(1));
         expect(lastRequestUrl).toEqual("http://localhost:9000/api/edit/object/foo%3A123/details");
     });
 
     it("renders child counts", async () => {
         props.showChildCounts = true;
+        let asFragment;
         await act(async () => {
-            const { asFragment } = render(getChildComponent(props));
-            expect(asFragment()).toMatchSnapshot();
+            asFragment = render(getChildComponent(props)).asFragment;
         });
+        expect(asFragment()).toMatchSnapshot();
         await waitFor(() => expect(global.fetch).toHaveBeenCalledTimes(1));
         expect(lastRequestUrl).toEqual("http://localhost:9000/api/edit/object/foo%3A123/details");
     });
@@ -89,10 +92,11 @@ describe("Child", () => {
     it("renders thumbnail and child counts", async () => {
         props.thumbnail = true;
         props.showChildCounts = true;
+        let asFragment;
         await act(async () => {
-            const { asFragment } = render(getChildComponent(props));
-            expect(asFragment()).toMatchSnapshot();
+            asFragment = render(getChildComponent(props)).asFragment;
         });
+        expect(asFragment()).toMatchSnapshot();
         await waitFor(() => expect(global.fetch).toHaveBeenCalledTimes(1));
         expect(lastRequestUrl).toEqual("http://localhost:9000/api/edit/object/foo%3A123/details");
     });
@@ -100,10 +104,11 @@ describe("Child", () => {
     it("handles empty titles appropriately", async () => {
         props.initialTitle = "";
         response.metadata = {};
+        let asFragment;
         await act(async () => {
-            const { asFragment } = render(getChildComponent(props));
-            expect(asFragment()).toMatchSnapshot();
+            asFragment = render(getChildComponent(props)).asFragment;
         });
+        expect(asFragment()).toMatchSnapshot();
         await waitFor(() => expect(global.fetch).toHaveBeenCalledTimes(1));
     });
 

@@ -96,9 +96,9 @@ describe("Child", () => {
         await act(async () => {
             asFragment = render(getChildComponent(props)).asFragment;
         });
-        expect(asFragment()).toMatchSnapshot();
         await waitFor(() => expect(global.fetch).toHaveBeenCalledTimes(1));
         expect(lastRequestUrl).toEqual("http://localhost:9000/api/edit/object/foo%3A123/details");
+        expect(asFragment()).toMatchSnapshot();
     });
 
     it("handles empty titles appropriately", async () => {
@@ -108,8 +108,8 @@ describe("Child", () => {
         await act(async () => {
             asFragment = render(getChildComponent(props)).asFragment;
         });
-        expect(asFragment()).toMatchSnapshot();
         await waitFor(() => expect(global.fetch).toHaveBeenCalledTimes(1));
+        expect(asFragment()).toMatchSnapshot();
     });
 
     it("can be expanded to show children", async () => {

@@ -48,21 +48,21 @@ describe("ObjectOrder", () => {
         jest.resetAllMocks();
     });
 
-    async function checkSnapshot() {
+    it("defaults to title order for a pending object", async () => {
         let asFragment;
         await act(async () => {
             asFragment = render(<ObjectOrder pid={pid} />).asFragment;
         });
         expect(asFragment()).toMatchSnapshot();
-    }
-
-    it("defaults to title order for a pending object", async () => {
-        checkSnapshot();
     });
 
     it("displays a custom-sorted object correctly", async () => {
         editorValues.state.objectDetailsStorage[pid] = { pid, sortOn: "custom" };
-        checkSnapshot();
+        let asFragment;
+        await act(async () => {
+            asFragment = render(<ObjectOrder pid={pid} />).asFragment;
+        });
+        expect(asFragment()).toMatchSnapshot();
     });
 
     it("can be aborted via confirmation dialog", async () => {

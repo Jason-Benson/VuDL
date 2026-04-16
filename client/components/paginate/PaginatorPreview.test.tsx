@@ -13,6 +13,7 @@ describe("PaginatorPreview", () => {
 
     it("renders", () => {
         const { container } = render(<PaginatorPreview {...props} />);
+        expect(container).toMatchSnapshot();
         expect(container.innerHTML).toContain("preview-image");
     });
 

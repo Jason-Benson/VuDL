@@ -69,9 +69,13 @@ describe("DatastreamProcessMetadataContent", () => {
         datastreamOperationValues.getProcessMetadata.mockResolvedValue(fakeData);
         processMetadataValues.state = fakeData;
 
-        render(<DatastreamProcessMetadataContent />);
+        let asFragment;
+        await act(async () => {
+            asFragment = render(<DatastreamProcessMetadataContent />).asFragment;
+        });
 
         await waitFor(() => expect(processMetadataValues.action.setMetadata).toHaveBeenCalledWith(fakeData));
+        expect(asFragment()).toMatchSnapshot();
     };
 
     beforeEach(() => {

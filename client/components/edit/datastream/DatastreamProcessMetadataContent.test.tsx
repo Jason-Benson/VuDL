@@ -124,10 +124,8 @@ describe("DatastreamProcessMetadataContent", () => {
     });
 
     it("renders a form when empty data is loaded", async () => {
-        //const tree = await getRenderedTree();
         await renderComponent();
         expect(processMetadataValues.action.addTask).toHaveBeenCalledWith(0);
-        //expect(tree).toMatchSnapshot();
     });
 
     it("supports tab switching", async () => {

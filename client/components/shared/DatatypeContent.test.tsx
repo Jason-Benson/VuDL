@@ -15,8 +15,7 @@ describe("DatatypeContent", () => {
         props.data = "test1";
         props.mimeType = "image/jpeg";
 
-        const { container } = render(<DatatypeContent {...props} />);
-        const { asFragment } = render(<DatatypeContent {...props} />);
+        const { container, asFragment } = render(<DatatypeContent {...props} />);
         expect(container.querySelector("img")).toBeTruthy();
         expect(asFragment()).toMatchSnapshot();
     });
@@ -25,8 +24,7 @@ describe("DatatypeContent", () => {
         props.data = "testXml";
         props.mimeType = "text/xml";
 
-        const { container } = render(<DatatypeContent {...props} />);
-        const { asFragment } = render(<DatatypeContent {...props} />);
+        const { container, asFragment } = render(<DatatypeContent {...props} />);
         expect(container.querySelector("div")).toBeTruthy();
         expect(asFragment()).toMatchSnapshot();
     });
@@ -35,8 +33,7 @@ describe("DatatypeContent", () => {
         props.data = "testPdf";
         props.mimeType = "application/pdf";
 
-        const { container } = render(<DatatypeContent {...props} />);
-        const { asFragment } = render(<DatatypeContent {...props} />);
+        const { container, asFragment } = render(<DatatypeContent {...props} />);
         expect(container.querySelector("object")).toBeTruthy();
         expect(asFragment()).toMatchSnapshot();
     });
@@ -45,8 +42,7 @@ describe("DatatypeContent", () => {
         props.data = "testAudio";
         props.mimeType = "audio/mpeg3";
 
-        const { container } = render(<DatatypeContent {...props} />);
-        const { asFragment } = render(<DatatypeContent {...props} />);
+        const { container, asFragment } = render(<DatatypeContent {...props} />);
         expect(container.querySelector("audio")).toBeTruthy();
         expect(asFragment()).toMatchSnapshot();
     });

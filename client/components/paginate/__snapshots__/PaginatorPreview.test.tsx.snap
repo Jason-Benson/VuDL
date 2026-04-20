@@ -1,5 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`PaginatorPreview does not render image 1`] = `[Function]`;
+
 exports[`PaginatorPreview renders 1`] = `
 <div>
   <div

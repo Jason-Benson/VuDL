@@ -89,8 +89,8 @@ describe("StateModal", () => {
         await act(async () => {
             asFragment = render(<StateModal />).asFragment;
         });
-        expect(asFragment()).toMatchSnapshot();
         expect(globalValues.action.isModalOpen).toHaveBeenCalledWith("state");
+        expect(asFragment()).toMatchSnapshot();
     });
 
     it("renders correctly for a pending object", async () => {
@@ -98,8 +98,8 @@ describe("StateModal", () => {
         await act(async () => {
             asFragment = render(<StateModal />).asFragment;
         });
-        expect(asFragment()).toMatchSnapshot();
         expect(globalValues.action.isModalOpen).toHaveBeenCalledWith("state");
+        expect(asFragment()).toMatchSnapshot();
     });
 
     it("renders correctly for a loaded object with children", async () => {
@@ -109,9 +109,9 @@ describe("StateModal", () => {
         await act(async () => {
             asFragment = render(<StateModal />).asFragment;
         });
-        expect(asFragment()).toMatchSnapshot();
         await waitFor(() => expect(fetchContextValues.action.fetchJSON).toHaveBeenCalled());
         expect(globalValues.action.isModalOpen).toHaveBeenCalledWith("state");
+        expect(asFragment()).toMatchSnapshot();
     });
 
     it("renders correctly for a loaded object without children", async () => {
@@ -121,9 +121,9 @@ describe("StateModal", () => {
         await act(async () => {
             asFragment = render(<StateModal />).asFragment;
         });
-        expect(asFragment()).toMatchSnapshot();
         await waitFor(() => expect(fetchContextValues.action.fetchJSON).toHaveBeenCalled());
         expect(globalValues.action.isModalOpen).toHaveBeenCalledWith("state");
+        expect(asFragment()).toMatchSnapshot();
     });
 
     it("saves data correctly", async () => {

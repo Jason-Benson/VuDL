@@ -5,6 +5,19 @@ import { EditorContextProvider, ObjectDetails } from "../../context/EditorContex
 import { FetchContextProvider } from "../../context/FetchContext";
 import { GlobalContextProvider } from "../../context/GlobalContext";
 
+function getMountedObjectStatusComponent(props: ObjectStatusProps) {
+    return render(
+        <GlobalContextProvider>
+            <FetchContextProvider>
+                <EditorContextProvider>
+                    <ObjectStatus {...props} />
+                </EditorContextProvider>
+            </FetchContextProvider>
+            ,
+        </GlobalContextProvider>,
+    );
+}
+
 describe("ObjectStatus", () => {
     let props: ObjectStatusProps;
     let lastRequestUrl: string;
@@ -26,16 +39,7 @@ describe("ObjectStatus", () => {
     });
 
     it("defaults to unknown state", async () => {
-        const { asFragment } = render(
-            <GlobalContextProvider>
-                <FetchContextProvider>
-                    <EditorContextProvider>
-                        <ObjectStatus {...props} />
-                    </EditorContextProvider>
-                </FetchContextProvider>
-                ,
-            </GlobalContextProvider>,
-        );
+        let { asFragment } = getMountedObjectStatusComponent(props);
         await waitFor(() => expect(global.fetch).toHaveBeenCalledTimes(1));
         expect(lastRequestUrl).toEqual("http://localhost:9000/api/edit/object/foo%3A123/details");
         expect(asFragment()).toMatchSnapshot();
@@ -43,16 +47,7 @@ describe("ObjectStatus", () => {
 
     it("displays the state found in the response", async () => {
         response.state = "Inactive";
-        const { asFragment } = render(
-            <GlobalContextProvider>
-                <FetchContextProvider>
-                    <EditorContextProvider>
-                        <ObjectStatus {...props} />
-                    </EditorContextProvider>
-                </FetchContextProvider>
-                ,
-            </GlobalContextProvider>,
-        );
+        let { asFragment } = getMountedObjectStatusComponent(props);
         await waitFor(() => expect(global.fetch).toHaveBeenCalledTimes(1));
         expect(lastRequestUrl).toEqual("http://localhost:9000/api/edit/object/foo%3A123/details");
         expect(asFragment()).toMatchSnapshot();

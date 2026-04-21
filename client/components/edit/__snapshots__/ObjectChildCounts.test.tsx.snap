@@ -2,6 +2,10 @@
 
 exports[`ObjectChildCounts displays the data found in the response 1`] = `
 <DocumentFragment>
-  {"pid":"foo:123"},
+  {"pid":"foo:123"}
+  <div>
+    5 children, 100 descendants
+  </div>
+  ,
 </DocumentFragment>
 `;

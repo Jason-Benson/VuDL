@@ -4,8 +4,22 @@ import { ObjectChildCountsProps, ObjectChildCounts } from "./ObjectChildCounts";
 import { EditorContextProvider, ChildCounts } from "../../context/EditorContext";
 import { FetchContextProvider } from "../../context/FetchContext";
 import { GlobalContextProvider } from "../../context/GlobalContext";
+import { act } from "react";
 
 jest.mock("./ObjectLoader", () => (args) => JSON.stringify(args));
+
+function getMountedObjectChildCountsComponent(props: ObjectChildCountsProps) {
+    return render(
+        <GlobalContextProvider>
+            <FetchContextProvider>
+                <EditorContextProvider>
+                    <ObjectChildCounts {...props} />
+                </EditorContextProvider>
+            </FetchContextProvider>
+            ,
+        </GlobalContextProvider>,
+    );
+}
 
 describe("ObjectChildCounts", () => {
     let props: ObjectChildCountsProps;
@@ -28,16 +42,10 @@ describe("ObjectChildCounts", () => {
     });
 
     it("displays the data found in the response", async () => {
-        const { asFragment } = render(
-            <GlobalContextProvider>
-                <FetchContextProvider>
-                    <EditorContextProvider>
-                        <ObjectChildCounts {...props} />
-                    </EditorContextProvider>
-                </FetchContextProvider>
-                ,
-            </GlobalContextProvider>,
-        );
+        let asFragment;
+        await act(async () => {
+            asFragment = getMountedObjectChildCountsComponent(props).asFragment;
+        });
         await waitFor(() => expect(global.fetch).toHaveBeenCalledTimes(1));
         expect(lastRequestUrl).toEqual("http://localhost:9000/api/edit/object/foo%3A123/childCounts");
         expect(asFragment()).toMatchSnapshot();

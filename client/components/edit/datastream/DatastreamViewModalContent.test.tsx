@@ -54,8 +54,8 @@ describe("DatastreamViewModalContent", () => {
         datastreamOperationValues.viewDatastream.mockResolvedValue(response);
         const { asFragment } = render(<DatastreamViewModalContent />);
         await waitFor(() => expect(datastreamOperationValues.viewDatastream).toHaveBeenCalled());
-        expect(asFragment()).toMatchSnapshot();
         await waitFor(() => expect(mockDatatypeContent).toHaveBeenCalledWith(response));
+        expect(asFragment()).toMatchSnapshot();
     });
 
     it("renders for download-only content", async () => {

@@ -10,6 +10,16 @@ jest.mock("@mui/material/Pagination", () => () => "Pagination");
 jest.mock("./Child", () => () => "Child");
 jest.mock("./SelectableChild", () => () => "SelectableChild");
 
+function getMountedChildListComponent(props: ChildListProps) {
+    return render(
+        <FetchContextProvider>
+            <EditorContextProvider>
+                <ChildList {...props} />
+            </EditorContextProvider>
+        </FetchContextProvider>,
+    );
+}
+
 describe("ChildList", () => {
     let props: ChildListProps;
     let lastRequestUrl: string;
@@ -33,95 +43,66 @@ describe("ChildList", () => {
     it("renders using ajax-loaded root data", async () => {
         let asFragment;
         await act(async () => {
-            asFragment = render(
-                <FetchContextProvider>
-                    <EditorContextProvider>
-                        <ChildList {...props} />
-                    </EditorContextProvider>
-                </FetchContextProvider>,
-            ).asFragment;
+            asFragment = getMountedChildListComponent(props).asFragment;
         });
+        await waitFor(() => expect(global.fetch).toHaveBeenCalledTimes(1));
         expect(lastRequestUrl).toEqual("http://localhost:9000/api/edit/topLevelObjects?start=0&rows=10");
         expect(asFragment()).toMatchSnapshot();
     });
 
     it("allows thumbnails to be toggled on", async () => {
         const user = userEvent.setup();
-
-        render(
-            <FetchContextProvider>
-                <EditorContextProvider>
-                    <ChildList {...props} />
-                </EditorContextProvider>
-            </FetchContextProvider>,
-        );
-
+        let asFragment;
+        await act(async () => {
+            asFragment = getMountedChildListComponent(props).asFragment;
+        });
         await waitFor(() => expect(global.fetch).toHaveBeenCalledTimes(1));
         expect(lastRequestUrl).toEqual("http://localhost:9000/api/edit/topLevelObjects?start=0&rows=10");
-
-        // Wait for the toggle button to appear (component has finished loading)
         const thumbnailsButton = await waitFor(() => screen.getByRole("button", { name: /show thumbnails/i }));
-
-        // Click it to toggle the state
         await user.click(thumbnailsButton);
-
-        // After clicking, the button text should update
         expect(screen.getByRole("button", { name: /hide thumbnails/i })).toBeInTheDocument();
+        expect(asFragment()).toMatchSnapshot();
     });
 
     it("allows models to be toggled on", async () => {
         const user = userEvent.setup();
-
-        render(
-            <FetchContextProvider>
-                <EditorContextProvider>
-                    <ChildList {...props} />
-                </EditorContextProvider>
-            </FetchContextProvider>,
-        );
-
+        let asFragment;
+        await act(async () => {
+            asFragment = getMountedChildListComponent(props).asFragment;
+        });
         await waitFor(() => expect(global.fetch).toHaveBeenCalledTimes(1));
         expect(lastRequestUrl).toEqual("http://localhost:9000/api/edit/topLevelObjects?start=0&rows=10");
         const modelsButton = await waitFor(() => screen.getByRole("button", { name: /show models/i }));
         await user.click(modelsButton);
         expect(screen.getByRole("button", { name: /hide models/i })).toBeInTheDocument();
+        expect(asFragment()).toMatchSnapshot();
     });
 
     it("allows child counts to be toggled on", async () => {
         const user = userEvent.setup();
-
-        render(
-            <FetchContextProvider>
-                <EditorContextProvider>
-                    <ChildList {...props} />
-                </EditorContextProvider>
-            </FetchContextProvider>,
-        );
-
+        let asFragment;
+        await act(async () => {
+            asFragment = getMountedChildListComponent(props).asFragment;
+        });
         await waitFor(() => expect(global.fetch).toHaveBeenCalledTimes(1));
         expect(lastRequestUrl).toEqual("http://localhost:9000/api/edit/topLevelObjects?start=0&rows=10");
         const childCountsButton = await waitFor(() => screen.getByRole("button", { name: /show child counts/i }));
         await user.click(childCountsButton);
         expect(screen.getByRole("button", { name: /hide child counts/i })).toBeInTheDocument();
+        expect(asFragment()).toMatchSnapshot();
     });
 
     it("renders using SelectableChild when a callback is provided", async () => {
         props.selectCallback = jest.fn();
-
-        render(
-            <FetchContextProvider>
-                <EditorContextProvider>
-                    <ChildList {...props} />
-                </EditorContextProvider>
-            </FetchContextProvider>,
-        );
-
+        let asFragment;
+        await act(async () => {
+            asFragment = getMountedChildListComponent(props).asFragment;
+        });
         await waitFor(() => expect(global.fetch).toHaveBeenCalledTimes(1));
         expect(lastRequestUrl).toEqual("http://localhost:9000/api/edit/topLevelObjects?start=0&rows=10");
-
-        // Ensure the SelectableChild mock renders (and the normal Child does not)
         await waitFor(() => expect(screen.getByText("SelectableChild")).toBeInTheDocument());
         expect(screen.queryByText("Child")).not.toBeInTheDocument();
+        expect(asFragment()).toMatchSnapshot();
     });
 
     it("displays a paginator when appropriate", async () => {
@@ -145,13 +126,7 @@ describe("ChildList", () => {
         };
         let asFragment;
         await act(async () => {
-            asFragment = render(
-                <FetchContextProvider>
-                    <EditorContextProvider>
-                        <ChildList {...props} />
-                    </EditorContextProvider>
-                </FetchContextProvider>,
-            ).asFragment;
+            asFragment = getMountedChildListComponent(props).asFragment;
         });
         await waitFor(() => expect(global.fetch).toHaveBeenCalledTimes(1));
         expect(lastRequestUrl).toEqual("http://localhost:9000/api/edit/topLevelObjects?start=0&rows=10");
@@ -162,13 +137,7 @@ describe("ChildList", () => {
         props.pid = "foo:123";
         let asFragment;
         await act(async () => {
-            asFragment = render(
-                <FetchContextProvider>
-                    <EditorContextProvider>
-                        <ChildList {...props} />
-                    </EditorContextProvider>
-                </FetchContextProvider>,
-            ).asFragment;
+            asFragment = getMountedChildListComponent(props).asFragment;
         });
         await waitFor(() => expect(global.fetch).toHaveBeenCalledTimes(1));
         expect(lastRequestUrl).toEqual("http://localhost:9000/api/edit/object/foo%3A123/children?start=0&rows=10");

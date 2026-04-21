@@ -39,11 +39,7 @@ describe("ObjectStatus", () => {
     });
 
     it("defaults to unknown state", async () => {
-<<<<<<< HEAD
-        let { asFragment } = getMountedObjectStatusComponent(props);
-=======
         const { asFragment } = getMountedObjectStatusComponent(props);
->>>>>>> fc1db9b (fixing tests)
         await waitFor(() => expect(global.fetch).toHaveBeenCalledTimes(1));
         expect(lastRequestUrl).toEqual("http://localhost:9000/api/edit/object/foo%3A123/details");
         expect(asFragment()).toMatchSnapshot();
@@ -51,11 +47,7 @@ describe("ObjectStatus", () => {
 
     it("displays the state found in the response", async () => {
         response.state = "Inactive";
-<<<<<<< HEAD
-        let { asFragment } = getMountedObjectStatusComponent(props);
-=======
         const { asFragment } = getMountedObjectStatusComponent(props);
->>>>>>> fc1db9b (fixing tests)
         await waitFor(() => expect(global.fetch).toHaveBeenCalledTimes(1));
         expect(lastRequestUrl).toEqual("http://localhost:9000/api/edit/object/foo%3A123/details");
         expect(asFragment()).toMatchSnapshot();

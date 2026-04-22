@@ -3,28 +3,15 @@
 exports[`DatastreamViewModalContent renders for download-only content 1`] = `
 <DocumentFragment>
   <div
-    class="MuiDialogContent-root css-e5gbix-MuiDialogContent-root"
+    class="MuiDialogContent-root css-1tu99jp-MuiDialogContent-root"
   >
-    <span
-      class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary css-1wxecgq-MuiCircularProgress-root"
-      role="progressbar"
-      style="width: 60px; height: 60px;"
-    >
-      <svg
-        class="MuiCircularProgress-svg css-54pwck-MuiCircularProgress-svg"
-        viewBox="22 22 44 44"
-      >
-        <circle
-          class="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate css-19t5dcl-MuiCircularProgress-circle"
-          cx="44"
-          cy="44"
-          fill="none"
-          r="20.2"
-          stroke-width="3.6"
-        />
-      </svg>
-    </span>
-    ;
+    <p>
+      The MIME type image/tiff cannot be displayed in your browser. Please 
+      <button>
+        download
+      </button>
+       the file instead.
+    </p>
   </div>
 </DocumentFragment>
 `;

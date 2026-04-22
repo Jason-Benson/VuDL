@@ -1,6 +1,7 @@
 import { describe, beforeEach, expect, it, jest } from "@jest/globals";
 import { render, waitFor } from "@testing-library/react";
 import DatastreamViewModalContent from "./DatastreamViewModalContent";
+import { act } from "react";
 
 const mockUseEditorContext = jest.fn();
 jest.mock("../../../context/EditorContext", () => ({
@@ -52,7 +53,10 @@ describe("DatastreamViewModalContent", () => {
             mimeType: "test2",
         };
         datastreamOperationValues.viewDatastream.mockResolvedValue(response);
-        const { asFragment } = render(<DatastreamViewModalContent />);
+        let asFragment;
+        await act(async () => {
+            asFragment = render(<DatastreamViewModalContent />).asFragment;
+        });
         await waitFor(() => expect(datastreamOperationValues.viewDatastream).toHaveBeenCalled());
         await waitFor(() => expect(mockDatatypeContent).toHaveBeenCalledWith(response));
         expect(asFragment()).toMatchSnapshot();
@@ -64,9 +68,12 @@ describe("DatastreamViewModalContent", () => {
             mimeType: "image/tiff",
         };
         datastreamOperationValues.viewDatastream.mockResolvedValue(response);
-        const { asFragment } = render(<DatastreamViewModalContent />);
+        let asFragment;
+        await act(async () => {
+            asFragment = render(<DatastreamViewModalContent />).asFragment;
+        });
         await waitFor(() => expect(datastreamOperationValues.viewDatastream).toHaveBeenCalled());
-        expect(asFragment()).toMatchSnapshot();
         expect(mockDatatypeContent).not.toHaveBeenCalled();
+        expect(asFragment()).toMatchSnapshot();
     });
 });

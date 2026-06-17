@@ -39,7 +39,7 @@ export class PdfGenerator {
 
     private hasPdfAlready(manifest): boolean {
         const manifestJson = JSON.parse(manifest);
-        const rendering = (((manifestJson ?? {}).items ?? [])[0] ?? {}).rendering ?? [];
+        const rendering = (manifestJson ?? {}).rendering ?? [];
         if (rendering.length === 0) {
             return false;
         }

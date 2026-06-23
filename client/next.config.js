@@ -1,3 +1,4 @@
+const path = require('path')
 /** @type {import('next').NextConfig} */
 module.exports = {
     reactStrictMode: true,
@@ -7,5 +8,8 @@ module.exports = {
         // your project has type errors.
         // !! WARN !!
         ignoreBuildErrors: true,
+    },
+    turbopack: {
+        root: path.join(__dirname, '..'),
     },
 };

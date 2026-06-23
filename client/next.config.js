@@ -1,4 +1,4 @@
-const path = require('path')
+const path = require("path");
 /** @type {import('next').NextConfig} */
 module.exports = {
     reactStrictMode: true,
@@ -10,6 +10,6 @@ module.exports = {
         ignoreBuildErrors: true,
     },
     turbopack: {
-        root: path.join(__dirname, '..'),
+        root: path.join(__dirname, ".."),
     },
 };

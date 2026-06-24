@@ -92,6 +92,7 @@ class MetadataExtractor {
      * @returns   Map of extracted data
      */
     public extractFedoraDetails(RDF: string): Record<string, Array<string>> {
+        // 'as unknown as Document' work around for XMLDom bug: https://github.com/xmldom/xmldom/issues/724
         const RDF_XML = this.xmlParser.parseFromString(RDF, "text/xml") as unknown as Document;
         // We want to extract all values from the following namespaces, so we'll define the list
         // and use it to build an Xpath query to fetch everything:
@@ -130,7 +131,6 @@ class MetadataExtractor {
      * @param RDF RDF XML from Fedora 6 (describing a container)
      * @returns   List of datastreams (binaries) inside the container
      */
-    //'as unknown as Document' work around for XMLDom bug: https://github.com/xmldom/xmldom/issues/724
     public extractFedoraDatastreams(RDF: string): Array<string> {
         const RDF_XML = this.xmlParser.parseFromString(RDF, "text/xml") as unknown as Document;
         const raw =

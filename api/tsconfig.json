@@ -4,7 +4,9 @@
       "allowJs": true,
       "target": "es5",
       "outDir": "./dist",
-      "skipLibCheck": true
+      "skipLibCheck": true,
+      "esModuleInterop": true,
+      "types": ["jest"]
     },
     "include": [
       "./src/**/*"

@@ -10,9 +10,9 @@ interface ConfigRecord {
 class Config {
     private static instance: Config;
 
-    protected ini;
+    protected ini: Record<string, any>;
 
-    constructor(ini: ConfigRecord) {
+    constructor(ini: Record<string, any>) {
         this.ini = ini;
     }
 

@@ -159,7 +159,7 @@ export class SolrCache {
         }
 
         let document: Array<object> = [];
-        let currentBatch: { file: string; size: number } = { file: null, size: 0 };
+        let currentBatch: { file: string; size: number } = { file: "", size: 0 };
         docs.forEach((file) => {
             const nextObject = this.readSolrAddDocFromFile(file);
             if (nextObject?.add?.doc === undefined) {
@@ -175,7 +175,7 @@ export class SolrCache {
             if (currentBatch.size == batchSize) {
                 this.writeFile(currentBatch.file, JSON.stringify(document));
                 document = [];
-                currentBatch = { file: null, size: 0 };
+                currentBatch = { file: "", size: 0 };
             }
         });
         if (currentBatch.size > 0) {

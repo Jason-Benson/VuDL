@@ -121,7 +121,9 @@ class JobMetadata {
 
     get ingestInfo(): string {
         const logfile: string = this.job.dir + "/ingest.log";
-        return fs.existsSync(logfile) ? fs.readFileSync(logfile, "utf-8").split("\n").filter(Boolean).pop() ?? "" : "";
+        return fs.existsSync(logfile)
+            ? (fs.readFileSync(logfile, "utf-8").split("\n").filter(Boolean).pop() ?? "")
+            : "";
     }
 
     get order(): PageOrder {

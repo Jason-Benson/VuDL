@@ -4,7 +4,7 @@
 
 import * as http from "http";
 import * as passport from "passport";
-import * as session from "express-session";
+import session from "express-session";
 import debug from "debug";
 
 import app from "./app";

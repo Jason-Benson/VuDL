@@ -2,6 +2,7 @@ import { createWriteStream, openSync, closeSync, existsSync as fileExists, statS
 import PDFDocument = require("pdfkit");
 
 declare global {
+    // eslint-disable-next-line @typescript-eslint/no-namespace -- augmenting @types/pdfkit's ambient PDFKit namespace, not organizing our own code
     namespace PDFKit {
         interface PDFKitImage {
             width: number;

@@ -37,7 +37,7 @@ class Config {
     }
 
     get backendUrl(): string {
-        return (this.ini["backend_url"] as string) ?? "http://localhost:9000";
+        return (this.ini["backend_url"] ?? "http://localhost:9000") as string;
     }
 
     get clientUrl(): string {
@@ -114,7 +114,7 @@ class Config {
     }
 
     get tikaConfigFile(): string | null {
-        return (this.ini["tika_config_file"] as string) ?? null;
+        return (this.ini["tika_config_file"] ?? null) as string | null;
     }
 
     get tikaPath(): string {
@@ -207,7 +207,7 @@ class Config {
     }
 
     get models(): Record<string, FedoraModel> {
-        return (this.ini["models"] as unknown as Record<string, FedoraModel>) || {};
+        return (this.ini["models"] as Record<string, FedoraModel>) || {};
     }
 
     get databaseSettings(): ConfigRecord {
@@ -267,7 +267,7 @@ class Config {
     }
 
     get agentDefaults(): Record<string, string> {
-        return ((this.ini["agent"] as ConfigRecord)?.["defaults"] as Record<string, string>) ?? {};
+        return ((this.ini["agent"] as ConfigRecord | undefined)?.["defaults"] as Record<string, string>) ?? {};
     }
 
     get agentRoles(): Array<string> {

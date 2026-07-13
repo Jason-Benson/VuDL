@@ -167,7 +167,7 @@ export class SolrCache {
                 return;
             }
             document.push(nextObject.add.doc);
-            if (currentBatch.file === null) {
+            if (currentBatch.file === "") {
                 currentBatch.file = file.replace(new RegExp("^" + this.cacheDir), targetDir);
                 console.log(`Starting batch ${currentBatch.file}`);
             }

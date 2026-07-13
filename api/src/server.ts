@@ -2,8 +2,8 @@
  * Module dependencies.
  */
 
-import * as http from "http";
-import * as passport from "passport";
+import http from "http";
+import passport from "passport";
 import session from "express-session";
 import debug from "debug";
 

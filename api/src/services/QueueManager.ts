@@ -30,13 +30,13 @@ class QueueManager {
     }
 
     protected getQueue(queueName: string = ""): Queue {
-        return new Queue(queueName ?? this.config.redisDefaultQueueName, this.queueBaseOptions);
+        return new Queue(queueName || this.config.redisDefaultQueueName, this.queueBaseOptions);
     }
 
     public getWorker(callback: Processor, queueName: string = ""): Worker {
         const options: WorkerOptions = this.queueBaseOptions;
         options.lockDuration = this.config.redisLockDuration;
-        return new Worker(queueName ?? this.config.redisDefaultQueueName, callback, options);
+        return new Worker(queueName || this.config.redisDefaultQueueName, callback, options);
     }
 
     protected getQueueNameForJob(jobName: string): string {

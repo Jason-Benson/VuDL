@@ -65,7 +65,7 @@ class Config {
     }
 
     get sessionKey(): string {
-        return (this.ini["session_key"] as string) ?? "vanilla hot cocoa";
+        return (this.ini["session_key"] ?? "vanilla hot cocoa") as string;
     }
 
     get tesseractPath(): string {
@@ -77,7 +77,7 @@ class Config {
     }
 
     get vufindUrl(): string {
-        return (this.ini["vufind_url"] as string) ?? "";
+        return (this.ini["vufind_url"] ?? "") as string;
     }
 
     get pdfDirectory(): string {
@@ -110,7 +110,7 @@ class Config {
     }
 
     get javaPath(): string {
-        return (this.ini["java_path"] as string) ?? "java";
+        return (this.ini["java_path"] ?? "java") as string;
     }
 
     get tikaConfigFile(): string | null {
@@ -122,15 +122,15 @@ class Config {
     }
 
     get solrCore(): string {
-        return (this.ini["solr_core"] as string) ?? "biblio";
+        return (this.ini["solr_core"] ?? "biblio") as string;
     }
 
     get solrUrl(): string {
-        return (this.ini["solr_url"] as string) ?? "http://localhost:8983/solr";
+        return (this.ini["solr_url"] ?? "http://localhost:8983/solr") as string;
     }
 
     get solrDocumentCacheDir(): boolean | string {
-        return (this.ini["solr_document_cache_dir"] as string) ?? false;
+        return (this.ini["solr_document_cache_dir"] ?? false) as string;
     }
 
     get allowedOrigins(): string[] {
@@ -138,11 +138,11 @@ class Config {
     }
 
     get pidNamespace(): string {
-        return (this.ini["fedora_pid_namespace"] as string) ?? "vudl";
+        return (this.ini["fedora_pid_namespace"] ?? "vudl") as string;
     }
 
     get initialPidValue(): number {
-        return parseInt((this.ini["fedora_initial_pid"] as string) ?? "0");
+        return parseInt((this.ini["fedora_initial_pid"] ?? "0") as string);
     }
 
     get dataModels(): Record<string, string> {
@@ -170,11 +170,11 @@ class Config {
     }
 
     get institution(): string {
-        return (this.ini["institution"] as string) ?? "My University";
+        return (this.ini["institution"] ?? "My University") as string;
     }
 
     get collection(): string {
-        return (this.ini["collection"] as string) ?? "Digital Library";
+        return (this.ini["collection"] ?? "Digital Library") as string;
     }
 
     get topLevelPids(): Array<string> {
@@ -186,7 +186,7 @@ class Config {
     }
 
     get trashPid(): string | null {
-        return (this.ini["trash_pid"] as string) ?? null;
+        return (this.ini["trash_pid"] ?? null) as string;
     }
 
     get favoritePids(): Array<string> {
@@ -203,7 +203,7 @@ class Config {
     }
 
     get minimumValidYear(): number {
-        return parseInt((this.ini["minimum_valid_year"] as string) ?? "1000");
+        return parseInt((this.ini["minimum_valid_year"] ?? "1000") as string);
     }
 
     get models(): Record<string, FedoraModel> {
@@ -215,7 +215,7 @@ class Config {
     }
 
     get databaseClient(): string {
-        return (this.databaseSettings["client"] as string) ?? "sqlite3";
+        return (this.databaseSettings["client"] ?? "sqlite3") as string;
     }
 
     get databaseConnectionSettings(): ConfigRecord {
@@ -227,11 +227,11 @@ class Config {
     }
 
     get authenticationStrategy(): string {
-        return (this.authenticationSettings["strategy"] as string) ?? "local";
+        return (this.authenticationSettings["strategy"] ?? "local") as string;
     }
 
     get authenticationHashAlgorithm(): string {
-        return (this.authenticationSettings["hash_algorithm"] as string) ?? "sha1";
+        return (this.authenticationSettings["hash_algorithm"] ?? "sha1") as string;
     }
 
     get authenticationLegalUsernames(): Array<string> {
@@ -242,12 +242,12 @@ class Config {
         if (typeof this.authenticationSettings["require_passwords"] === "boolean") {
             return this.authenticationSettings["require_passwords"];
         }
-        const stringValue = (this.authenticationSettings["require_passwords"] as string) ?? "true";
+        const stringValue = (this.authenticationSettings["require_passwords"] ?? "true") as string;
         return stringValue.trim().toLowerCase() !== "false";
     }
 
     get authenticationSalt(): string {
-        return (this.authenticationSettings["salt"] as string) ?? "VuDLSaltValue";
+        return (this.authenticationSettings["salt"] ?? "VuDLSaltValue") as string;
     }
 
     get databaseInitialUsers(): Record<string, string> {
@@ -255,11 +255,11 @@ class Config {
     }
 
     get samlCertificate(): string {
-        return (this.authenticationSettings["saml_certificate"] as string) ?? "";
+        return (this.authenticationSettings["saml_certificate"] ?? "") as string;
     }
 
     get samlEntryPoint(): string {
-        return (this.authenticationSettings["saml_entry_point"] as string) ?? "";
+        return (this.authenticationSettings["saml_entry_point"] ?? "") as string;
     }
 
     get licenses(): Record<string, License> {
@@ -287,7 +287,7 @@ class Config {
     }
 
     get redisDefaultQueueName(): string {
-        return ((this.ini["queue"] as ConfigRecord)?.["defaultQueueName"] as string) ?? "vudl";
+        return ((this.ini["queue"] as ConfigRecord)?.["defaultQueueName"] ?? "vudl") as string;
     }
 
     get redisQueueJobMap(): Record<string, string> {
@@ -295,7 +295,7 @@ class Config {
     }
 
     get redisLockDuration(): number {
-        return parseInt(((this.ini["queue"] as ConfigRecord)?.["lockDuration"] as string) ?? "30000");
+        return parseInt(((this.ini["queue"] as ConfigRecord)?.["lockDuration"] ?? "30000") as string);
     }
 
     get processMetadataDefaults(): Record<string, string> {
@@ -307,7 +307,7 @@ class Config {
     }
 
     get sharpOptions(): Record<string, unknown> {
-        const pixelLimit = ((this.ini["sharp"] as ConfigRecord)?.["limitInputPixels"] as string) ?? "268402689";
+        const pixelLimit = ((this.ini["sharp"] as ConfigRecord)?.["limitInputPixels"] ?? "268402689") as string;
         return {
             limitInputPixels: parseInt(pixelLimit),
         };
@@ -322,29 +322,29 @@ class Config {
     }
 
     get notifyMethod(): string {
-        return ((this.ini["notify"] as ConfigRecord)?.["method"] as string) ?? "ntfy";
+        return ((this.ini["notify"] as ConfigRecord)?.["method"] ?? "ntfy") as string;
     }
 
     get ntfyConfig(): Record<string, string> {
         return {
-            defaultChannel: ((this.ini["notify"] as ConfigRecord)?.["ntfy_defaultChannel"] as string) ?? "vudl-ntfy",
+            defaultChannel: ((this.ini["notify"] as ConfigRecord)?.["ntfy_defaultChannel"] ?? "vudl-ntfy") as string,
         };
     }
 
     get indexerLockRetries(): number {
-        return parseInt(((this.ini["indexer"] as ConfigRecord)?.["lockRetries"] as string) ?? "60");
+        return parseInt(((this.ini["indexer"] as ConfigRecord)?.["lockRetries"] ?? "60") as string);
     }
 
     get indexerLockWaitMs(): number {
-        return parseInt(((this.ini["indexer"] as ConfigRecord)?.["lockWaitMs"] as string) ?? "1000");
+        return parseInt(((this.ini["indexer"] as ConfigRecord)?.["lockWaitMs"] ?? "1000") as string);
     }
 
     get indexerExceptionRetries(): number {
-        return parseInt(((this.ini["indexer"] as ConfigRecord)?.["exceptionRetries"] as string) ?? "10");
+        return parseInt(((this.ini["indexer"] as ConfigRecord)?.["exceptionRetries"] ?? "10") as string);
     }
 
     get indexerExceptionWaitMs(): number {
-        return parseInt(((this.ini["indexer"] as ConfigRecord)?.["exceptionWaitMs"] as string) ?? "500");
+        return parseInt(((this.ini["indexer"] as ConfigRecord)?.["exceptionWaitMs"] ?? "500") as string);
     }
 }
 

@@ -134,7 +134,7 @@ class Config {
     }
 
     get allowedOrigins(): string[] {
-        return (this.ini["allowed_origins"] as string[]) ?? [];
+        return (this.ini["allowed_origins"] ?? []) as string[];
     }
 
     get pidNamespace(): string {
@@ -314,7 +314,7 @@ class Config {
     }
 
     get max409Retries(): number {
-        return (this.ini["max_409_retries"] as unknown as number) ?? 3;
+        return (this.ini["max_409_retries"] ?? 3) as number;
     }
 
     get maxUploadSize(): number {

@@ -1,20 +1,6 @@
 import { createWriteStream, openSync, closeSync, existsSync as fileExists, statSync } from "fs";
 import PDFDocument = require("pdfkit");
 
-declare global {
-    // eslint-disable-next-line @typescript-eslint/no-namespace -- augmenting @types/pdfkit's ambient PDFKit namespace, not organizing our own code
-    namespace PDFKit {
-        interface PDFKitImage {
-            width: number;
-            height: number;
-        }
-        interface PDFDocument {
-            openImage(src: string | Buffer): PDFKitImage;
-            image(src: PDFKitImage, x?: number, y?: number, options?: Mixins.ImageOption): this;
-            image(src: PDFKitImage, options?: Mixins.ImageOption): this;
-        }
-    }
-}
 import path = require("path");
 
 import Config from "./Config";

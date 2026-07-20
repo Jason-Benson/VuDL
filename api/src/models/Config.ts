@@ -2,7 +2,7 @@ import fs = require("fs");
 import ini = require("ini");
 import { FedoraModel, License } from "../services/FedoraCatalog";
 
-type ConfigValue = string | string[] | ConfigRecord;
+type ConfigValue = string | string[] | ConfigRecord | ConfigRecord[];
 interface ConfigRecord {
     [key: string]: ConfigValue;
 }
@@ -303,7 +303,7 @@ class Config {
     }
 
     get toolPresets(): Array<Record<string, string>> {
-        return (this.ini["tool_presets"] as unknown as Array<Record<string, string>>) ?? [];
+        return (this.ini["tool_presets"] ?? []) as Array<Record<string, string>>;
     }
 
     get sharpOptions(): Record<string, unknown> {

@@ -1,3 +1,4 @@
+/// <reference path="../types/pdfkit-augment.d.ts" />
 import { createWriteStream, openSync, closeSync, existsSync as fileExists, statSync } from "fs";
 import PDFDocument = require("pdfkit");
 

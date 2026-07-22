@@ -279,7 +279,7 @@ class Config {
     }
 
     get dublinCoreFields(): Record<string, Record<string, string | Array<string>>> {
-        return (this.ini["dublin_core"] as Record<string, Record<string, string | Array<string>>>) ?? {};
+        return (this.ini["dublin_core"] ?? {}) as Record<string, Record<string, string | Array<string>>>;
     }
 
     get redisConnectionSettings(): Record<string, string> {
@@ -299,7 +299,7 @@ class Config {
     }
 
     get processMetadataDefaults(): Record<string, string> {
-        return (this.ini["process_metadata_defaults"] as Record<string, string>) ?? {};
+        return (this.ini["process_metadata_defaults"] ?? {}) as Record<string, string>;
     }
 
     get toolPresets(): Array<Record<string, string>> {

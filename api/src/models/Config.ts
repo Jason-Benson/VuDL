@@ -263,7 +263,7 @@ class Config {
     }
 
     get licenses(): Record<string, License> {
-        return (this.ini["licenses"] as unknown as Record<string, License>) ?? {};
+        return (this.ini["licenses"] ?? {}) as unknown as Record<string, License>;
     }
 
     get agentDefaults(): Record<string, string> {
@@ -283,7 +283,7 @@ class Config {
     }
 
     get redisConnectionSettings(): Record<string, string> {
-        return ((this.ini["queue"] as ConfigRecord)?.["connection"] as Record<string, string>) ?? {};
+        return ((this.ini["queue"] as ConfigRecord | undefined)?.["connection"] ?? {}) as Record<string, string>;
     }
 
     get redisDefaultQueueName(): string {

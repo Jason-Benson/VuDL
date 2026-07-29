@@ -2,7 +2,7 @@ import fs = require("fs");
 import ini = require("ini");
 import { FedoraModel, License } from "../services/FedoraCatalog";
 
-type ConfigValue = string | string[] | ConfigRecord | ConfigRecord[];
+type ConfigValue = string | string[] | ConfigRecord | ConfigRecord[] | License;
 interface ConfigRecord {
     [key: string]: ConfigValue;
 }
@@ -263,7 +263,7 @@ class Config {
     }
 
     get licenses(): Record<string, License> {
-        return (this.ini["licenses"] ?? {}) as unknown as Record<string, License>;
+        return (this.ini["licenses"] ?? {}) as Record<string, License>;
     }
 
     get agentDefaults(): Record<string, string> {

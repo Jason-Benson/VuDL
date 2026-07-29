@@ -130,7 +130,7 @@ class Config {
     }
 
     get solrDocumentCacheDir(): boolean | string {
-        return (this.ini["solr_document_cache_dir"] ?? false) as string;
+        return (this.ini["solr_document_cache_dir"] ?? false) as boolean | string;
     }
 
     get allowedOrigins(): string[] {
@@ -147,7 +147,7 @@ class Config {
 
     get dataModels(): Record<string, string> {
         return (
-            (this.ini["data_models"] as Record<string, string>) ?? {
+            (this.ini["data_models"] as Record<string, string> | undefined) ?? {
                 Image: "vudl-system:ImageData",
                 PDF: "vudl-system:PDFData",
                 DOC: "vudl-system:DOCData",
@@ -161,7 +161,7 @@ class Config {
 
     get collectionModels(): Record<string, string> {
         return (
-            (this.ini["collection_models"] as Record<string, string>) ?? {
+            (this.ini["collection_models"] as Record<string, string> | undefined) ?? {
                 List: "vudl-system:ListCollection",
                 Resource: "vudl-system:ResourceCollection",
                 Folder: "vudl-system:FolderCollection",
@@ -178,19 +178,19 @@ class Config {
     }
 
     get topLevelPids(): Array<string> {
-        return (this.ini["top_level_pids"] as string[]) ?? [];
+        return (this.ini["top_level_pids"] ?? []) as string[];
     }
 
     get articlesToStrip(): Array<string> {
-        return (this.ini["articles_to_strip"] as string[]) ?? [];
+        return (this.ini["articles_to_strip"] ?? []) as string[];
     }
 
     get trashPid(): string | null {
-        return (this.ini["trash_pid"] ?? null) as string;
+        return (this.ini["trash_pid"] ?? null) as string | null;
     }
 
     get favoritePids(): Array<string> {
-        const favorites = (this.ini["favorite_pids"] as string[]) ?? [];
+        const favorites = (this.ini["favorite_pids"] ?? []) as string[];
         const trash = this.trashPid;
         if (trash && !favorites.includes(trash)) {
             favorites.push(trash);
@@ -199,7 +199,7 @@ class Config {
     }
 
     get languageMap(): Record<string, string> {
-        return (this.ini["LanguageMap"] as Record<string, string>) ?? {};
+        return (this.ini["LanguageMap"] ?? {}) as Record<string, string>;
     }
 
     get minimumValidYear(): number {
@@ -207,11 +207,11 @@ class Config {
     }
 
     get models(): Record<string, FedoraModel> {
-        return (this.ini["models"] as Record<string, FedoraModel>) || {};
+        return (this.ini["models"] || {}) as Record<string, FedoraModel>;
     }
 
     get databaseSettings(): ConfigRecord {
-        return (this.ini["Database"] as ConfigRecord) ?? {};
+        return (this.ini["Database"] ?? {}) as ConfigRecord;
     }
 
     get databaseClient(): string {
@@ -223,7 +223,7 @@ class Config {
     }
 
     get authenticationSettings(): ConfigRecord {
-        return (this.ini["Authentication"] as ConfigRecord) ?? {};
+        return (this.ini["Authentication"] ?? {}) as ConfigRecord;
     }
 
     get authenticationStrategy(): string {
@@ -267,15 +267,15 @@ class Config {
     }
 
     get agentDefaults(): Record<string, string> {
-        return ((this.ini["agent"] as ConfigRecord | undefined)?.["defaults"] as Record<string, string>) ?? {};
+        return ((this.ini["agent"] as ConfigRecord | undefined)?.["defaults"] ?? {}) as Record<string, string>;
     }
 
     get agentRoles(): Array<string> {
-        return ((this.ini["agent"] as ConfigRecord)?.["roles"] as string[]) ?? [];
+        return ((this.ini["agent"] as ConfigRecord)?.["roles"] ?? []) as string[];
     }
 
     get agentTypes(): Array<string> {
-        return ((this.ini["agent"] as ConfigRecord)?.["types"] as string[]) ?? [];
+        return ((this.ini["agent"] as ConfigRecord)?.["types"] ?? []) as string[];
     }
 
     get dublinCoreFields(): Record<string, Record<string, string | Array<string>>> {
@@ -287,15 +287,15 @@ class Config {
     }
 
     get redisDefaultQueueName(): string {
-        return ((this.ini["queue"] as ConfigRecord)?.["defaultQueueName"] ?? "vudl") as string;
+        return ((this.ini["queue"] as ConfigRecord | undefined)?.["defaultQueueName"] ?? "vudl") as string;
     }
 
     get redisQueueJobMap(): Record<string, string> {
-        return ((this.ini["queue"] as ConfigRecord)?.["jobMap"] as Record<string, string>) ?? {};
+        return ((this.ini["queue"] as ConfigRecord | undefined)?.["jobMap"] ?? {}) as Record<string, string>;
     }
 
     get redisLockDuration(): number {
-        return parseInt(((this.ini["queue"] as ConfigRecord)?.["lockDuration"] ?? "30000") as string);
+        return parseInt(((this.ini["queue"] as ConfigRecord | undefined)?.["lockDuration"] ?? "30000") as string);
     }
 
     get processMetadataDefaults(): Record<string, string> {
@@ -307,7 +307,8 @@ class Config {
     }
 
     get sharpOptions(): Record<string, unknown> {
-        const pixelLimit = ((this.ini["sharp"] as ConfigRecord)?.["limitInputPixels"] ?? "268402689") as string;
+        const pixelLimit = ((this.ini["sharp"] as ConfigRecord | undefined)?.["limitInputPixels"] ??
+            "268402689") as string;
         return {
             limitInputPixels: parseInt(pixelLimit),
         };
@@ -318,33 +319,35 @@ class Config {
     }
 
     get maxUploadSize(): number {
-        return ((this.ini["upload"] as ConfigRecord)?.["sizeLimit"] as unknown as number) ?? 200 * 1024 * 1024;
+        // Default to 200MB (1024 * 1024 * 200 = 209715200)
+        return parseInt(((this.ini["upload"] as ConfigRecord | undefined)?.["sizeLimit"] ?? "209715200") as string);
     }
 
     get notifyMethod(): string {
-        return ((this.ini["notify"] as ConfigRecord)?.["method"] ?? "ntfy") as string;
+        return ((this.ini["notify"] as ConfigRecord | undefined)?.["method"] ?? "ntfy") as string;
     }
 
     get ntfyConfig(): Record<string, string> {
         return {
-            defaultChannel: ((this.ini["notify"] as ConfigRecord)?.["ntfy_defaultChannel"] ?? "vudl-ntfy") as string,
+            defaultChannel: ((this.ini["notify"] as ConfigRecord | undefined)?.["ntfy_defaultChannel"] ??
+                "vudl-ntfy") as string,
         };
     }
 
     get indexerLockRetries(): number {
-        return parseInt(((this.ini["indexer"] as ConfigRecord)?.["lockRetries"] ?? "60") as string);
+        return parseInt(((this.ini["indexer"] as ConfigRecord | undefined)?.["lockRetries"] ?? "60") as string);
     }
 
     get indexerLockWaitMs(): number {
-        return parseInt(((this.ini["indexer"] as ConfigRecord)?.["lockWaitMs"] ?? "1000") as string);
+        return parseInt(((this.ini["indexer"] as ConfigRecord | undefined)?.["lockWaitMs"] ?? "1000") as string);
     }
 
     get indexerExceptionRetries(): number {
-        return parseInt(((this.ini["indexer"] as ConfigRecord)?.["exceptionRetries"] ?? "10") as string);
+        return parseInt(((this.ini["indexer"] as ConfigRecord | undefined)?.["exceptionRetries"] ?? "10") as string);
     }
 
     get indexerExceptionWaitMs(): number {
-        return parseInt(((this.ini["indexer"] as ConfigRecord)?.["exceptionWaitMs"] ?? "500") as string);
+        return parseInt(((this.ini["indexer"] as ConfigRecord | undefined)?.["exceptionWaitMs"] ?? "500") as string);
     }
 }
 

@@ -271,11 +271,11 @@ class Config {
     }
 
     get agentRoles(): Array<string> {
-        return ((this.ini["agent"] as ConfigRecord)?.["roles"] ?? []) as string[];
+        return ((this.ini["agent"] as ConfigRecord | undefined)?.["roles"] ?? []) as string[];
     }
 
     get agentTypes(): Array<string> {
-        return ((this.ini["agent"] as ConfigRecord)?.["types"] ?? []) as string[];
+        return ((this.ini["agent"] as ConfigRecord | undefined)?.["types"] ?? []) as string[];
     }
 
     get dublinCoreFields(): Record<string, Record<string, string | Array<string>>> {
@@ -315,7 +315,8 @@ class Config {
     }
 
     get max409Retries(): number {
-        return (this.ini["max_409_retries"] ?? 3) as number;
+        // return (this.ini["max_409_retries"] ?? 3) as number;
+        return parseInt((this.ini["max_409_retries"] ?? "3") as string);
     }
 
     get maxUploadSize(): number {

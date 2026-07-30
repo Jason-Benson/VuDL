@@ -315,7 +315,6 @@ class Config {
     }
 
     get max409Retries(): number {
-        // return (this.ini["max_409_retries"] ?? 3) as number;
         return parseInt((this.ini["max_409_retries"] ?? "3") as string);
     }
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { baseUrl, objectDatastreamLicenseUrl } from "../../util/routes";
+import { baseUrl, getObjectDetailsUrl, objectDatastreamDublinCoreUrl, objectDatastreamLicenseUrl } from "../../util/routes";
 import { useFetchContext } from "../../context/FetchContext";
 import { useEditorContext } from "../../context/EditorContext";
 import BasicBreadcrumbs from "../shared/BasicBreadcrumbs";
@@ -20,8 +20,10 @@ const BulkEditor = (): React.ReactElement => {
     const [query, setQuery] = useState("");
     const [limit, setLimit] = useState("50");
     const [selectedRecordIds, setSelectedRecordIds] = useState<Array<string>>([]);
+    const [findString, setFindString] = useState("");
+    const [replaceString, setReplaceString] = useState("");
     const {
-        action: { fetchText },
+        action: { fetchJSON, fetchText },
     } = useFetchContext();
 
     useEffect(() => {
@@ -84,6 +86,40 @@ const BulkEditor = (): React.ReactElement => {
             setResults(error.message);
         }
     };
+    const doReplaceTitleText = async () => {
+        try {
+            if (findString == "") {
+                setResults("No search string provided.");
+                return;
+            }
+            if (selectedRecordIds.length < 1) {
+                setResults("No records selected.");
+                return;
+            }
+            let result = "";
+            for (let i = 0; i < selectedRecordIds.length; i++) {
+                const id = selectedRecordIds[i];
+                const details = await fetchJSON(getObjectDetailsUrl(id));
+                const metadata = details.metadata ?? {};
+                const oldTitles = metadata["dc:title"] ?? [];
+                if (!oldTitles.some((title) => title.includes(findString))) {
+                    result += `(${i + 1}/${selectedRecordIds.length}) ${id}: skipped, "${findString}" not found in title.\n`;
+                    setResults(result);
+                    continue;
+                }
+                metadata["dc:title"] = oldTitles.map((title) => title.replaceAll(findString, replaceString));
+                const text = await fetchText(
+                    objectDatastreamDublinCoreUrl(id, "DC"),
+                    { method: "POST", body: JSON.stringify({ metadata }) },
+                    { "Content-Type": "application/json" },
+                );
+                result += `(${i + 1}/${selectedRecordIds.length}) ${id}: ${text}\n`;
+                setResults(result);
+            }
+        } catch (error) {
+            setResults(error.message);
+        }
+    };
 
     return (
         <div>
@@ -135,6 +171,24 @@ const BulkEditor = (): React.ReactElement => {
                 <button id="bulkEditSubmit" onClick={() => doApplyChanges()}>
                     Apply Changes
                 </button>
+            </FormControl>
+            <h2>Replace Text in Title</h2>
+            <FormControl fullWidth>
+                <BlurSavingTextField
+                    value={findString}
+                    setValue={setFindString}
+                    options={{ id: "outlined-basic", label: "Find", variant: "outlined" }}
+                />
+            </FormControl>
+            <FormControl fullWidth>
+                <BlurSavingTextField
+                    value={replaceString}
+                    setValue={setReplaceString}
+                    options={{ id: "outlined-basic", label: "Replace With", variant: "outlined" }}
+                />
+            </FormControl>
+            <FormControl>
+                <button onClick={() => doReplaceTitleText()}>Replace in Title</button>
             </FormControl>
             <h2>Results:</h2>
             <pre title="Bulk Edit Results" id="bulkEditResults">

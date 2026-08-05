@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { baseUrl, getObjectDetailsUrl, objectDatastreamDublinCoreUrl, objectDatastreamLicenseUrl } from "../../util/routes";
+import {
+    baseUrl,
+    getObjectDetailsUrl,
+    objectDatastreamDublinCoreUrl,
+    objectDatastreamLicenseUrl,
+} from "../../util/routes";
 import { useFetchContext } from "../../context/FetchContext";
 import { useEditorContext } from "../../context/EditorContext";
 import BasicBreadcrumbs from "../shared/BasicBreadcrumbs";
@@ -11,7 +16,7 @@ import BlurSavingTextField from "../shared/BlurSavingTextField";
 
 const BulkEditor = (): React.ReactElement => {
     const {
-        state: { licensesCatalog },
+        state: { licensesCatalog, dublinCoreFieldCatalog },
         action: { initializeCatalog },
     } = useEditorContext();
     const [results, setResults] = useState("");
@@ -22,6 +27,7 @@ const BulkEditor = (): React.ReactElement => {
     const [selectedRecordIds, setSelectedRecordIds] = useState<Array<string>>([]);
     const [findString, setFindString] = useState("");
     const [replaceString, setReplaceString] = useState("");
+    const [dcField, setDcField] = useState("dc:title");
     const {
         action: { fetchJSON, fetchText },
     } = useFetchContext();
@@ -86,7 +92,20 @@ const BulkEditor = (): React.ReactElement => {
             setResults(error.message);
         }
     };
-    const doReplaceTitleText = async () => {
+    const getFieldReplacements = async () => {
+        const replacements = [];
+        for (const id of selectedRecordIds) {
+            const details = await fetchJSON(getObjectDetailsUrl(id));
+            const metadata = details.metadata ?? {};
+            const oldValues = metadata[dcField] ?? [];
+            if (oldValues.some((value) => value.includes(findString))) {
+                const newValues = oldValues.map((value) => value.replaceAll(findString, replaceString));
+                replacements.push({ id, metadata, oldValues, newValues });
+            }
+        }
+        return replacements;
+    };
+    const doPreviewFieldText = async () => {
         try {
             if (findString == "") {
                 setResults("No search string provided.");
@@ -96,24 +115,48 @@ const BulkEditor = (): React.ReactElement => {
                 setResults("No records selected.");
                 return;
             }
+            const replacements = await getFieldReplacements();
+            if (replacements.length < 1) {
+                setResults(`No matches for "${findString}" in ${dcField}.`);
+                return;
+            }
+            setResults(
+                replacements
+                    .map(
+                        ({ id, oldValues, newValues }) =>
+                            `${id}:\n  Old: ${oldValues.join(" | ")}\n  New: ${newValues.join(" | ")}\n`,
+                    )
+                    .join(""),
+            );
+        } catch (error) {
+            setResults(error.message);
+        }
+    };
+    const doReplaceFieldText = async () => {
+        try {
+            if (findString == "") {
+                setResults("No search string provided.");
+                return;
+            }
+            if (selectedRecordIds.length < 1) {
+                setResults("No records selected.");
+                return;
+            }
+            const replacements = await getFieldReplacements();
+            if (replacements.length < 1) {
+                setResults(`No matches for "${findString}" in ${dcField}.`);
+                return;
+            }
             let result = "";
-            for (let i = 0; i < selectedRecordIds.length; i++) {
-                const id = selectedRecordIds[i];
-                const details = await fetchJSON(getObjectDetailsUrl(id));
-                const metadata = details.metadata ?? {};
-                const oldTitles = metadata["dc:title"] ?? [];
-                if (!oldTitles.some((title) => title.includes(findString))) {
-                    result += `(${i + 1}/${selectedRecordIds.length}) ${id}: skipped, "${findString}" not found in title.\n`;
-                    setResults(result);
-                    continue;
-                }
-                metadata["dc:title"] = oldTitles.map((title) => title.replaceAll(findString, replaceString));
+            for (let i = 0; i < replacements.length; i++) {
+                const { id, metadata, newValues } = replacements[i];
+                metadata[dcField] = newValues;
                 const text = await fetchText(
                     objectDatastreamDublinCoreUrl(id, "DC"),
                     { method: "POST", body: JSON.stringify({ metadata }) },
                     { "Content-Type": "application/json" },
                 );
-                result += `(${i + 1}/${selectedRecordIds.length}) ${id}: ${text}\n`;
+                result += `(${i + 1}/${replacements.length}) ${id}: ${text}\n`;
                 setResults(result);
             }
         } catch (error) {
@@ -172,7 +215,19 @@ const BulkEditor = (): React.ReactElement => {
                     Apply Changes
                 </button>
             </FormControl>
-            <h2>Replace Text in Title</h2>
+            <h2>Replace Text in DC Field</h2>
+            <FormControl fullWidth>
+                <InputLabel>Field</InputLabel>
+                <Select label="Field" value={dcField} onChange={(event) => setDcField(event.target.value)}>
+                    {Object.entries(dublinCoreFieldCatalog)
+                        .filter(([, field]) => field.type !== "locked")
+                        .map(([key, field]) => (
+                            <MenuItem key={key} value={key}>
+                                {field.label}
+                            </MenuItem>
+                        ))}
+                </Select>
+            </FormControl>
             <FormControl fullWidth>
                 <BlurSavingTextField
                     value={findString}
@@ -188,7 +243,10 @@ const BulkEditor = (): React.ReactElement => {
                 />
             </FormControl>
             <FormControl>
-                <button onClick={() => doReplaceTitleText()}>Replace in Title</button>
+                <button onClick={() => doPreviewFieldText()}>Preview Changes</button>
+            </FormControl>
+            <FormControl>
+                <button onClick={() => doReplaceFieldText()}>Replace in Field</button>
             </FormControl>
             <h2>Results:</h2>
             <pre title="Bulk Edit Results" id="bulkEditResults">

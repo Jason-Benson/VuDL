@@ -68,7 +68,10 @@ describe("BulkEditor", () => {
         });
         expect(fetchContextValues.action.fetchText).toHaveBeenCalledWith(
             "http://localhost:9000/api/edit/query/solr",
-            { body: '{\"query\":\"(id:\\\"*:*\\\" OR hierarchy_all_parents_str_mv:\\\"*:*\\\")\",\"rows\":50}', method: "POST" },
+            {
+                body: '{\"query\":\"(id:\\\"*:*\\\" OR hierarchy_all_parents_str_mv:\\\"*:*\\\")\",\"rows\":50}',
+                method: "POST",
+            },
             { "Content-Type": "application/json" },
         );
         const resultList = screen.getByTitle("Selected Records");
@@ -100,7 +103,10 @@ describe("BulkEditor", () => {
         });
         expect(fetchContextValues.action.fetchText).toHaveBeenCalledWith(
             "http://localhost:9000/api/edit/query/solr",
-            { body: '{\"query\":\"(id:\\\"*:*\\\" OR hierarchy_all_parents_str_mv:\\\"*:*\\\")\",\"rows\":50}', method: "POST" },
+            {
+                body: '{\"query\":\"(id:\\\"*:*\\\" OR hierarchy_all_parents_str_mv:\\\"*:*\\\")\",\"rows\":50}',
+                method: "POST",
+            },
             { "Content-Type": "application/json" },
         );
         const recordList = screen.getByTitle("Selected Records");
@@ -137,7 +143,10 @@ describe("BulkEditor", () => {
         });
         expect(fetchContextValues.action.fetchText).toHaveBeenCalledWith(
             "http://localhost:9000/api/edit/query/solr",
-            { body: '{\"query\":\"(id:\\\"*:*\\\" OR hierarchy_all_parents_str_mv:\\\"*:*\\\")\",\"rows\":50}', method: "POST" },
+            {
+                body: '{\"query\":\"(id:\\\"*:*\\\" OR hierarchy_all_parents_str_mv:\\\"*:*\\\")\",\"rows\":50}',
+                method: "POST",
+            },
             { "Content-Type": "application/json" },
         );
         const recordList = screen.getByTitle("Selected Records");
@@ -187,7 +196,10 @@ describe("BulkEditor", () => {
         });
         expect(fetchContextValues.action.fetchText).toHaveBeenCalledWith(
             "http://localhost:9000/api/edit/query/solr",
-            { body: '{\"query\":\"(id:\\\"*:*\\\" OR hierarchy_all_parents_str_mv:\\\"*:*\\\")\",\"rows\":50}', method: "POST" },
+            {
+                body: '{\"query\":\"(id:\\\"*:*\\\" OR hierarchy_all_parents_str_mv:\\\"*:*\\\")\",\"rows\":50}',
+                method: "POST",
+            },
             { "Content-Type": "application/json" },
         );
         const recordList = screen.getByTitle("Selected Records");

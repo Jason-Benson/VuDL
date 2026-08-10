@@ -156,7 +156,7 @@ const BulkEditor = (): React.ReactElement => {
     };
     const doReplaceFieldText = async () => {
         try {
-            const replacements = await getFieldReplacements();  
+            const replacements = await getFieldReplacements();
             if (!isReplacementFormValid(replacements)) {
                 return;
             }

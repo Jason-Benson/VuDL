@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from "react";
-import {
-    baseUrl,
-    getObjectDetailsUrl,
-    objectDatastreamDublinCoreUrl,
-    objectDatastreamLicenseUrl,
-} from "../../util/routes";
+import { baseUrl, objectDatastreamLicenseUrl } from "../../util/routes";
+import { getObjectDetailsUrl, objectDatastreamDublinCoreUrl } from "../../util/routes";
 import { useFetchContext } from "../../context/FetchContext";
 import { useEditorContext } from "../../context/EditorContext";
 import BasicBreadcrumbs from "../shared/BasicBreadcrumbs";
@@ -22,11 +18,13 @@ const BulkEditor = (): React.ReactElement => {
     const [results, setResults] = useState("");
     const [selectedRecords, setSelectedRecords] = useState("");
     const [licenseKey, setLicenseKey] = useState("");
+    const [topPid, setTopPid] = useState("");
     const [query, setQuery] = useState("");
     const [limit, setLimit] = useState("50");
     const [selectedRecordIds, setSelectedRecordIds] = useState<Array<string>>([]);
     const [findString, setFindString] = useState("");
     const [replaceString, setReplaceString] = useState("");
+    const [replaceField, setReplaceField] = useState("");
     const [dcField, setDcField] = useState("dc:title");
     const {
         action: { fetchJSON, fetchText },
@@ -38,9 +36,18 @@ const BulkEditor = (): React.ReactElement => {
 
     const doFetchRecords = async () => {
         try {
+            const queryParts = [];
+            if (query.trim().length > 0) {
+                queryParts.push(`(${query.trim()})`);
+            }
+            const trimmedTopPid = topPid.trim();
+            if (trimmedTopPid.length > 0) {
+                queryParts.push(`(id:"${trimmedTopPid}" OR hierarchy_all_parents_str_mv:"${trimmedTopPid}")`);
+            }
+            const combinedQuery = queryParts.join(" AND ");
             const result = await fetchText(
                 baseUrl + "/api/edit/query/solr",
-                { method: "POST", body: JSON.stringify({ query, rows: parseInt(limit) }) },
+                { method: "POST", body: JSON.stringify({ query: combinedQuery, rows: parseInt(limit) }) },
                 { "Content-Type": "application/json" },
             );
             const json = JSON.parse(result);
@@ -98,26 +105,41 @@ const BulkEditor = (): React.ReactElement => {
             const details = await fetchJSON(getObjectDetailsUrl(id));
             const metadata = details.metadata ?? {};
             const oldValues = metadata[dcField] ?? [];
-            if (oldValues.some((value) => value.includes(findString))) {
-                const newValues = oldValues.map((value) => value.replaceAll(findString, replaceString));
+            if (replaceField != "") {
+                const newValues = [replaceField];
                 replacements.push({ id, metadata, oldValues, newValues });
+            } else {
+                if (oldValues.some((value) => value.includes(findString))) {
+                    const newValues = oldValues.map((value) => value.replaceAll(findString, replaceString));
+                    replacements.push({ id, metadata, oldValues, newValues });
+                }
             }
         }
         return replacements;
     };
+    const isReplacementFormValid = async (replacements: any[]) => {
+        if (findString == "") {
+            setResults("No search string provided.");
+            return false;
+        }
+        if (replaceString == "" && replaceField == "") {
+            setResults("No replacement string provided.");
+            return false;
+        }
+        if (selectedRecordIds.length < 1) {
+            setResults("No records selected.");
+            return false;
+        }
+        if (replacements.length < 1) {
+            setResults(`No matches for "${findString}" in ${dcField}.`);
+            return false;
+        }
+        return true;
+    };
     const doPreviewFieldText = async () => {
         try {
-            if (findString == "") {
-                setResults("No search string provided.");
-                return;
-            }
-            if (selectedRecordIds.length < 1) {
-                setResults("No records selected.");
-                return;
-            }
             const replacements = await getFieldReplacements();
-            if (replacements.length < 1) {
-                setResults(`No matches for "${findString}" in ${dcField}.`);
+            if (!isReplacementFormValid(replacements)) {
                 return;
             }
             setResults(
@@ -134,17 +156,8 @@ const BulkEditor = (): React.ReactElement => {
     };
     const doReplaceFieldText = async () => {
         try {
-            if (findString == "") {
-                setResults("No search string provided.");
-                return;
-            }
-            if (selectedRecordIds.length < 1) {
-                setResults("No records selected.");
-                return;
-            }
-            const replacements = await getFieldReplacements();
-            if (replacements.length < 1) {
-                setResults(`No matches for "${findString}" in ${dcField}.`);
+            const replacements = await getFieldReplacements();  
+            if (!isReplacementFormValid(replacements)) {
                 return;
             }
             let result = "";
@@ -169,6 +182,13 @@ const BulkEditor = (): React.ReactElement => {
             <BasicBreadcrumbs />
             <h1>Bulk Editor</h1>
             <h2>Record Selector</h2>
+            <FormControl fullWidth>
+                <BlurSavingTextField
+                    value={topPid}
+                    setValue={setTopPid}
+                    options={{ id: "outlined-basic", label: "Top Level PID", variant: "outlined" }}
+                />
+            </FormControl>
             <FormControl fullWidth>
                 <BlurSavingTextField
                     value={query}
@@ -240,6 +260,13 @@ const BulkEditor = (): React.ReactElement => {
                     value={replaceString}
                     setValue={setReplaceString}
                     options={{ id: "outlined-basic", label: "Replace With", variant: "outlined" }}
+                />
+            </FormControl>
+            <FormControl fullWidth>
+                <BlurSavingTextField
+                    value={replaceField}
+                    setValue={setReplaceField}
+                    options={{ id: "outlined-basic", label: "Replace Whole Field With", variant: "outlined" }}
                 />
             </FormControl>
             <FormControl>

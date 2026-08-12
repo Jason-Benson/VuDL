@@ -99,8 +99,14 @@ const BulkEditor = (): React.ReactElement => {
             setResults(error.message);
         }
     };
-    const getFieldReplacements = async () => {
-        const replacements = [];
+    interface FieldReplacement {
+        id: string;
+        metadata: Record<string, Array<string>>;
+        oldValues: Array<string>;
+        newValues: Array<string>;
+    }
+    const getFieldReplacements = async (): Promise<Array<FieldReplacement>> => {
+        const replacements: Array<FieldReplacement> = [];
         for (const id of selectedRecordIds) {
             const details = await fetchJSON(getObjectDetailsUrl(id));
             const metadata = details.metadata ?? {};
@@ -117,7 +123,7 @@ const BulkEditor = (): React.ReactElement => {
         }
         return replacements;
     };
-    const isReplacementFormValid = async (replacements: any[]) => {
+    const isReplacementFormValid = async (replacements: Array<FieldReplacement>) => {
         if (findString == "") {
             setResults("No search string provided.");
             return false;
@@ -139,7 +145,7 @@ const BulkEditor = (): React.ReactElement => {
     const doPreviewFieldText = async () => {
         try {
             const replacements = await getFieldReplacements();
-            if (!isReplacementFormValid(replacements)) {
+            if (!(await isReplacementFormValid(replacements))) {
                 return;
             }
             setResults(
@@ -157,7 +163,7 @@ const BulkEditor = (): React.ReactElement => {
     const doReplaceFieldText = async () => {
         try {
             const replacements = await getFieldReplacements();
-            if (!isReplacementFormValid(replacements)) {
+            if (!(await isReplacementFormValid(replacements))) {
                 return;
             }
             let result = "";
@@ -186,21 +192,21 @@ const BulkEditor = (): React.ReactElement => {
                 <BlurSavingTextField
                     value={topPid}
                     setValue={setTopPid}
-                    options={{ id: "outlined-basic", label: "Top Level PID", variant: "outlined" }}
+                    options={{ id: "top-level-pid", label: "Top Level PID", variant: "outlined" }}
                 />
             </FormControl>
             <FormControl fullWidth>
                 <BlurSavingTextField
                     value={query}
                     setValue={setQuery}
-                    options={{ id: "outlined-basic", label: "Search Query", variant: "outlined" }}
+                    options={{ id: "search-query", label: "Search Query", variant: "outlined" }}
                 />
             </FormControl>
             <FormControl fullWidth>
                 <BlurSavingTextField
                     value={limit}
                     setValue={setLimit}
-                    options={{ id: "outlined-basic", label: "Result Limit", variant: "outlined" }}
+                    options={{ id: "result-limit", label: "Result Limit", variant: "outlined" }}
                 />
             </FormControl>
             <FormControl>
@@ -258,21 +264,21 @@ const BulkEditor = (): React.ReactElement => {
                 <BlurSavingTextField
                     value={findString}
                     setValue={setFindString}
-                    options={{ id: "outlined-basic", label: "Find", variant: "outlined" }}
+                    options={{ id: "find", label: "Find", variant: "outlined" }}
                 />
             </FormControl>
             <FormControl fullWidth>
                 <BlurSavingTextField
                     value={replaceString}
                     setValue={setReplaceString}
-                    options={{ id: "outlined-basic", label: "Replace With", variant: "outlined" }}
+                    options={{ id: "replace-with", label: "Replace With", variant: "outlined" }}
                 />
             </FormControl>
             <FormControl fullWidth>
                 <BlurSavingTextField
                     value={replaceField}
                     setValue={setReplaceField}
-                    options={{ id: "outlined-basic", label: "Replace Whole Field With", variant: "outlined" }}
+                    options={{ id: "replace-whole-field-with", label: "Replace Whole Field With", variant: "outlined" }}
                 />
             </FormControl>
             <FormControl>

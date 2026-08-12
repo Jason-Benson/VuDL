@@ -19,8 +19,8 @@ exports[`BulkEditor renders 1`] = `
         <label
           class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-19qnlrw-MuiFormLabel-root-MuiInputLabel-root"
           data-shrink="false"
-          for="outlined-basic"
-          id="outlined-basic-label"
+          for="top-level-pid"
+          id="top-level-pid-label"
         >
           Top Level PID
         </label>
@@ -30,7 +30,7 @@ exports[`BulkEditor renders 1`] = `
           <input
             aria-invalid="false"
             class="MuiInputBase-input MuiOutlinedInput-input css-16wblaj-MuiInputBase-input-MuiOutlinedInput-input"
-            id="outlined-basic"
+            id="top-level-pid"
             type="text"
             value=""
           />
@@ -58,8 +58,8 @@ exports[`BulkEditor renders 1`] = `
         <label
           class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-19qnlrw-MuiFormLabel-root-MuiInputLabel-root"
           data-shrink="false"
-          for="outlined-basic"
-          id="outlined-basic-label"
+          for="search-query"
+          id="search-query-label"
         >
           Search Query
         </label>
@@ -69,7 +69,7 @@ exports[`BulkEditor renders 1`] = `
           <input
             aria-invalid="false"
             class="MuiInputBase-input MuiOutlinedInput-input css-16wblaj-MuiInputBase-input-MuiOutlinedInput-input"
-            id="outlined-basic"
+            id="search-query"
             type="text"
             value=""
           />
@@ -97,8 +97,8 @@ exports[`BulkEditor renders 1`] = `
         <label
           class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined css-113d811-MuiFormLabel-root-MuiInputLabel-root"
           data-shrink="true"
-          for="outlined-basic"
-          id="outlined-basic-label"
+          for="result-limit"
+          id="result-limit-label"
         >
           Result Limit
         </label>
@@ -108,7 +108,7 @@ exports[`BulkEditor renders 1`] = `
           <input
             aria-invalid="false"
             class="MuiInputBase-input MuiOutlinedInput-input css-16wblaj-MuiInputBase-input-MuiOutlinedInput-input"
-            id="outlined-basic"
+            id="result-limit"
             type="text"
             value="50"
           />
@@ -280,8 +280,8 @@ exports[`BulkEditor renders 1`] = `
         <label
           class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-19qnlrw-MuiFormLabel-root-MuiInputLabel-root"
           data-shrink="false"
-          for="outlined-basic"
-          id="outlined-basic-label"
+          for="find"
+          id="find-label"
         >
           Find
         </label>
@@ -291,7 +291,7 @@ exports[`BulkEditor renders 1`] = `
           <input
             aria-invalid="false"
             class="MuiInputBase-input MuiOutlinedInput-input css-16wblaj-MuiInputBase-input-MuiOutlinedInput-input"
-            id="outlined-basic"
+            id="find"
             type="text"
             value=""
           />
@@ -319,8 +319,8 @@ exports[`BulkEditor renders 1`] = `
         <label
           class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-19qnlrw-MuiFormLabel-root-MuiInputLabel-root"
           data-shrink="false"
-          for="outlined-basic"
-          id="outlined-basic-label"
+          for="replace-with"
+          id="replace-with-label"
         >
           Replace With
         </label>
@@ -330,7 +330,7 @@ exports[`BulkEditor renders 1`] = `
           <input
             aria-invalid="false"
             class="MuiInputBase-input MuiOutlinedInput-input css-16wblaj-MuiInputBase-input-MuiOutlinedInput-input"
-            id="outlined-basic"
+            id="replace-with"
             type="text"
             value=""
           />
@@ -358,8 +358,8 @@ exports[`BulkEditor renders 1`] = `
         <label
           class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-19qnlrw-MuiFormLabel-root-MuiInputLabel-root"
           data-shrink="false"
-          for="outlined-basic"
-          id="outlined-basic-label"
+          for="replace-whole-field-with"
+          id="replace-whole-field-with-label"
         >
           Replace Whole Field With
         </label>
@@ -369,7 +369,7 @@ exports[`BulkEditor renders 1`] = `
           <input
             aria-invalid="false"
             class="MuiInputBase-input MuiOutlinedInput-input css-16wblaj-MuiInputBase-input-MuiOutlinedInput-input"
-            id="outlined-basic"
+            id="replace-whole-field-with"
             type="text"
             value=""
           />

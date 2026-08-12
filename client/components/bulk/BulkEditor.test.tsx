@@ -111,7 +111,7 @@ describe("BulkEditor", () => {
         );
         const recordList = screen.getByTitle("Selected Records");
         expect(recordList.innerHTML).toEqual("No results found.");
-        const licenseControl = screen.getByRole("combobox");
+        const licenseControl = screen.getByRole("combobox", { name: "Choose New License" });
         await act(async () => {
             fireEvent.mouseDown(licenseControl);
         });
@@ -152,7 +152,7 @@ describe("BulkEditor", () => {
         const recordList = screen.getByTitle("Selected Records");
         expect(recordList.innerHTML).toEqual("foo:\tFoo\nbar:\tBar\n");
 
-        const licenseControl = screen.getByRole("combobox");
+        const licenseControl = screen.getByRole("combobox", { name: "Choose New License" });
         await act(async () => {
             fireEvent.mouseDown(licenseControl);
         });
@@ -205,7 +205,7 @@ describe("BulkEditor", () => {
         const recordList = screen.getByTitle("Selected Records");
         expect(recordList.innerHTML).toEqual("foo:\tFoo\nbar:\tBar\n");
 
-        const licenseControl = screen.getByRole("combobox");
+        const licenseControl = screen.getByRole("combobox", { name: "Choose New License" });
         await act(async () => {
             fireEvent.mouseDown(licenseControl);
         });

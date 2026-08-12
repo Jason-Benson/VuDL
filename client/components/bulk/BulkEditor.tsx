@@ -212,8 +212,9 @@ const BulkEditor = (): React.ReactElement => {
             </pre>
             <h2>Changes to Apply</h2>
             <FormControl fullWidth>
-                <InputLabel>Choose New License</InputLabel>
+                <InputLabel id="choose-new-license-label">Choose New License</InputLabel>
                 <Select
+                    labelId="choose-new-license-label"
                     label="Choose New License"
                     value={licenseKey}
                     onChange={(event) => setLicenseKey(event.target.value)}
@@ -237,8 +238,13 @@ const BulkEditor = (): React.ReactElement => {
             </FormControl>
             <h2>Replace Text in DC Field</h2>
             <FormControl fullWidth>
-                <InputLabel>Field</InputLabel>
-                <Select label="Field" value={dcField} onChange={(event) => setDcField(event.target.value)}>
+                <InputLabel id="dc-field-label">Field</InputLabel>
+                <Select
+                    labelId="dc-field-label"
+                    label="Field"
+                    value={dcField}
+                    onChange={(event) => setDcField(event.target.value)}
+                >
                     {Object.entries(dublinCoreFieldCatalog)
                         .filter(([, field]) => field.type !== "locked")
                         .map(([key, field]) => (

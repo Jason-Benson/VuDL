@@ -190,7 +190,7 @@ describe("BulkEditor", () => {
         });
         const fetchButton = screen.getByText("Fetch Records");
         fetchContextValues.action.fetchText.mockResolvedValueOnce(
-            '{"numFound": 1, "docs": [{"id": "foo", "title": "Foo"}]}',
+            '{"numFound": 1, "docs": [{"id": "foo", "title": "foo bar"}]}',
         );
         await act(async () => {
             fireEvent.click(fetchButton);

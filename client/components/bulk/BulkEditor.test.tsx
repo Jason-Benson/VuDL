@@ -204,7 +204,7 @@ describe("BulkEditor", () => {
             { "Content-Type": "application/json" },
         );
         const recordList = screen.getByTitle("Selected Records");
-        expect(recordList.innerHTML).toEqual("foo:\tFoo\n");
+        expect(recordList.innerHTML).toEqual("foo:\tfoo bar\n");
 
         const findInput = screen.getByLabelText("Find");
         fireEvent.blur(findInput, {

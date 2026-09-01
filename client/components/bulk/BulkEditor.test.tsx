@@ -244,6 +244,70 @@ describe("BulkEditor", () => {
         expect(resultList.innerHTML).toEqual("(1/1) foo: success\n");
     });
 
+    it("previews text changes", async () => {
+        render(<BulkEditor />);
+        const input = screen.getByLabelText("Search Query");
+        fireEvent.blur(input, {
+            target: {
+                value: "*:*",
+            },
+        });
+        const fetchButton = screen.getByText("Fetch Records");
+        fetchContextValues.action.fetchText.mockResolvedValueOnce(
+            '{"numFound": 1, "docs": [{"id": "foo", "title": "Foo"}]}',
+        );
+        await act(async () => {
+            fireEvent.click(fetchButton);
+        });
+        expect(fetchContextValues.action.fetchText).toHaveBeenCalledWith(
+            "http://localhost:9000/api/edit/query/solr",
+            {
+                body: '{\"query\":\"(*:*)\",\"rows\":50}',
+                method: "POST",
+            },
+            { "Content-Type": "application/json" },
+        );
+        const recordList = screen.getByTitle("Selected Records");
+        expect(recordList.innerHTML).toEqual("foo:\tFoo\n");
+
+        const findInput = screen.getByLabelText("Find");
+        fireEvent.blur(findInput, {
+            target: {
+                value: "foo",
+            },
+        });
+
+        const replaceInput = screen.getByLabelText("Replace With");
+        fireEvent.blur(replaceInput, {
+            target: {
+                value: "bar",
+            },
+        });
+
+        fetchContextValues.action.fetchJSON.mockResolvedValueOnce({
+            metadata: { "dc:title": ["foo bar"] },
+        });
+        fetchContextValues.action.fetchText.mockResolvedValueOnce("success");
+        const replaceButton = screen.getByText("Preview Changes");
+        await act(async () => {
+            fireEvent.click(replaceButton);
+        });
+
+        expect(fetchContextValues.action.fetchJSON).toHaveBeenCalledWith(
+            "http://localhost:9000/api/edit/object/foo/details",
+        );
+        expect(fetchContextValues.action.fetchText).toHaveBeenCalledWith(
+            "http://localhost:9000/api/edit/query/solr",
+            {
+                body: '{"query":"(*:*)","rows":50}',
+                method: "POST",
+            },
+            { "Content-Type": "application/json" },
+        );
+        const resultList = screen.getByTitle("Bulk Edit Results");
+        expect(resultList.innerHTML).toEqual("foo:\n  Old: foo bar\n  New: bar bar\n");
+    });
+
     it("handles errors during license updates", async () => {
         render(<BulkEditor />);
         const input = screen.getByLabelText("Search Query");

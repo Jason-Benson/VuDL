@@ -141,17 +141,16 @@ exports[`BulkEditor renders 1`] = `
       id="selectedRecords"
       title="Selected Records"
     />
+    <h2>
+      Choose Operation
+    </h2>
     <div
       class="MuiFormControl-root css-1iw3t7y-MuiFormControl-root"
     >
       <label
         class="MuiFormLabel-root MuiFormLabel-colorPrimary css-nwsdb5-MuiFormLabel-root"
         id="choose-operation-label"
-      >
-        <h2>
-          Choose Operation
-        </h2>
-      </label>
+      />
       <div
         aria-labelledby="choose-operation-label"
         class="MuiFormGroup-root MuiRadioGroup-root css-1mac7pt-MuiFormGroup-root"
